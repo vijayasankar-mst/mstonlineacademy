@@ -1,0 +1,28 @@
+{
+  "name": "MST online Academy",
+  "version": "0.0.0",
+  "authors": [
+    "MST"
+  ],
+  "description": "\"Extreme Tech Training\"",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "jquery": "latest",
+    "toastr": "latest",
+    "angular": "latest",
+    "angular-route": "latest",
+    "bootstrap": "latest",
+    "angular-mocks": "latest",
+	  "angular-ui-router" : "latest",
+	  "font-awesome" : "latest",
+    "oclazyload" : "latest",
+    "angular-bootstrap" : "latest",
+    "angular-toggle-switch" : "latest",
+    "angular-animate" : "latest",
+    "angular-cookies" : "latest",
+    "angular-resource" : "latest",
+    "angular-sanitize" : "latest",
+    "angular-touch" : "latest"
+  }
+}
