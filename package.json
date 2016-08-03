@@ -4,7 +4,8 @@
   "description": "MST online Academy",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
   },
   "keywords": [
     "heroku",
@@ -27,5 +28,13 @@
     "stylus": "~0.54.5"
   },
   "author": "",
-  "license": "MIT"
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/apppoccloudteam/mstonlineacademy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/apppoccloudteam/mstonlineacademy/issues"
+  },
+  "homepage": "https://github.com/apppoccloudteam/mstonlineacademy#readme"
 }
