@@ -20,9 +20,9 @@
             </div>
             <div class="form-group">
                 <label for="contact">Contact number:</label>
-                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter contact number" ng-model="contact" ng-class="{ 'has-error' : interestForm.contact.$invalid && !interestForm.contact.$pristine }" required ng-minlength="10" ng-maxlength="20">
-                <p ng-show="interestForm.contact.$error.minlength" class="help-block">Contact number is too short.</p>
-                <p ng-show="interestForm.contact.$error.maxlength" class="help-block">Contact number is too long.</p>
+                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter contact number" ng-model="contact" ng-class="{ 'has-error' : interestForm.contact.$invalid && !interestForm.contact.$pristine }" required  ng-pattern="phoneNumberPattern">
+                
+                <p ng-show="interestForm.contact.$invalid && !interestForm.contact.$pristine" class="help-block">Phone number is invalid.</p>
             </div>
         <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
     </form>

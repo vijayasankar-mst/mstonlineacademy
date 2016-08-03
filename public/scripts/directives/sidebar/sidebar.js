@@ -24,4 +24,7 @@
  			alert('Thanks for submission!');
  		}
  	};
+
+ 	//Phone Number Regex
+ 	$scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
  });
