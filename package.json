@@ -13,11 +13,13 @@
     "Postgres"
   ],
   "dependencies": {
+    "assert": "^1.4.1",
     "body-parser": "~1.15.2",
     "cookie-parser": "^1.1.0",
     "ejs": "^2.5.1",
     "express": "~4.14.0",
     "express-session": "^1.2.1",
+    "icheck": "^1.0.2",
     "jade": "~1.11.0",
     "mongoose": "^4",
     "morgan": "~1.7.0",
@@ -25,7 +27,8 @@
     "passport-local": "^1.0.0",
     "path": "^0.12.7",
     "pg": "^6.0.3",
-    "stylus": "~0.54.5"
+    "stylus": "~0.54.5",
+    "underscore": "^1.8.3"
   },
   "author": "",
   "license": "MIT",

@@ -14,7 +14,7 @@ angular
     'ui.router',
     'ui.bootstrap',
   ])
-  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider) {
+  .config(['$stateProvider','$urlRouterProvider','$ocLazyLoadProvider','$locationProvider',function ($stateProvider,$urlRouterProvider,$ocLazyLoadProvider,$locationProvider) {
     
     $ocLazyLoadProvider.config({
       debug:false,
@@ -84,4 +84,11 @@ angular
         templateUrl:'views/home/courses.html'
        
       })
+      .state('site',{
+        url:'/courses',
+        templateUrl:'views/home/courses.html'
+       
+      })
+
+      $locationProvider.html5Mode(true);
   }]);
