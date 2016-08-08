@@ -4,9 +4,9 @@
         <h3>Interested? Just tell us...</h3>
         <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
-            <input type=hidden name="oid" value="00D28000001do4l">
-            <input  id="00N2800000D2ncF" name="00N2800000D2ncF" size="20" type="hidden" value="0" /> 
-            <input type=hidden name="retURL" value="/">
+            <input type="hidden" name="oid" value="00D28000001do4l"/>
+            <input type="hidden" id="company" maxlength="40" value="MST Online Academy" name="company" size="20"/>
+            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com"/>
 
             <div class="form-group">
                 <label for="first_name">First Name:</label>
