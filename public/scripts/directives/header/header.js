@@ -9,7 +9,7 @@
 angular.module('myApp')
 	.directive('header',function(){
 		return {
-        templateUrl:'http://localhost:3060/scripts/directives/header/header.html',
+        templateUrl:'scripts/directives/header/header.html',
         restrict: 'E',
         replace: true,
         scope:false
