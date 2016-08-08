@@ -24,10 +24,7 @@
     "angular-resource": "latest",
     "angular-sanitize": "latest",
     "angular-touch": "latest",
-<<<<<<< HEAD
-    "angular-form-validation": "^1.0.7"
-=======
+    "angular-form-validation": "^1.0.7",
     "iCheck": "icheck#^1.0.2"
->>>>>>> d1ee103627b56b6c1f1b2875770ef628af2acf6a
   }
 }
