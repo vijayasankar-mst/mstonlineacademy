@@ -21,7 +21,7 @@ module.exports = {
             port: process.env.PORT || 80
          },
          postgres : {
-           db: 'postgres://cyqaweeqtlgnhw:rB1RryqT3cDRdwp6OvvQ9GB6b6@ec2-54-225-83-198.compute-1.amazonaws.com:5432/d3rm9i30ao2l9v',
+           db: 'postgres://ocfwqbfcokhmlm:_UdMkbnKaSUDbDUdN-iDj9CNyG@ec2-54-243-210-223.compute-1.amazonaws.com:5432/d9d7rcm1djt678',
            rootPath: rootPath,
            port: process.env.PORT || 3060
         }
