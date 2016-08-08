@@ -12,7 +12,7 @@ require('./server/config/express')(app, config);
 
 require('./server/config/postgres')(config);
 
-//require('./server/config/passport')();
+require('./server/config/passport')();
 
 require('./server/config/routes')(app);
 
