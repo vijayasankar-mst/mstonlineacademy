@@ -2,27 +2,32 @@
     <!-- Request form -->
     <div class="requestform" ng-controller="requestformController">
         <h3>Interested? Just tell us...</h3>
-        <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate>
+        <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+            <input type=hidden name="oid" value="00D28000001do4l">
+            <input  id="00N2800000D2ncF" name="00N2800000D2ncF" size="20" type="hidden" value="0" /> 
+            <input type=hidden name="retURL" value="/">
+
             <div class="form-group">
-                <label for="fname">First Name:</label>
-                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter first name" ng-model="fname" ng-class="{ 'has-error' : interestForm.fname.$invalid && !interestForm.fname.$pristine }" required>
-                <p ng-show="interestForm.fname.$invalid && !interestForm.fname.$pristine" class="help-block">First name is required.</p>
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name')" required>
+                <p ng-show="interestForm.first_name.$invalid && !interestForm.first_name.$pristine" class="help-block">First name is required.</p>
             </div>
             <div class="form-group">
-                <label for="lname">Last Name:</label>
-                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter last name" ng-model="lname" ng-class="{ 'has-error' : interestForm.lname.$invalid && !interestForm.lname.$pristine }" required>
-                <p ng-show="interestForm.lname.$invalid && !interestForm.lname.$pristine" class="help-block">Last name is required.</p>
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name')" required>
+                <p ng-show="interestForm.last_name.$invalid && !interestForm.last_name.$pristine" class="help-block">Last name is required.</p>
             </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="{ 'has-error' : interestForm.email.$invalid && !interestForm.email.$pristine }" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email')" required>
                 <p ng-show="interestForm.email.$invalid && !interestForm.email.$pristine" class="help-block">Email is invalid.</p>
             </div>
             <div class="form-group">
-                <label for="contact">Contact number:</label>
-                <input type="text" class="form-control" id="contact" name="contact" placeholder="Enter contact number" ng-model="contact" ng-class="{ 'has-error' : interestForm.contact.$invalid && !interestForm.contact.$pristine }" required  ng-pattern="phoneNumberPattern">
+                <label for="phone">phone number:</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone')" required  ng-pattern="phoneNumberPattern">
                 
-                <p ng-show="interestForm.contact.$invalid && !interestForm.contact.$pristine" class="help-block">Phone number is invalid.</p>
+                <p ng-show="interestForm.phone.$invalid && !interestForm.phone.$pristine" class="help-block">Phone number is invalid.</p>
             </div>
         <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
     </form>

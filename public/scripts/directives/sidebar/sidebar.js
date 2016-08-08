@@ -27,4 +27,11 @@
 
  	//Phone Number Regex
  	$scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
+
+ 	//ng-class attributes
+ 	$scope.errorClass = function(control) {
+ 		if($scope.interestForm[control].$invalid && !$scope.interestForm[control].$pristine) {
+ 			return 'has-error';
+ 		}
+ 	};
  });
