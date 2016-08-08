@@ -1,73 +1,73 @@
 <div class="col-md-4 sidebar right-sidebar">
     <!-- Request form -->
-    <div class="requestform">
-        <h3>Request Information</h3>
-        <form>
+    <div class="requestform" ng-controller="requestformController">
+        <h3>Interested? Just tell us...</h3>
+        <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
+
+            <input type=hidden name="oid" value="00D28000001do4l">
+            <input  id="00N2800000D2ncF" name="00N2800000D2ncF" size="20" type="hidden" value="0" /> 
+            <input type=hidden name="retURL" value="/">
+
             <div class="form-group">
-                <label for="campusofinterest">Campus of Interest:</label>
-                <select class="form-control" id="campusofinterest">
-                    <option value="Mustard">Mustard</option>
-                    <option value="Mustard">Ketchup</option>
-                    <option value="Mustard">Relish</option>
-                </select>
+                <label for="first_name">First Name:</label>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name')" required>
+                <p ng-show="interestForm.first_name.$invalid && !interestForm.first_name.$pristine" class="help-block">First name is required.</p>
             </div>
             <div class="form-group">
-                <label for="programofinterest">Program of Interest:</label>
-                <select class="form-control" id="programofinterest:">
-                    <option value="India">India</option>
-                    <option value="UK">UK</option>
-                    <option value="USA">USA</option>
-                    <option value="Australia">Australia</option>
-                    <option value="Canada">Canada</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label for="fname">Full Name:</label>
-                <input type="text" class="form-control" id="fname" placeholder="Enter Fullname">
+                <label for="last_name">Last Name:</label>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name')" required>
+                <p ng-show="interestForm.last_name.$invalid && !interestForm.last_name.$pristine" class="help-block">Last name is required.</p>
             </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" placeholder="Enter email">
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email')" required>
+                <p ng-show="interestForm.email.$invalid && !interestForm.email.$pristine" class="help-block">Email is invalid.</p>
             </div>
-            <button type="submit" class="btn btn-info">Submit</button>
-        </form>
-    </div>
-    
-    <div class="hr5" style="margin:30px 0;"></div>
-    
-    <div class="widget widget-popular-posts marbottom">
-        <h4>Top Professors<span class="head-line"></span></h4>
-        <ul>
-            <li>
-                <div class="widget-thumb">
-                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-                </div>
-                <div class="widget-content">
-                    <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
-                    <span>Jul 29 2013</span>
-                </div>
-                <div class="clearfix"></div>
-            </li>
-            <li>
-                <div class="widget-thumb">
-                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-                </div>
-                <div class="widget-content">
-                    <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
-                    <span>Jul 29 2013</span>
-                </div>
-                <div class="clearfix"></div>
-            </li>
-            <li>
-                <div class="widget-thumb">
-                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-                </div>
-                <div class="widget-content">
-                    <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
-                    <span>Jul 29 2013</span>
-                </div>
-                <div class="clearfix"></div>
-            </li>
-        </ul>
-    </div>
+            <div class="form-group">
+                <label for="phone">phone number:</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone')" required  ng-pattern="phoneNumberPattern">
+                
+                <p ng-show="interestForm.phone.$invalid && !interestForm.phone.$pristine" class="help-block">Phone number is invalid.</p>
+            </div>
+        <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
+    </form>
+</div>
+
+<div class="hr5" style="margin:30px 0;"></div>
+
+<div class="widget widget-popular-posts marbottom">
+    <h4>Top Professors<span class="head-line"></span></h4>
+    <ul>
+        <li>
+            <div class="widget-thumb">
+                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+            </div>
+            <div class="widget-content">
+                <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
+                <span>Jul 29 2013</span>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li>
+            <div class="widget-thumb">
+                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+            </div>
+            <div class="widget-content">
+                <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
+                <span>Jul 29 2013</span>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+        <li>
+            <div class="widget-thumb">
+                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+            </div>
+            <div class="widget-content">
+                <h5><a href="#">How To Download The Google Fonts Catalog</a></h5>
+                <span>Jul 29 2013</span>
+            </div>
+            <div class="clearfix"></div>
+        </li>
+    </ul>
+</div>
 </div>

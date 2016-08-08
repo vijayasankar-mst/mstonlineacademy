@@ -5,22 +5,22 @@
     <head>
         <base href="/">
         <!-- Basic -->
-        <title>MST Online Academy</title>
+        <title>MST Online Academy - Student</title>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
         <meta name="description" content="MST University">
         <meta name="author" content="MST">
         <link rel="stylesheet" href="/vendor/bootstrap/dist/css/bootstrap.min.css" type="text/css" media="screen">
         <link rel="stylesheet" href="/vendor/font-awesome/css/font-awesome.min.css" type="text/css" media="screen">
-        <link rel="stylesheet" type="text/css" href="/css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="/css/custom.min.css" media="screen">
        
         <!--[if IE 8]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
         
     </head>
-    <body>
-         <div ng-app="myApp">
-            <div ui-view></div>
+    <body class="nav-md">
+        <div class="container body" ng-app="myAdminApp">
+              <div ui-view></div>
         </div>  
                             
     </body>
@@ -32,12 +32,9 @@
     <script src="/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="/vendor/angular-ui-router/release/angular-ui-router.min.js"></script>
     <script src="/vendor/oclazyload/dist/ocLazyLoad.min.js"></script>
-    <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
-    <script type="text/javascript" src="/scripts/common/script.js"></script>
-    <script type="text/javascript" src="/scripts/app.js"></script>
-    <script src="/vendor/angular-input-modified/dist/angular-input-modified.min.js"></script>
-    <script type="text/javascript" src="/vendor/angular-form-validation/dist/angular-form-validation.min.js"></script>
+    <script src="/vendor/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>    
     <!-- endbower -->
+    <script type="text/javascript" src="/scripts/adminApp.js"></script>
 
 
     </html>

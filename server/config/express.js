@@ -9,7 +9,6 @@ var express = require('express'),
 
 module.exports = function(app, config) {
 
-
   app.set('views', config.rootPath + '/server/views');
   app.engine('html', require('ejs').renderFile);
   app.set('view engine', 'html');
@@ -19,6 +18,7 @@ module.exports = function(app, config) {
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());
   app.use(session({secret: 'online academy',resave:false,saveUninitialized:false}));
+
   app.use(passport.initialize());
   app.use(passport.session());
  
