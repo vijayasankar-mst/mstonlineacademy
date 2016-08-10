@@ -80,9 +80,9 @@ angular
         templateUrl:'views/admin/mentors/mentors.new.html'
        })
 
-      .state('dashboard.studentlist',{
-        url:'/studentlist',
-        templateUrl:'views/admin/pages/studentlist.html'
+      .state('dashboard.paperlist',{
+        url:'/paperlist',
+        templateUrl:'views/admin/pages/paperlist.html'
        })
       .state('site',{
         url:'/site',
