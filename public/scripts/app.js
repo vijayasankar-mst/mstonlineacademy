@@ -35,7 +35,8 @@ angular
                     files:[
                     'scripts/directives/header/header.js',
                     'scripts/directives/sidebar/sidebar.js',
-                    'scripts/directives/footer/footer.js'
+                    'scripts/directives/footer/footer.js',
+                    'scripts/directives/common/programServices.js'
                     ]
                 }),
                 $ocLazyLoad.load(
@@ -84,6 +85,23 @@ angular
         templateUrl:'views/home/courses.html'
        
       })
+
+      .state('index.register',{
+        url:'/register?token',
+        controller:"RegisterCtrl",
+        templateUrl:'views/home/register.html',
+        resolve:{
+          loadMyCtrl:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name:'myApp',
+                    files:['scripts/controllers/registerCtrl.js']
+                })
+            }
+        },
+     
+      })
+
       .state('site',{
         url:'/courses',
         templateUrl:'views/home/courses.html'

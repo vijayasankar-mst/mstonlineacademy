@@ -421,6 +421,19 @@ header {
     font-weight: 400;
 }
 
+.classic-title {
+    border-bottom: 1px solid #eee;
+    font-weight: 300;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+}
+.classic-title span {
+    border-bottom: 1px solid;
+    font-weight: 400;
+    padding-bottom: 8px;
+}
+
+
 
 /*------------------------------------------*/
 /*	   03 - Main Page Elements
@@ -954,6 +967,8 @@ ul.footer-nav li a:hover {
 }
 .padright{padding-right:0px;}
 .padleft{padding-left:0px;}
+.btnwrap{text-align:right;}
+
 @media screen and (max-width: 489px) and (min-width: 320px) {
 .padright{padding:0px;}
 .padleft{padding:0px;}
