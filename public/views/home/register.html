@@ -1,67 +1,79 @@
 <div class="alert alert-danger" ng-if="errMsg">
   <strong>Danger!</strong> {{status}}
 </div>
-<form ng-init="getUserInfoDetails();getDegreeList();" name="studentRegisterForm" role="form" ng-submit="submitForm()" novalidate>
+<form ng-init="getUserInfoDetails();getDegreeList();" name="studentRegisterForm" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>
 <div class="col-md-12 widget-popular-posts">
  <h2 class="classic-title"><span>Create Account</span></h2>
   <div class="col-md-6">
 		  <div class="form-group">
-			<label for="firstname">First Name:</label>
-			<input type="text" class="form-control" ng-model="registerFormData.firstname" id="firstname" placeholder="Enter First Name">
+			<label for="firstname">First Name</label>
+			<input type="text" class="form-control" ng-model="registerFormData.firstname" id="firstname" name="firstname" placeholder="Enter First Name" ng-class="errorClass('firstname','class')" required>
+			<p ng-show="errorClass('firstname')" class="help-block">First name is required.</p>
 		  </div>
 		  <div class="form-group">
-			<label for="lastname">Last Name:</label>
-			<input type="text" class="form-control" id="lname" ng-model="registerFormData.lastname" placeholder="Enter Last Name">
+			<label for="lastname">Last Name</label>
+			<input type="text" class="form-control" id="lname" name="lname" ng-model="registerFormData.lastname" placeholder="Enter Last Name" ng-class="errorClass('lname')" required>
+			<p ng-show="errorClass('lname')" class="help-block">Last name is required.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="email">Email</label>
-			<input type="text" class="form-control" id="email" ng-model="registerFormData.email" placeholder="Enter Email">
+			<input type="email" class="form-control" id="email" name="email" ng-model="registerFormData.email" placeholder="Enter Email" ng-class="errorClass('email')" required>
+			<p ng-show="errorClass('email')" class="help-block">Email is invalid.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="phone">Phone Number</label>
-			<input type="text" class="form-control" id="phone" ng-model="registerFormData.phone" placeholder="Enter Phone">
+			<input type="text" class="form-control" id="phone" name="phone" ng-model="registerFormData.phone" placeholder="Enter Phone" ng-class="errorClass('phone')" ng-pattern="phoneNumberPattern" required>
+			<p ng-show="errorClass('phone')" class="help-block">Phone number is invalid.</p>
 		  </div>
 		  <div class="form-group">
-			<label for="desireddegree">Desired Degree:</label>
-			<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree">
+			<label for="desireddegree">Desired Degree</label>
+			<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree" ng-class="errorClass('desireddegree')" required>
 			 	  <option value="">---Please select---</option>
 			</select>
+			<p ng-show="errorClass('desireddegree')" class="help-block">Desire degree is required.</p>
 		  </div>
 	</div>
 	
 	<div class="col-md-6 page-content">
 		  <div class="form-group">
-			<label for="desiredprogram">Desired Program:</label>
-			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogram" id="desiredprogram">
+			<label for="desiredprogram">Desired Program area</label>
+			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogram" id="desiredprogram" name="desiredprogram" ng-class="errorClass('desiredprogram')" required>
 			  <option value="">---Please select---</option>
 			</select>
+			<p ng-show="errorClass('desiredprogram')" class="help-block">Desired program is required.</p>
 		  </div>
 		  <div class="form-group">
-			<label for="desiredprogramarea">Desired Program area:</label>
-			<select class="form-control" ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
+			<label for="desiredprogramarea">Desired Program</label>
+			<select class="form-control" ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" required>
 			 	<option value="">---Please select---</option>
 		  	</select>
+		  	<p ng-show="errorClass('desiredprogramarea')" class="help-block">Desired Program is required.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="username">User Name</label>
-			<input type="text" class="form-control" ng-model="registerFormData.username" id="username" placeholder="Enter User Name">
+			<input type="text" class="form-control" ng-model="registerFormData.username" id="username" name="username" placeholder="Enter User Name" ng-class="errorClass('username')" required>
+			<p ng-show="errorClass('username')" class="help-block">User Name is required.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="password">Password</label>
-			<input type="password" class="form-control" ng-model="registerFormData.password" id="password" placeholder="Enter Password">
+			<input type="password" class="form-control" ng-model="registerFormData.password" id="password" name="password" placeholder="Enter Password" ng-class="errorClass('password')" required>
+			<p ng-show="errorClass('password')" class="help-block">Password is required.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="cpassword">Confirm Password</label>
-			<input type="password" class="form-control" ng-model="registerFormData.cpassword" id="cpassword" placeholder="Enter Password Again">
+			<input type="password" class="form-control" ng-model="registerFormData.cpassword" id="cpassword" name="cpassword" placeholder="Enter Password Again" ng-class="errorClass('cpassword')" required>
+			<p ng-show="errorClass('cpassword')" class="help-block">Confirm password is required.</p>
+			<p ng-show="registerFormData.password !== registerFormData.cpassword" class="help-block">Password Mismatch</p>
 		  </div>
 		 
 	</div>
 	  <div class="col-md-12">
 			<div class="form-group">
-				<p><input type="checkbox"> Accept terms and conditions, privacy policy</p>
+				<p><input type="checkbox" name="terms" ng-model="registerFormData.terms" required> Accept terms and conditions, privacy policy</p>
+				<p ng-show="errorClass('terms')" class="help-block">Accept the terms!</p>
 		    </div>
 			<div class="btnwrap">
-				<button class="btn btn-primary">Start Your Application</button>
+				<button class="btn btn-primary" ng-disabled="studentRegisterForm.$invalid">Start Your Application</button>
 			</div>
 	  </div>
 	
