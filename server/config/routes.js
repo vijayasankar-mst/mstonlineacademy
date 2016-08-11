@@ -1,5 +1,7 @@
 var auth = require('./auth'),
-   mentors = require('../controllers/mentors');
+   mentors = require('../controllers/mentors'),
+   students = require('../controllers/students');
+   degprogram = require('../controllers/programs');
 
 
 module.exports = function(app) {
@@ -7,6 +9,17 @@ module.exports = function(app) {
 	// ==============================================
 
 	app.post('/api/v1/authenticate',  auth.authenticate);
+
+	app.get('/api/getdegreelist',degprogram.getDegree);
+
+	app.post('/api/getdegreeprogram',degprogram.getDegreeProgram);
+
+	app.post('/api/getdegreeprogramarea',degprogram.getDegreeProgramAreaList);
+
+	app.post('/api/getstudentdetails',students.getStudentDetails);
+
+	app.post('/api/v1/savestudentinformation', students.createUser)
+
 
 	app.post('/logout', function(req, res) { req.logout();  res.end(); });
 

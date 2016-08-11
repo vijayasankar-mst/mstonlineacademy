@@ -7,7 +7,7 @@
  * # mstApp
  */
 angular.module('myApp')
-	.directive('footer',function(){
+	.directive('footerdir',function(){
 		return {
         templateUrl:'scripts/directives/footer/footer.html',
         restrict: 'E',
