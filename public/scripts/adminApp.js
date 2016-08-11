@@ -125,7 +125,7 @@ angular
             $rootScope.identity.currentUser = data.user;
             var str = $location.$$path;
             var redirecturl = str.replace("/", "").split("/").join(".");
-            $state.go(redirecturl);
+            $state.go((redirecturl=="site.login") ? "dashboard.home" : redirecturl);
           }
           else
           {

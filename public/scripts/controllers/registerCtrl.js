@@ -81,6 +81,6 @@
 
 
     //Phone Number Regex
-    $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
+    // $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[-\s\.]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
 
 });
