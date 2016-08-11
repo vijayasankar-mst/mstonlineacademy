@@ -16,20 +16,22 @@ User.create = function(studentinfo, callback) {
     var is_active = "t";
     var local = 'local';
 
-    var sql = "with new_user as (INSERT INTO users(unique_id, username,email,role_id,is_active) VALUES ($1, $2, $3,$4,$5) returning user_id), user_pass as (INSERT INTO user_passwords(user_id, hashed_password, is_active) VALUES ((select user_id from new_user),$6,$5) returning user_password_id), lead_upd as (UPDATE salesforce.lead SET status='Closed - Converted' WHERE sfid=$1) select * from new_user,user_pass";
+    var sql = "with new_user as (INSERT INTO users(unique_id, username,email,role_id,is_active) VALUES ($1, $2, $3,$4,$5) returning user_id), user_pass as (INSERT INTO user_passwords(user_id, hashed_password, is_active) VALUES ((select user_id from new_user),$6,$5) returning user_password_id), lead_upd as (UPDATE salesforce.lead SET status='Closed - Converted' WHERE sfid=$1) select * from new_user";
     var data = [authToken,username,email,role_id, is_active,password];
     var command = {"sql" : sql, "params" : data}
-    console.log(command);
     ps.query(command, function(err, result){
+        
+    console.log("resu : ",result);
+    console.log("resuLen : ",result.length);
         if (err) {
              console.error('error in adding new user', err);
              return callback(err, this);
         }
         if (result.length > 0) {
-            return callback(true, data);
+            return callback(false, data);
         }
         else {
-            return callback(false, null);
+            return callback(true, null);
         }
     });
 

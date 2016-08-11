@@ -14,6 +14,7 @@ exports.createUser = function(req, res, next) {
       res.status(400);
       return res.send({reason:err.toString()});
     }
+    console.log(user);
     res.send(user);
    /* req.logIn(user, function(err) {
       if(err) {return next(err);}
