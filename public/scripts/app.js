@@ -99,7 +99,12 @@ angular
                 })
             }
         },
-     
+      })
+
+      .state('index.thanks',{
+        url:'/thanks',
+        templateUrl:'views/home/thanks.html'
+       
       })
 
       .state('site',{
@@ -109,4 +114,12 @@ angular
       })
 
       $locationProvider.html5Mode(true);
-  }]);
+  }]).run(function($rootScope, $location,$state,$timeout) {
+      $rootScope.$on('$viewContentLoaded', function(event) {
+        $timeout(function() {
+            var str = $location.$$path,
+                page = str.replace("/", "").split("/").join(".");
+           $rootScope.showSideBar = (page == 'index.register' || page == 'index.thanks') ? false : true;
+          },0);
+     });
+  });

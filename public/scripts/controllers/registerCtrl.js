@@ -12,13 +12,11 @@ angular.module('myApp').controller("RegisterCtrl", function($ocLazyLoad,$scope,$
  $scope.degreeporgramlist;
  $scope.degreeprogramarealist;
  $scope.registerFormData;
-
- console.log( $stateParams);
+ $scope.studentdetails; 
 
     $scope.getDegreeList = function(){
          programServices.getDegreeList()
             .then(function (response) {
-              console.log(response.data);
                 $scope.degreelist = response.data;
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
@@ -28,7 +26,6 @@ angular.module('myApp').controller("RegisterCtrl", function($ocLazyLoad,$scope,$
     $scope.getDegreeProgram = function(){
        programServices.getDegreePrograms($scope.registerFormData.desireddegree)
             .then(function (response) {
-              console.log(response.data);
                 $scope.degreeporgramlist = response.data;
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
@@ -38,14 +35,40 @@ angular.module('myApp').controller("RegisterCtrl", function($ocLazyLoad,$scope,$
     $scope.getDegreeProgramArea = function(){
         programServices.getDegreeProgramAreas($scope.registerFormData.desiredprogram)
             .then(function (response) {
-              console.log(response.data);
                 $scope.degreeporgramarealist = response.data;
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
             });
     }
 
+    $scope.getUserInfoDetails = function(){
+        if($stateParams.token !== undefined) {
+              programServices.getStudentDetails($stateParams.token)
+               .then(function (response) {
+                    console.log("test =", response.data);
+                    if(response.data.length > 0){
+                       $scope.registerFormData = response.data[0];
+                     }else{
+                       $scope.errMsg = true;
+                      $scope.status = 'Token already authenticated ';
+                     }
+                }, function (error) {
+                    $scope.errMsg = true;
+                    $scope.status = 'Token already authenticated ' + error.message;
+               });
+        }
+    }
 
-    $scope.getDegreeList(); 
+    $scope.submitForm = function(){
+      $scope.registerFormData.authToken = $stateParams.token;
+      $scope.registerFormData.role_id = 3;
+        programServices.saveStudentInformation($scope.registerFormData)
+            .then(function (response) {
+              window.location.href = "index/thanks"
+            }, function (error) {
+                 $scope.errMsg = true;
+                 $scope.status = 'Username Already Exists';
+            });
+    }
   
 });
