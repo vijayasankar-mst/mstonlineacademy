@@ -7,7 +7,7 @@
  * # mstAp
  */
 
- angular.module('myApp').controller("RegisterCtrl", function($ocLazyLoad,$scope,$state,$rootScope,programServices,$stateParams) {
+ angular.module('myApp').controller("RegisterCtrl", function($ocLazyLoad,$scope,$state,$rootScope,programServices,$stateParams,$timeout) {
      $scope.degreelist;
      $scope.degreeporgramlist;
      $scope.degreeprogramarealist;
@@ -50,12 +50,17 @@
                  $scope.registerFormData = response.data[0];
              }else{
                  $scope.errMsg = true;
-                 $scope.status = 'Token already authenticated ';
+                 $scope.status = 'Invalid token! You\'ll be redirected in 3 seconds.';
+                 $timeout(function() {
+                    $state.go("index.home");
+                 }, 3000);
              }
          }, function (error) {
             $scope.errMsg = true;
             $scope.status = 'Token already authenticated ' + error.message;
         });
+        } else {
+            $state.go("index.home");
         }
     }
 
