@@ -27,4 +27,11 @@ exports.getStudentDetails = function(req, res) {
   User.getStudentInfo(req.body.params.authtoken,function(err,result){
      res.send(result);
   });
+};
+
+
+exports.getUsersCount = function(req, res){
+  User.getAllUsersCount(function(err,result){
+     res.send(result);
+  });
 }
