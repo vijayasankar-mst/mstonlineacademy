@@ -14,6 +14,7 @@ exports.createUser = function(req, res, next) {
       res.status(400);
       return res.send({reason:err.toString()});
     }
+    console.log(user);
     res.send(user);
    /* req.logIn(user, function(err) {
       if(err) {return next(err);}
@@ -24,6 +25,13 @@ exports.createUser = function(req, res, next) {
 
 exports.getStudentDetails = function(req, res) {
   User.getStudentInfo(req.body.params.authtoken,function(err,result){
+     res.send(result);
+  });
+};
+
+
+exports.getUsersCount = function(req, res){
+  User.getAllUsersCount(function(err,result){
      res.send(result);
   });
 }
