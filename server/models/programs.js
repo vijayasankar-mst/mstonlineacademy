@@ -41,7 +41,7 @@ programModel.getDegreeProgramList = function(degreeid, callback) {
 
 
 programModel.getDegreeProgramListArea = function(programid, degreeid, callback) {
-    var sql = 'SELECT program, p.program_id FROM programs p LEFT JOIN degree_program_area USING (degree_program_area_id) WHERE degree_id = $2 AND program_area_id = $1';
+    var sql = 'SELECT program, p.program_code FROM programs p LEFT JOIN degree_program_area USING (degree_program_area_id) WHERE degree_id = $2 AND program_area_id = $1';
     data = [programid,degreeid];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function (err, result) {
