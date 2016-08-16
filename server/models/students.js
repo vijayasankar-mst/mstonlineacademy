@@ -78,3 +78,23 @@ User.getAllUsersCount = function(callback){
         return callback(false, data);
     }); 
 };
+
+
+User.getStudentsList = function(callback){
+    var sql = "SELECT l.email, l.company, l.name, l.phone, l.firstname, l.lastname, l.createddate FROM salesforce.lead l, users u WHERE u.unique_id = l.sfid";
+    var command = {"sql" : sql, "params" : []}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+       
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    });
+};

@@ -34,4 +34,10 @@ exports.getUsersCount = function(req, res){
   User.getAllUsersCount(function(err,result){
      res.send(result);
   });
-}
+};
+
+exports.getStudentList = function(req, res){
+  User.getStudentsList(function(err,result){
+     res.send(result);
+  });
+};

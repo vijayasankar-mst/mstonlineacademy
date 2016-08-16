@@ -19,6 +19,7 @@
 
   $urlRouterProvider.otherwise('/site/login');
 
+
   $stateProvider
   .state('dashboard', {
     url:'/dashboard',
@@ -58,7 +59,7 @@
     templateUrl:'views/admin/pages/profile.html'
   })
 
-  .state('dashboard.mentors',{
+   .state('dashboard.mentors',{
     url:'',
     templateUrl:'views/admin/mentors/mentors.home.html',
     controller:"MentorsCtrl",
@@ -71,15 +72,15 @@
      }]
    }
  })
-  .state('dashboard.mentors.list',{
+ .state('dashboard.mentors.list',{
     url:'/mentors/list',
-    templateUrl:'views/admin/mentors/mentors.list.html'
+    templateUrl:'views/admin/mentors/partials/mentors.list.html'
   })
 
   .state('dashboard.mentors.addnew',{
     url:'/mentors/addnew',
-    templateUrl:'views/admin/mentors/mentors.new.html'
-  })
+    templateUrl:'views/admin/mentors/partials/mentors.new.html'
+  }) 
 
   .state('dashboard.paperlist',{
     url:'/paperlist',
@@ -119,7 +120,9 @@
   $locationProvider.html5Mode(true);
 
 
-}]).run(function($rootScope, $http, $location,$state,$ocLazyLoad,$timeout) {
+}]).run(function($rootScope, $http, $location,$state,$ocLazyLoad,$timeout,$stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
   $rootScope.loggedIn = function()  {
     $http.post('/auth/isloggedIn').success(function(data)
     {
