@@ -40,9 +40,9 @@ programModel.getDegreeProgramList = function(degreeid, callback) {
 };
 
 
-programModel.getDegreeProgramListArea = function(programid, callback) {
-    var sql = 'SELECT p.program_id, p.program FROM programs p JOIN program_areas as pa ON (pa.program_area_id = p.degree_program_area_id AND pa.program_area_id  = $1) ORDER BY p.program_id DESC ';
-    data = [programid];
+programModel.getDegreeProgramListArea = function(programid, degreeid, callback) {
+    var sql = 'SELECT program, p.program_code FROM programs p LEFT JOIN degree_program_area USING (degree_program_area_id) WHERE degree_id = $2 AND program_area_id = $1';
+    data = [programid,degreeid];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function (err, result) {
         if (err) {

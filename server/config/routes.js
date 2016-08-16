@@ -32,6 +32,8 @@ module.exports = function(app) {
 
 	app.get('/api/mentorusers', mentors.getUsers);
 
+	app.get('/api/studentusers', students.getStudentList);
+
 
 	app.route('/site/*').get(function(req, res) {res.render('sitehome', {  bootstrappedUser: req.user });})
 

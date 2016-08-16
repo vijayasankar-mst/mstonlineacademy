@@ -14,7 +14,7 @@ exports.getDegreeProgram = function(req, res){
 }
 
 exports.getDegreeProgramAreaList = function(req, res){
-	programCtrl.getDegreeProgramListArea(req.body.params.programid,function(err,result){
+	programCtrl.getDegreeProgramListArea(req.body.params.programid,req.body.params.degreeid,function(err,result){
 		 res.send(result);
 	});
 }

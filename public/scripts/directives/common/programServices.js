@@ -14,8 +14,8 @@ angular.module('myApp').factory('programServices', function($http, $q) {
         return $http.post(urlDegreeProgram,{ params: { degreeid: degreeid} });
     }
 
-    dataFactory.getDegreeProgramAreas = function(programid) {
-        return $http.post(urlDegreePrgArea,{ params: { programid: programid} });
+    dataFactory.getDegreeProgramAreas = function(programid, degreeid) {
+        return $http.post(urlDegreePrgArea,{ params: { programid: programid, degreeid : degreeid} });
     }
 
     dataFactory.getStudentDetails = function(authtoken) {
