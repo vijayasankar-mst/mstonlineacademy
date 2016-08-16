@@ -33,6 +33,7 @@
           'scripts/directives/admin/sidebar/sidebar.js',
           'scripts/directives/admin/navigation/navigation.js',
           'scripts/directives/admin/footer/footer.js',
+          'scripts/directives/common/adminServices.js',
           'scripts/directives/myaccount/mstAuth.js',
           'scripts/directives/myaccount/mstUser.js',
           'scripts/directives/myaccount/mstIdentity.js',
