@@ -4,6 +4,7 @@ angular.module('myApp').factory('programServices', function($http, $q) {
         urlDegreeProgram = '/api/getdegreeprogram',
         urlGetStudent = '/api/getstudentdetails',
         urlSaveStudent = '/api/v1/savestudentinformation',
+        urlGetCourse = '/api/getCourses',
         dataFactory = {};
 
     dataFactory.getDegreeList = function() {
@@ -17,6 +18,11 @@ angular.module('myApp').factory('programServices', function($http, $q) {
     dataFactory.getDegreeProgramAreas = function(programid) {
         return $http.post(urlDegreePrgArea,{ params: { programid: programid} });
     }
+    
+      dataFactory.getCourses = function(programareaid) {
+        return $http.post(urlGetCourse,{ params: { programareaid: programareaid } });
+    }
+    
 
     dataFactory.getStudentDetails = function(authtoken) {
           return $http.post(urlGetStudent,{ params: { authtoken: authtoken} });

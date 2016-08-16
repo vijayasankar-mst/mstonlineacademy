@@ -82,8 +82,17 @@ angular
 
      .state('index.courses',{
         url:'/courses',
-        templateUrl:'views/home/courses.html'
-       
+         controller:"CoursesCtrl",
+        templateUrl:'views/home/courses.html',
+        resolve:{
+          loadMyCtrl:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name:'myApp',
+                    files:['scripts/controllers/coursesCtrl.js']
+                })
+            }
+        },
       })
 
       .state('index.register',{

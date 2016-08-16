@@ -59,3 +59,22 @@ programModel.getDegreeProgramListArea = function(programid, callback) {
     }); 
 };
 
+programModel.getCourses = function(programareaid, callback) {
+    var sql = 'SELECT p.paper_id, p.paper FROM papers p JOIN programs as pa ON (pa.program_id = p.program_id ) where p.program_id = '+programareaid+' ORDER BY p.paper_id DESC ';
+    data = [programareaid];
+    var command = {"sql" : sql}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    }); 
+};
+

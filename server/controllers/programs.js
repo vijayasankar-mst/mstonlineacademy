@@ -18,3 +18,9 @@ exports.getDegreeProgramAreaList = function(req, res){
 		 res.send(result);
 	});
 }
+
+exports.getCourses = function(req, res){
+	programCtrl.getCourses(req.body.params.programareaid,function(err,result){
+		 res.send(result);
+	});
+}
