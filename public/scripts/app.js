@@ -77,15 +77,21 @@
   .state('index.home',{
     url:'/home',
     templateUrl:'views/home/home.html'
-
   })
-
-  .state('index.courses',{
-    url:'/courses',
-    templateUrl:'views/home/courses.html'
-
-  })
-
+     .state('index.courses',{
+        url:'/courses',
+         controller:"CoursesCtrl",
+        templateUrl:'views/home/courses.html',
+        resolve:{
+          loadMyCtrl:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name:'myApp',
+                    files:['scripts/controllers/coursesCtrl.js']
+                })
+            }
+        },
+      })
   .state('index.register',{
     url:'/register?token',
     controller:"RegisterCtrl",

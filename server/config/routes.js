@@ -15,6 +15,8 @@ module.exports = function(app) {
 	app.post('/api/getdegreeprogram',degprogram.getDegreeProgram);
 
 	app.post('/api/getdegreeprogramarea',degprogram.getDegreeProgramAreaList);
+	
+	app.post('/api/getCourses',degprogram.getCourses);
 
 	app.post('/api/getstudentdetails',students.getStudentDetails);
 
