@@ -33,7 +33,7 @@
      }
 
      $scope.getDegreeProgramArea = function(){
-        programServices.getDegreeProgramAreas($scope.registerFormData.desiredprogram)
+        programServices.getDegreeProgramAreas($scope.registerFormData.desiredprogramarea,$scope.registerFormData.desireddegree)
         .then(function (response) {
             $scope.degreeporgramarealist = response.data;
         }, function (error) {

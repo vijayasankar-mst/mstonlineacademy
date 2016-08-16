@@ -13,7 +13,6 @@ angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices
 	$scope.getMentorsList = function(){
         mentorServices.getMentors()
             .then(function (response) {
-            	console.log(response.data);
                 $scope.mentors = response.data;
                 $scope.loading = false;
             }, function (error) {
