@@ -20,7 +20,9 @@ module.exports = function(app) {
 
 	app.post('/api/getstudentdetails',students.getStudentDetails);
 
-	app.post('/api/v1/savestudentinformation', students.createUser)
+	app.post('/api/v1/savestudentinformation', students.createUser);
+
+	app.get('/api/getalluserscount', students.getUsersCount);
 
 
 	app.post('/logout', function(req, res) { req.logout();  res.end(); });

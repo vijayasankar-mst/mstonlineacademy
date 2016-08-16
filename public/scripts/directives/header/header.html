@@ -3,13 +3,18 @@
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                <i class="fa fa-bars"></i>
+                    <i class="fa fa-bars"></i>
                 </button>
                 <a class="navbar-brand" ui-sref="index.home" href="#/index/home"><img alt="" src="http://www.mstsolutions.com/img/mst-logo-trans.png"></a>
             </div>
+            <style type="text/css">
+                .navbar-default .navbar-nav>li>a:focus, .navbar-default .navbar-nav>li>a:hover {
+                    background-color: #fff !important;
+                }
+            </style>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a target="_blank" href="/site/login">Login</a></li>
+                    <li><a target="_blank" href="/site/login">{{authenticated?'Login':'Logged in as '+currentUser.username}}</a></li>
                     <li><a ui-sref="index.home" href="#/index/home">Home</a></li>
                     <li><a href="#">Events</a></li>
                     <li><a ui-sref="index.courses" href="#/index/courses">Courses</a></li>

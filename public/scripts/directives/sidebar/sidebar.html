@@ -6,28 +6,28 @@
 
             <input type="hidden" name="oid" value="00D28000001do4l"/>
             <input type="hidden" id="company" maxlength="40" value="MST Online Academy" name="company" size="20"/>
-            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com?thanks=true"/>
+            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com/index/home?thanks"/>
 
             <div class="form-group">
                 <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name')" required>
-                <p ng-show="interestForm.first_name.$invalid && !interestForm.first_name.$pristine" class="help-block">First name is required.</p>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name','class')" required>
+                <p ng-show="errorClass('first_name')" class="help-block">First name is required.</p>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name')" required>
-                <p ng-show="interestForm.last_name.$invalid && !interestForm.last_name.$pristine" class="help-block">Last name is required.</p>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name','class')" required>
+                <p ng-show="errorClass('last_name')" class="help-block">Last name is required.</p>
             </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email')" required>
-                <p ng-show="interestForm.email.$invalid && !interestForm.email.$pristine" class="help-block">Email is invalid.</p>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email','class')" required>
+                <p ng-show="errorClass('email')" class="help-block">Email is invalid.</p>
             </div>
             <div class="form-group">
                 <label for="phone">phone number:</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone')" required  ng-pattern="phoneNumberPattern">
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone','class')" required  ng-pattern="phoneNumberPattern">
                 
-                <p ng-show="interestForm.phone.$invalid && !interestForm.phone.$pristine" class="help-block">Phone number is invalid.</p>
+                <p ng-show="errorClass('phone')" class="help-block">Phone number is invalid.</p>
             </div>
         <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
     </form>
