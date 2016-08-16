@@ -87,7 +87,7 @@ User.getAllUsersCount = function(callback){
 
 
 User.getStudentsList = function(callback){
-    var sql = "SELECT l.email, l.company, l.name, l.phone, l.firstname, l.lastname, l.createddate FROM salesforce.lead l, users u WHERE u.unique_id = l.sfid";
+    var sql = "SELECT l.email, l.company, l.name, l.phone, l.firstname, l.lastname, l.createddate, l.city, l.postalcode FROM salesforce.lead l, users u WHERE u.unique_id = l.sfid ORDER BY l.createddate DESC";
     var command = {"sql" : sql, "params" : []}
     ps.query(command, function (err, result) {
         if (err) {

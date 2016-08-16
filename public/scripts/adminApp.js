@@ -40,6 +40,7 @@
           'scripts/directives/myaccount/mstIdentity.js',
           'scripts/controllers/main.js',
           'scripts/directives/common/loading.js'
+          
           ]
         }),
         $ocLazyLoad.load(
@@ -86,9 +87,23 @@
     url:'/paperlist',
     templateUrl:'views/admin/pages/paperlist.html'
   })
-  .state('dashboard.studentlist',{
-    url:'/studentlist',
-    templateUrl:'views/admin/pages/studentlist.html'
+
+  .state('dashboard.students',{
+    url:'',
+    templateUrl:'views/admin/students/students.home.html',
+    controller:"studentsCtrl",
+    resolve:{
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/controllers/studentsCtrl.js');
+     }],
+     loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/directives/students/studentServices.js');
+     }]
+   }
+ })
+  .state('dashboard.students.list',{
+    url:'/students/list',
+    templateUrl:'views/admin/students/partials/students.list.html'
   })
   .state('site',{
     url:'/site',
