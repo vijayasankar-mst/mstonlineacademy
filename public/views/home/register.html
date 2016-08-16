@@ -36,18 +36,18 @@
 	
 	<div class="col-md-6 page-content">
 		  <div class="form-group">
-			<label for="desiredprogram">Desired Program area</label>
-			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogram" id="desiredprogram" name="desiredprogram" ng-class="errorClass('desiredprogram','class')" required>
+			<label for="desiredprogramarea">Desired Program area</label>
+			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" ng-class="errorClass('desiredprogramarea','class')" required>
 			  <option value="">---Please select---</option>
 			</select>
-			<p ng-show="errorClass('desiredprogram')" class="help-block">Desired program is required.</p>
+			<p ng-show="errorClass('desiredprogramarea')" class="help-block">Desired program area is required.</p>
 		  </div>
 		  <div class="form-group">
-			<label for="desiredprogramarea">Desired Program</label>
-			<select class="form-control" ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" ng-class="errorClass('desiredprogramarea','class')" required>
+			<label for="desiredprogram">Desired Program</label>
+			<select class="form-control" ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogram" id="desiredprogram" name="desiredprogram" ng-class="errorClass('desiredprogram','class')" required>
 			 	<option value="">---Please select---</option>
 		  	</select>
-		  	<p ng-show="errorClass('desiredprogramarea')" class="help-block">Desired Program is required.</p>
+		  	<p ng-show="errorClass('desiredprogram')" class="help-block">Desired Program is required.</p>
 		  </div>
 		  <div class="form-group">
 			<label for="username">User Name</label>
