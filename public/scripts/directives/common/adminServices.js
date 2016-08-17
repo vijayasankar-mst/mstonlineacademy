@@ -1,4 +1,4 @@
-angular.module('myAdminApp').factory('adminServices', function($http, $q) {
+angular.module('myAdminApp').factory('adminServices', function($http, $q, $rootScope) {
 	var urlBase = '/api/getalluserscount',
 		urlGetStudent = '/api/getstudentinfo',
         dataFactory = {};
@@ -10,7 +10,6 @@ angular.module('myAdminApp').factory('adminServices', function($http, $q) {
     dataFactory.getStudentInfo = function(){
 		return $http.get(urlGetStudent);
     };
-
 
     return dataFactory;
 

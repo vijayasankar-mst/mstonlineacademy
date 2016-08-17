@@ -26,14 +26,14 @@ User.create = function(studentinfo, callback) {
     var data = [authToken,username,email,role_id, is_active,password,street,city,postalcode,country,Program__c];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function(err, result){
-console.log(command);
+        console.log(command);
         console.log("resu : ",result);
     // console.log("resuLen : ",result.length);
     if (err) {
-       console.error('error in adding new user', err);
-       return callback(err, this);
-   }
-   if (result.length > 0) {
+     console.error('error in adding new user', err);
+     return callback(err, this);
+ }
+ if (result.length > 0) {
     return callback(false, data);
 }
 else {
@@ -65,15 +65,31 @@ User.getStudentInfo = function(tokenid, callback) {
 };
 
 
-User.getAllUsersCount = function(callback){
-    var sql = "SELECT (SELECT count(a.user_id) FROM users a WHERE a.role_id = 1) as adminTotal, (SELECT count(a.user_id) FROM users a WHERE a.role_id = 2) as mentorTotal,(SELECT count(b.user_id) FROM users b WHERE b.role_id = 3) as studentTotal, (SELECT count(sfid) FROM salesforce.lead) as salesforceTotal FROM users LIMIT 1";
-    data = [];
-    var command = {"sql" : sql, "params" : data}
+User.getAllUsersCount = function(userDetails,callback){
+    switch (userDetails.role_id) {
+        case 1: //Admin
+        var sql = "SELECT (SELECT count(a.user_id) FROM users a WHERE a.role_id = 1) as adminTotal, (SELECT count(a.user_id) FROM users a WHERE a.role_id = 2) as mentorTotal,(SELECT count(b.user_id) FROM users b WHERE b.role_id = 3) as studentTotal, (SELECT count(sfid) FROM salesforce.lead) as salesforceTotal FROM users LIMIT 1";
+        data = [];
+        var command = {"sql" : sql, "params" : data};
+        break;
+        case 2: //mentor            
+        var sql = "SELECT (SELECT COUNT(paper) FROM papers LEFT JOIN mentors USING (mentor_id) WHERE user_id = $1) as paperTotal, (SELECT COUNT(student_id) FROM student_details LEFT JOIN mentors USING (mentor_id) WHERE user_id = $1) as mentoringstudentstotal, (SELECT COUNT(student_id) FROM student_details) as studentstotal, (SELECT SUM(paper_cost) FROM papers LEFT JOIN mentors USING (mentor_id) WHERE user_id = $1) as papercostTotal FROM users LIMIT 1";
+        data = [userDetails.user_id];
+        var command = {"sql" : sql, "params" : data};
+        break;
+        default: //student
+        var sql = "SELECT (SELECT count(a.user_id) FROM users a WHERE a.role_id = 1) as adminTotal, (SELECT count(a.user_id) FROM users a WHERE a.role_id = 2) as mentorTotal,(SELECT count(b.user_id) FROM users b WHERE b.role_id = 3) as studentTotal, (SELECT count(sfid) FROM salesforce.lead) as salesforceTotal FROM users LIMIT 1";
+        data = [];
+        var command = {"sql" : sql, "params" : data};
+        break;
+    }
     ps.query(command, function (err, result) {
         if (err) {
             console.error(err);
             return callback(err, this);
         }
+
+        console.log("queser : ",result);
 
         if (result.length > 0) {
         }
