@@ -15,6 +15,8 @@ module.exports = function(app) {
 	app.post('/api/getdegreeprogram',degprogram.getDegreeProgram);
 
 	app.post('/api/getdegreeprogramarea',degprogram.getDegreeProgramAreaList);
+	
+	app.post('/api/getCourses',degprogram.getCourses);
 
 	app.post('/api/getstudentdetails',students.getStudentDetails);
 
@@ -31,6 +33,8 @@ module.exports = function(app) {
 
 
 	app.get('/api/mentorusers', mentors.getUsers);
+
+	app.get('/api/studentusers', students.getStudentList);
 
 
 	app.route('/site/*').get(function(req, res) {res.render('sitehome', {  bootstrappedUser: req.user });})

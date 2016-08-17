@@ -1,9 +1,38 @@
+<form ng-init="getDegreeList();" name="Courses" role="form"  novalidate>
+
 <div class="col-md-8 page-content">
 	 <div class="welcomewrap">
         <h4 class="classic-title"><span>Courses</span></h4><br />
-        
-        <!-- Some Text -->
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus.</p>
-        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint occaecati cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio. Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus id quod maxime placeat facere possimus, omnis voluptas assumenda est, omnis dolor repellendus. Temporibus autem quibusdam et aut officiis debitis aut rerum necessitatibus saepe eveniet ut et voluptates repudiandae sint et molestiae non recusandae.</p>
+          <div class="form-group">
+			<label for="desireddegree">Desired Degree:</label>
+			<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree">
+			 	  <option value="">---Please select---</option>
+			</select>
+		  </div>
+       
+		  <div class="form-group">
+			<label for="desiredprogram">Desired Program area:</label>
+			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogram" id="desiredprogram">
+			  <option value="">---Please select---</option>
+			</select>
+		  </div>
+  <div class="form-group">
+			<label for="desiredprogramarea">Desired Program:</label>
+			<select class="form-control" ng-change="getCourses();"  ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
+			 	<option value="">---Please select---</option>
+		  	</select>
+		  </div>
+		 <div>
+			<label for="Papers">Papers area:</label>
+            <ul class="list-group">
+			<li  class="list-group-item" ng-repeat="degprgarea in papers"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
+			 <span ng-bind="degprgarea.paper"> </span>
+		  	</li></ul>
+		  </div>
+		 
+		 
+	
     </div>
+    
 </div>
+</form>

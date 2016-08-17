@@ -19,6 +19,7 @@
 
   $urlRouterProvider.otherwise('/site/login');
 
+
   $stateProvider
   .state('dashboard', {
     url:'/dashboard',
@@ -39,6 +40,7 @@
           'scripts/directives/myaccount/mstIdentity.js',
           'scripts/controllers/main.js',
           'scripts/directives/common/loading.js'
+          
           ]
         }),
         $ocLazyLoad.load(
@@ -58,7 +60,7 @@
     templateUrl:'views/admin/pages/profile.html'
   })
 
-  .state('dashboard.mentors',{
+   .state('dashboard.mentors',{
     url:'',
     templateUrl:'views/admin/mentors/mentors.home.html',
     controller:"MentorsCtrl",
@@ -71,23 +73,37 @@
      }]
    }
  })
-  .state('dashboard.mentors.list',{
+ .state('dashboard.mentors.list',{
     url:'/mentors/list',
-    templateUrl:'views/admin/mentors/mentors.list.html'
+    templateUrl:'views/admin/mentors/partials/mentors.list.html'
   })
 
   .state('dashboard.mentors.addnew',{
     url:'/mentors/addnew',
-    templateUrl:'views/admin/mentors/mentors.new.html'
-  })
+    templateUrl:'views/admin/mentors/partials/mentors.new.html'
+  }) 
 
   .state('dashboard.paperlist',{
     url:'/paperlist',
     templateUrl:'views/admin/pages/paperlist.html'
   })
-  .state('dashboard.studentlist',{
-    url:'/studentlist',
-    templateUrl:'views/admin/pages/studentlist.html'
+
+  .state('dashboard.students',{
+    url:'',
+    templateUrl:'views/admin/students/students.home.html',
+    controller:"studentsCtrl",
+    resolve:{
+      loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/controllers/studentsCtrl.js');
+     }],
+     loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/directives/students/studentServices.js');
+     }]
+   }
+ })
+  .state('dashboard.students.list',{
+    url:'/students/list',
+    templateUrl:'views/admin/students/partials/students.list.html'
   })
   .state('site',{
     url:'/site',
@@ -119,7 +135,9 @@
   $locationProvider.html5Mode(true);
 
 
-}]).run(function($rootScope, $http, $location,$state,$ocLazyLoad,$timeout) {
+}]).run(function($rootScope, $http, $location,$state,$ocLazyLoad,$timeout,$stateParams) {
+    $rootScope.$state = $state;
+    $rootScope.$stateParams = $stateParams;
   $rootScope.loggedIn = function()  {
     $http.post('/auth/isloggedIn').success(function(data)
     {

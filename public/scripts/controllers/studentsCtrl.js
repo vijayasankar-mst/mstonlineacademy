@@ -6,14 +6,14 @@
  * @description
  * # mstAp
  */
-angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices','$state', function($scope,mentorServices,$state) {
-	$scope.mentors;
+angular.module('myAdminApp').controller('studentsCtrl', ['$scope','studentServices','$state', function($scope,studentServices,$state) {
+	$scope.students;
 
 	$scope.loading = true;
-	$scope.getMentorsList = function(){
-        mentorServices.getMentors()
+	$scope.getStudentsList = function(){
+        studentServices.getStudentsList()
             .then(function (response) {
-                $scope.mentors = response.data;
+                $scope.students = response.data;
                 $scope.loading = false;
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
@@ -29,6 +29,6 @@ angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices
     	$state.go('dashboard.mentors.list');
     }
 
-   $scope.getMentorsList();
+   $scope.getStudentsList();
     
 }]);

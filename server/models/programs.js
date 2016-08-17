@@ -40,10 +40,29 @@ programModel.getDegreeProgramList = function(degreeid, callback) {
 };
 
 
-programModel.getDegreeProgramListArea = function(programid, callback) {
-    var sql = 'SELECT p.program_id, p.program FROM programs p JOIN program_areas as pa ON (pa.program_area_id = p.degree_program_area_id AND pa.program_area_id  = $1) ORDER BY p.program_id DESC ';
-    data = [programid];
+programModel.getDegreeProgramListArea = function(programid, degreeid, callback) {
+    var sql = 'SELECT program, p.program_code FROM programs p LEFT JOIN degree_program_area USING (degree_program_area_id) WHERE degree_id = $2 AND program_area_id = $1';
+    data = [programid,degreeid];
     var command = {"sql" : sql, "params" : data}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    }); 
+};
+
+programModel.getCourses = function(programareaid, callback) {
+    var sql = 'SELECT p.paper_id, p.paper FROM papers p JOIN programs as pa ON (pa.program_id = p.program_id ) where p.program_id = '+programareaid+' ORDER BY p.paper_id DESC ';
+    data = [programareaid];
+    var command = {"sql" : sql}
     ps.query(command, function (err, result) {
         if (err) {
             console.error(err);
