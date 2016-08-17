@@ -31,7 +31,7 @@ exports.getStudentDetails = function(req, res) {
 
 
 exports.getUsersCount = function(req, res){
-  User.getAllUsersCount(req.body.params,function(err,result){
+  User.getAllUsersCount(req.user, function(err,result){
      res.send(result);
   });
 };
