@@ -24,6 +24,10 @@ module.exports = function(app) {
 
 	app.get('/api/getalluserscount', students.getUsersCount);
 
+	app.get('/api/getstudentinfo', students.getStudentInfo);
+
+	app.post('/api/getpaperlist', students.getPaperList);
+
 
 	app.post('/logout', function(req, res) { req.logout();  res.end(); });
 

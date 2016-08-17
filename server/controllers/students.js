@@ -41,3 +41,16 @@ exports.getStudentList = function(req, res){
      res.send(result);
   });
 };
+
+
+exports.getStudentInfo = function(req, res){
+   User.getStudentInfo(req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getPaperList = function(req, res){
+  User.getPaperList(req.body.params.program_id,function(err,result){
+     res.send(result);
+  });
+};

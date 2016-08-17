@@ -104,3 +104,43 @@ User.getStudentsList = function(callback){
         return callback(false, data);
     });
 };
+
+
+User.getStudentInfo = function(userid,callback){
+    var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
+    var command = {"sql" : sql, "params" : [userid]}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    });
+};
+
+
+User.getPaperList = function(program_id,callback){
+    var sql = "SELECT program_id, paper_id, paper, paper_code,paper_cost,m.mentor_id,m.first_name,m.last_name FROM papers p LEFT JOIN mentors m ON (p.mentor_id = m.mentor_id) WHERE p.program_id = $1";
+    var command = {"sql" : sql, "params" : [program_id]}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    });
+};
