@@ -3,27 +3,7 @@
 <div class="col-md-8 page-content">
 	 <div class="welcomewrap">
         <h4 class="classic-title"><span>Courses</span></h4><br />
-          <!--<div class="form-group">
-			<label for="desireddegree">Desired Degree:</label>
-			<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree">
-			 	  <option value="">---Please select---</option>
-			</select>
-		  </div>
-       
-		  <div class="form-group">
-			<label for="desiredprogram">Desired Program area:</label>
-			<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogram" id="desiredprogram">
-			  <option value="">---Please select---</option>
-			</select>
-		  </div>
-  <div class="form-group">
-			<label for="desiredprogramarea">Desired Program:</label>
-			<select class="form-control" ng-change="getCourses();"  ng-options="degprgarea.program_id as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
-			 	<option value="">---Please select---</option>
-		  	</select>
-		  </div>
-		 <div>-->
-			 
+         
 			 <div class="form-group">
 				<label for="desireddegree">Desired Degree</label>
 				<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree" ng-class="errorClass('desireddegree','class')" required>
