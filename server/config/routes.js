@@ -22,7 +22,7 @@ module.exports = function(app) {
 
 	app.post('/api/v1/savestudentinformation', students.createUser);
 
-	app.get('/api/getalluserscount', students.getUsersCount);
+	app.post('/api/getalluserscount', students.getUsersCount);
 
 
 	app.post('/logout', function(req, res) { req.logout();  res.end(); });
