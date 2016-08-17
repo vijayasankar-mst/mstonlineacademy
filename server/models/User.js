@@ -8,7 +8,7 @@ var postgres = require('../config/postgres'),
 User.findOne = function(username, callback) {
     var isNotAvailable = false; //we are assuming the email is taking
     //check if there is a user available for this email;
-    var sql = 'SELECT u.*,p.hashed_password FROM users u, user_passwords p WHERE (u.username = $1 AND u.user_id = p.user_id)';
+    var sql = 'SELECT * FROM users u LEFT JOIN user_passwords up using (user_id) WHERE LOWER(username)=$1 AND up.is_active = true AND u.is_active= true';
     var data = [ username ];
     var command = {"sql" : sql, "params" : data}
   	ps.query(command, function (err, result) {
@@ -16,15 +16,14 @@ User.findOne = function(username, callback) {
             console.error(err);
             return callback(err, isNotAvailable, this);
         }
-        console.log("result = ", result);
         if (result.length > 0) {
             isNotAvailable = true; // update the user for return in callback
             console.log(username + ' is found in the database!');
         }
         else {
             isNotAvailable = false;
-            return callback(false, isNotAvailable, null);
             console.log(username + ' is not available');
+            return callback(false, isNotAvailable, null);
         }
         var data =  result[0];
 
