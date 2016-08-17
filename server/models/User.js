@@ -16,7 +16,6 @@ User.findOne = function(username, callback) {
             console.error(err);
             return callback(err, isNotAvailable, this);
         }
-        console.log("result = ", result);
         if (result.length > 0) {
             isNotAvailable = true; // update the user for return in callback
             console.log(username + ' is found in the database!');

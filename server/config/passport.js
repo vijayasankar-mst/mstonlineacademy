@@ -29,7 +29,8 @@ module.exports = function() {
             }
             // all is well, return successful user
             else {
-               //console.log('the user', user, 'should go to profile!');
+               delete user.hashed_password;
+               console.log('the user', user, 'should go to profile!');
                return done(null, user);
             }
             });
