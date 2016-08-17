@@ -42,7 +42,7 @@ angular.module('myApp').controller("CoursesCtrl", function($ocLazyLoad,$scope,$s
     }
     
         $scope.getCourses = function(){
-        programServices.getCourses($scope.registerFormData.desiredprogramarea)
+        programServices.getCourses($scope.registerFormData.desiredprogram)
             .then(function (response) {
                 $scope.papers = response.data;
             }, function (error) {
