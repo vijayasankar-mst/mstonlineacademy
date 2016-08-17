@@ -3,7 +3,7 @@
 <div class="col-md-8 page-content">
 	 <div class="welcomewrap">
         <h4 class="classic-title"><span>Courses</span></h4><br />
-          <div class="form-group">
+          <!--<div class="form-group">
 			<label for="desireddegree">Desired Degree:</label>
 			<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree">
 			 	  <option value="">---Please select---</option>
@@ -22,10 +22,32 @@
 			 	<option value="">---Please select---</option>
 		  	</select>
 		  </div>
-		 <div>
+		 <div>-->
+			 
+			 <div class="form-group">
+				<label for="desireddegree">Desired Degree</label>
+				<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree" ng-class="errorClass('desireddegree','class')" required>
+					<option value="">---Please select---</option>
+				</select>
+				<p ng-show="errorClass('desireddegree')" class="help-block">Desire degree is required.</p>
+			</div>
+			<div class="form-group">
+				<label for="desiredprogramarea">Desired Program area</label>
+				<select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" ng-class="errorClass('desiredprogramarea','class')" required>
+					<option value="">---Please select---</option>
+				</select>
+				<p ng-show="errorClass('desiredprogramarea')" class="help-block">Desired program area is required.</p>
+			</div>
+			<div class="form-group">
+				<label for="desiredprogram">Desired Program</label>
+				<select class="form-control"  ng-change="getCourses();" ng-options="degprgarea.program_code as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogram" id="desiredprogram" name="desiredprogram" ng-class="errorClass('desiredprogram','class')" required>
+					<option value="">---Please select---</option>
+				</select>
+				<p ng-show="errorClass('desiredprogram')" class="help-block">Desired Program is required.</p>
+			</div>
 			<label for="Papers">Papers area:</label>
             <ul class="list-group">
-			<li  class="list-group-item" ng-repeat="degprgarea in papers"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
+			<li  class="list-group-item" ng-repeat="degprgarea in papers"   ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
 			 <span ng-bind="degprgarea.paper"> </span>
 		  	</li></ul>
 		  </div>
