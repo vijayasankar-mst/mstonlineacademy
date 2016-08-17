@@ -77,7 +77,6 @@
   .state('index.home',{
     url:'/home',
     templateUrl:'views/home/home.html'
-
   })
 
   .state('index.courses',{
