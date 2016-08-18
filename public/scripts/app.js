@@ -131,6 +131,12 @@
     templateUrl:'views/home/thanks.html'
 
   })
+  
+    .state('index.contact',{
+    url:'/contact',
+    templateUrl:'views/home/contact.html'
+
+  })
 
   .state('site',{
     url:'/courses',
@@ -144,7 +150,7 @@
     $timeout(function() {
       var str = $location.$$path,
       page = str.replace("/", "").split("/").join(".");
-      $rootScope.showSideBar = (page == 'index.register' || page == 'index.thanks') ? false : true;
+      $rootScope.showSideBar = (page == 'index.register' || page == 'index.thanks'|| page == 'index.contact') ? false : true;
     },0);
   });
 

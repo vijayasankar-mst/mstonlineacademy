@@ -48,4 +48,10 @@ module.exports = function(app) {
     app.get('/dashboard/*', function(req, res) { res.render('sitehome',{bootstrappedUser: req.user});});
 
 	app.get('*', function(req, res) { res.render('index', {bootstrappedUser: req.user});});
+	
+	
 }
+
+
+  
+   

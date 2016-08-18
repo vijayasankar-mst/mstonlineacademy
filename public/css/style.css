@@ -1134,3 +1134,74 @@ outline: none;}
 .navbar-collapse {
 	max-height: 340px;
 }
+
+
+.contact-page-content,
+.contact-form,
+.contact-map,
+ {
+  margin-top: 30px;
+}
+
+.contact-page-content,
+{
+  padding: 20px;
+}
+
+.contact-heading h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 5px 0 15px 0;
+}
+
+.contact-form .contact-label {
+  float: left;
+  display: block;
+  width: 30%;
+}
+.contact-form label {
+  margin: 0;
+}
+.contact-form .small-text {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+  line-height: 12px;
+}
+.contact-form input, .contact-form textarea {
+  border: 1px solid;
+  font-size: 12px;
+  padding: 0 10px;
+  outline: 0;
+}
+.contact-form input {
+  height: 36px;
+  width: 45%;
+}
+.contact-form textarea {
+  padding: 10px;
+  width: 70%;
+  max-width: 70%;
+}
+.contact-form .full-row {
+  margin-top: 20px;
+}
+.contact-form .full-row:first-of-type {
+  margin-top: 0;
+}
+.contact-form .mainBtn {
+  margin-left: 30%;
+  width: auto;
+  font-size: 13px;
+}
+
+.contact-map {
+  padding: 6px;
+}
+
+
+ .mainBtn
+ {
+	 background-color:#003a6a;
+ }
