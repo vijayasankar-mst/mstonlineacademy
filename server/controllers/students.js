@@ -43,6 +43,7 @@ exports.getStudentList = function(req, res){
 };
 
 
+
 exports.getStudentInfo = function(req, res){
    User.getStudentInfo(req.user.user_id,function(err,result){
      res.send(result);
