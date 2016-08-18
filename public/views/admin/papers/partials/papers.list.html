@@ -38,6 +38,10 @@
                           <br>
                           <h4 class="heading">Please Choose Papers</h4>
                           <div class="row"><div class="col-md-12"><loading></loading></div><br /></div>
+                            <div class="alert alert-danger" ng-if="errMsg">
+                                 <strong>Danger!</strong> {{errMsgInfo}}
+                            </div>
+                         
                           <div class="table-responsive" ng-if="papers.length > 0">
                               <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
                                 <thead>
@@ -54,11 +58,11 @@
                                 <tbody>
                                   <tr class="$index % 2 == 0 ? 'even pointer' : 'oadd pointer'" ng-repeat="paperlist in papers">
                                     <td class="a-center">
-                                      <input type="checkbox" class="flat" name="table_records">
+                                   <input type="checkbox" ng-click="checkPapers()" ng-model="paperlist.selected" class="flat">
                                     </td>
                                     <td>{{$index + 1}}</td>
                                     <td>{{paperlist.paper}}</td>
-                                    <td>{{paperlist.paper_cost}} </td>
+                                    <td>${{paperlist.paper_cost}} </td>
                                     <td>{{paperlist.first_name}} {{paperlist.first_name}}</td>
                                   </tr>
                                  
@@ -71,7 +75,7 @@
                 <div class="row">
                 <div class="col-xs-12">
                   <div class="text-right">
-                    <button type="button" class="btn btn-primary" ng-click="addMentor();">Next</button>
+                    <button type="button" class="btn btn-primary" ng-click="proceedToNext();">Next</button>
                   </div>
                 </div>
             </div> 

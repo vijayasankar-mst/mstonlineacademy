@@ -100,6 +100,11 @@
     templateUrl:'views/admin/papers/partials/papers.list.html'
   })
 
+  .state('dashboard.papers.payment',{
+    url:'/papers/payment',
+    templateUrl:'views/admin/papers/partials/papers.payment.html'
+  })
+
   .state('dashboard.students',{
     url:'',
     templateUrl:'views/admin/students/students.home.html',
