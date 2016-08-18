@@ -86,9 +86,22 @@
     templateUrl:'views/admin/mentors/partials/mentors.new.html'
   }) 
 
-  .state('dashboard.paperlist',{
-    url:'/paperlist',
-    templateUrl:'views/admin/pages/paperlist.html'
+  .state('dashboard.papers',{
+    url:'',
+    templateUrl:'views/admin/papers/papers.home.html',
+     controller:"papersCtrl",
+      resolve:{
+        loadMyCtrl: ['$ocLazyLoad', function($ocLazyLoad) {
+         return $ocLazyLoad.load('scripts/controllers/papersCtrl.js');
+       }],
+       loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+         return $ocLazyLoad.load('scripts/directives/papers/paperServices.js');
+       }]
+     }
+  })
+  .state('dashboard.papers.list',{
+    url:'/papers/list',
+    templateUrl:'views/admin/papers/partials/papers.list.html'
   })
 
   .state('dashboard.students',{

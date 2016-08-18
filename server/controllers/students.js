@@ -31,13 +31,26 @@ exports.getStudentDetails = function(req, res) {
 
 
 exports.getUsersCount = function(req, res){
-  User.getAllUsersCount(function(err,result){
+  User.getAllUsersCount(req.user, function(err,result){
      res.send(result);
   });
 };
 
 exports.getStudentList = function(req, res){
   User.getStudentsList(function(err,result){
+     res.send(result);
+  });
+};
+
+
+exports.getStudentInfo = function(req, res){
+   User.getStudentInfo(req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getPaperList = function(req, res){
+  User.getPaperList(req.body.params.program_id,function(err,result){
      res.send(result);
   });
 };
