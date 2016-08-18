@@ -10,64 +10,64 @@
 
             <div class="form-group">
                 <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name','class')" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name', 'class')" required>
                 <p ng-show="errorClass('first_name')" class="help-block">First name is required.</p>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name','class')" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name', 'class')" required>
                 <p ng-show="errorClass('last_name')" class="help-block">Last name is required.</p>
             </div>
             <div class="form-group">
                 <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email','class')" required>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email', 'class')" required>
                 <p ng-show="errorClass('email')" class="help-block">Email is invalid.</p>
             </div>
             <div class="form-group">
                 <label for="phone">phone number:</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone','class')" required  ng-pattern="phoneNumberPattern">
-                
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone', 'class')" required  ng-pattern="phoneNumberPattern">
+
                 <p ng-show="errorClass('phone')" class="help-block">Phone number is invalid.</p>
             </div>
-        <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
-    </form>
-</div>
+            <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
+        </form>
+    </div>
 
-<div class="hr5" style="margin:30px 0;"></div>
+    <div class="hr5" style="margin:30px 0;"></div>
 
-<div class="widget widget-popular-posts marbottom">
-    <h4>Top Professors<span class="head-line"></span></h4>
-    <ul>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">Robert Peace</a></h5>
-                <span>Database Management system</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">Steve Alen</a></h5>
-                <span>Operating System</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">James Mathew</a></h5>
-                <span>Software Engineering</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-    </ul>
-</div>
+    <div class="widget widget-popular-posts marbottom">
+        <h4>Top Professors<span class="head-line"></span></h4>
+        <ul>
+            <li>
+                <div class="widget-thumb">
+                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+                </div>
+                <div class="widget-content">
+                    <h5><a href="#">Robert Peace</a></h5>
+                    <span>Database Management system</span>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+            <li>
+                <div class="widget-thumb">
+                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+                </div>
+                <div class="widget-content">
+                    <h5><a href="#">Steve Alen</a></h5>
+                    <span>Operating System</span>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+            <li>
+                <div class="widget-thumb">
+                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+                </div>
+                <div class="widget-content">
+                    <h5><a href="#">James Mathew</a></h5>
+                    <span>Software Engineering</span>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+    </div>
 </div>

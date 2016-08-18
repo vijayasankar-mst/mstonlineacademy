@@ -7,31 +7,31 @@
  * # mstApp
  */
 
- var myApp = angular.module('myApp');
+var myApp = angular.module('myApp');
 
- myApp.directive('sidebar',function(){
- 	return {
- 		templateUrl:'scripts/directives/sidebar/sidebar.html',
- 		restrict: 'E',
- 		replace: true,
- 	}
- });
+myApp.directive('sidebar', function () {
+    return {
+        templateUrl: 'scripts/directives/sidebar/sidebar.html',
+        restrict: 'E',
+        replace: true,
+    }
+});
 
- //requestform validataion
- myApp.controller('requestformController', function($scope) {
- 	$scope.submitForm = function(isValid) {
- 		if (isValid) {
- 			alert('Thanks for submission!');
- 		}
- 	};
+//requestform validataion
+myApp.controller('requestformController', function ($scope) {
+    $scope.submitForm = function (isValid) {
+        if (isValid) {
+            alert('Thanks for submission!');
+        }
+    };
 
- 	//Phone Number Regex
- 	$scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
+    //Phone Number Regex
+    $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
 
- 	//ng-class attributes
- 	$scope.errorClass = function(control,method) {
- 		if($scope.interestForm[control].$invalid && !$scope.interestForm[control].$pristine) {
- 			return (method=="class"?'has-error':true);
- 		}
- 	};
- });
+    //ng-class attributes
+    $scope.errorClass = function (control, method) {
+        if ($scope.interestForm[control].$invalid && !$scope.interestForm[control].$pristine) {
+            return (method == "class" ? 'has-error' : true);
+        }
+    };
+});
