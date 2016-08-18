@@ -37,7 +37,8 @@ module.exports = function(app) {
 
 
 	app.get('/api/mentorusers', mentors.getUsers);
-
+    app.get('/api/mentorstudents', mentors.getMentorStudent);
+    app.post('/api/addNewMentor',mentors.addNewMentor)
 	app.get('/api/studentusers', students.getStudentList);
 
 

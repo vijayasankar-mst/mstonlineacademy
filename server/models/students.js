@@ -160,3 +160,6 @@ User.getPaperList = function(program_id,callback){
         return callback(false, data);
     });
 };
+User.addNewMentor = function(program_id,callback){
+
+};
