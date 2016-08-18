@@ -10,7 +10,6 @@ module.exports = function() {
         passReqToCallback : true // allows us to pass back the entire request to the callback
      },
     function(req,username, password, done) {
-
          console.log('local signin is starting');
              User.findOne(username, function(err, returningUser, data, user) {
             // if there are any errors, return the error before anything else
@@ -30,7 +29,8 @@ module.exports = function() {
             }
             // all is well, return successful user
             else {
-               //console.log('the user', user, 'should go to profile!');
+               delete user.hashed_password;
+               console.log('the user', user, 'should go to profile!');
                return done(null, user);
             }
             });

@@ -1,10 +1,8 @@
 <form ng-init="getDegreeList();" name="Courses" role="form"  novalidate>
-
-<div class="col-md-8 page-content">
-	 <div class="welcomewrap">
-        <h4 class="classic-title"><span>Courses</span></h4><br />
-         
-			 <div class="form-group">
+	<div class="col-md-8 page-content">
+		<div class="welcomewrap">
+			<h4 class="classic-title"><span>Courses</span></h4><br />
+			<div class="form-group">
 				<label for="desireddegree">Desired Degree</label>
 				<select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree" ng-class="errorClass('desireddegree','class')" required>
 					<option value="">---Please select---</option>
@@ -26,15 +24,11 @@
 				<p ng-show="errorClass('desiredprogram')" class="help-block">Desired Program is required.</p>
 			</div>
 			<label for="Papers">Papers area:</label>
-            <ul class="list-group">
-			<li  class="list-group-item" ng-repeat="degprgarea in papers"   ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
-			 <span ng-bind="degprgarea.paper"> </span>
-		  	</li></ul>
-		  </div>
-		 
-		 
-	
-    </div>
-    
-</div>
+			<ul class="list-group">
+				<li  class="list-group-item" ng-repeat="degprgarea in papers" ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea">
+					<span ng-bind="degprgarea.paper"></span>
+				</li></ul>
+			</div>
+		</div>
+	</div>
 </form>
