@@ -40,7 +40,6 @@
           'scripts/directives/myaccount/mstIdentity.js',
           'scripts/controllers/main.js',
           'scripts/directives/common/loading.js'
-          
           ]
         }),
         $ocLazyLoad.load(
@@ -59,6 +58,10 @@
     url:'/profile',
     templateUrl:'views/admin/pages/profile.html'
   })
+      .state('dashboard.mentorstudent',{
+          url:'/mentorstudent',
+          templateUrl:'views/admin/pages/mentor-student.html'
+      })
 
    .state('dashboard.mentors',{
     url:'',
@@ -146,6 +149,7 @@
         $rootScope.identity = {'currentUser':''};
         $rootScope.authenticated = true;
         $rootScope.identity.currentUser = data.user;
+          console.log(angular.toJson($rootScope.identity.currentUser));
         var str = $location.$$path;
         var redirecturl = str.replace("/", "").split("/").join(".");
         $state.go((redirecturl=="site.login") ? "dashboard.home" : redirecturl);
