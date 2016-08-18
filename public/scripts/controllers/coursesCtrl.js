@@ -34,7 +34,7 @@
 
    $scope.getDegreeProgramArea = function(){
     programServices.getDegreeProgramAreas($scope.registerFormData.desiredprogramarea,$scope.registerFormData.desireddegree)
-<<<<<<< HEAD
+
             .then(function (response) {
                 $scope.degreeporgramarealist = response.data;
             }, function (error) {
@@ -50,23 +50,7 @@
                 $scope.status = 'Unable to load customer data: ' + error.message;
             });
     }
-=======
-    .then(function (response) {
-      $scope.degreeporgramarealist = response.data;
-    }, function (error) {
-      $scope.status = 'Unable to load customer data: ' + error.message;
-    });
-  }
->>>>>>> 681a339cabfc0d19f2f15d3bc74a67a152667717
 
-  $scope.getCourses = function(){
-    programServices.getCourses($scope.registerFormData.desiredprogram)
-    .then(function (response) {
-      $scope.papers = response.data;
-    }, function (error) {
-      $scope.status = 'Unable to load customer data: ' + error.message;
-    });
-  }
 
 
   $scope.getUserInfoDetails = function(){

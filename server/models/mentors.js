@@ -5,7 +5,7 @@ var postgres = require('../config/postgres'),
 	ps = new postgres(global.dbvars);
 
 User.getUserList = function(roleid,callback) {
-    var sql = 'SELECT * FROM users WHERE (role_id = $1)';
+    var sql = 'SELECT * FROM users WHERE (role_id = $1) ';
     data = [roleid];
     var command = {"sql" : sql, "params" : data}
   	ps.query(command, function (err, result) {
@@ -22,3 +22,5 @@ User.getUserList = function(roleid,callback) {
         return callback(false, data);
     }); 
 };
+
+

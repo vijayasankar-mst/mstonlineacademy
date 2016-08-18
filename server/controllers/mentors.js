@@ -5,5 +5,4 @@ exports.getUsers = function(req,res){
 	User.getUserList(2,function(err,result){
 		 res.send(result);
 	});
-
 }

@@ -653,9 +653,9 @@ input[type="submit"] {
 }
 
 .sidebar .widget-popular-posts li:last-child {
-	margin: 0;
+	/*margin: 0;
 	padding: 0;
-	border: none;
+	border: none;*/
 }
 
 .sidebar .widget-popular-posts .widget-thumb {
