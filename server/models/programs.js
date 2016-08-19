@@ -60,7 +60,7 @@ programModel.getDegreeProgramListArea = function(programid, degreeid, callback) 
 };
 
 programModel.getCourses = function(programareaid, callback) {
-    var sql = 'SELECT p.paper_id, p.paper FROM papers p JOIN programs as pa ON (pa.program_id = p.program_id and pa.program_code = $1) ORDER BY p.paper_id DESC ';
+    var sql = 'SELECT p.paper_id, p.paper,p.paper_code FROM papers p JOIN programs as pa ON (pa.program_id = p.program_id and pa.program_code = $1) ORDER BY p.paper_id DESC ';
     data = [programareaid];
 
     var command = {"sql" : sql, "params" : data}
