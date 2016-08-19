@@ -38,8 +38,7 @@ angular.module('myAdminApp')
             });
   	};
 
-
-    $scope.getStudentInfo = function(){
+$scope.getStudentInfo = function(){
         adminServices.getStudentInfo()
             .then(function (response) {
                 $rootScope.identity.currentUser.studentinfo = response.data[0];
@@ -47,6 +46,7 @@ angular.module('myAdminApp')
                 $scope.status = 'Unable to load customer data: ' + error.message;
             });
     };
+    
 
 
     if($rootScope.identity.currentUser.role_id == 3) {
