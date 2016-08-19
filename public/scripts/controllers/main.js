@@ -52,8 +52,10 @@ angular.module('myAdminApp')
       console.log('updated - '+angular.toJson($rootScope.identity.currentUser));
       return $http.post('/api/editProfile',{profile : $rootScope.identity.currentUser})
           .then(  function (response) {
-             // $state.go('dashboard.mentors.list');
-              return "data saved "  },
+             $scope.successMsg = true;
+             $scope.status = "Your profile has been updated!";
+             return "data saved "  
+            },
           function (httpError) { throw httpError.status + " : " +  httpError.data;    });
   }
 

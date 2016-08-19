@@ -126,7 +126,7 @@ User.getStudentsList = function (userDetails, callback) {
 };
 
 User.getStudentProfileInfo = function (userid, callback) {
-    var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, street, city, country, postalcode, u.email, birthdate, sc.name, sc.phone FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
+    var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, mailingstreet as street, mailingcity as city, mailingcountry as country, mailingpostalcode as postalcode, u.email, birthdate, sc.name, sc.phone FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
     var command = {"sql": sql, "params": [userid]}
     ps.query(command, function (err, result) {
         if (err) {
@@ -162,23 +162,33 @@ User.getPaperList = function (program_id, callback) {
     });
 };
 
-//User.registerStudent = function (paper_details, user_id, callback) {
-//    console.log("\n\n\n\n", paper_details);
-//    // var sql = "SELECT program_id, paper_id, paper, paper_code,paper_cost,m.mentor_id,m.first_name,m.last_name FROM papers p LEFT JOIN mentors m ON (p.mentor_id = m.mentor_id) WHERE p.program_id = $1";
-//    // var command = {"sql": sql, "params": [program_id]}
-//    // ps.query(command, function (err, result) {
-//    //     if (err) {
-//    //         console.error(err);
-//    //         return callback(err, this);
-//    //     }
-//
-//    //     if (result.length > 0) {
-//    //     } else {
-//    //         return callback(false, null);
-//    //     }
-//    //     var data = result;
-//    //     return callback(false, data);
-//});
+User.registerStudent = function (paper_details, user_id, callback) {
+    console.log("\n\n\n\n", paper_details);
+    var queryBuildInsert = "with paper_selection as (INSERT INTO student_details (student_id, paper_id, mentor_id) VALUES";
+    var queryBuildValues = [];
+    paper_details.forEach(function (papers, index) {
+        queryBuildValues.push("(" + user_id + "," + papers.paper_id + "," + papers.mentor_id + ")");
+    });
+    
+    var sql = queryBuildInsert + queryBuildValues.join() + " returning student_detail_id), payment_update as (UPDATE salesforce.contact SET payment__c = 't' WHERE sfid = (SELECT convertedcontactid FROM salesforce.lead WHERE sfid = (SELECT unique_id FROM users WHERE user_id = " + user_id + ")) returning sfid) select * from payment_update";
+    console.log(sql);
+     var command = {"sql": sql};
+     ps.query(command, function (err, result) {
+         if (err) {
+             console.error(err);
+             return callback(err, this);
+         }
+
+         console.log(result);
+
+         if (result.length > 0) {
+         } else {
+             return callback(false, null);
+         }
+         var data = result;
+         return callback(false, data);
+     });
+};
 
 User.updateProfile = function (profile_info, callback) {
     var sql = "UPDATE salesforce.contact SET " +
@@ -189,17 +199,19 @@ User.updateProfile = function (profile_info, callback) {
             "mailingcountry = $5, " +
             "mailingpostalcode = $6, " +
             "phone = $7" +
-            " WHERE sfid = (SELECT sfid FROM salesforce.lead WHERE convertedcontactid = $8)";
+            " WHERE sfid = (SELECT convertedcontactid FROM salesforce.lead WHERE sfid = $8) RETURNING lastname";
     var command = {"sql": sql, "params": [profile_info.studentinfo.firstname, profile_info.studentinfo.lastname,
             profile_info.studentinfo.street, profile_info.studentinfo.city, profile_info.studentinfo.country,
             profile_info.studentinfo.postalcode, profile_info.studentinfo.phone, profile_info.unique_id]}
     ps.query(command, function (err, result) {
-        // console.log('result roes' + result.rows);
+        console.log('result roes', result);
+
         if (err) {
             console.error(err);
             return callback(err, this);
         }
         if (result.length > 0) {
+
         } else {
             return callback(false, null);
         }
