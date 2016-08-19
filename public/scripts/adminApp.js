@@ -84,7 +84,17 @@
   .state('dashboard.mentors.addnew',{
     url:'/mentors/addnew',
     templateUrl:'views/admin/mentors/partials/mentors.new.html'
-  }) 
+  })
+
+  .state('dashboard.courses',{
+    url:'',
+    templateUrl:'views/admin/courses/courses.home.html',
+    
+ })
+ .state('dashboard.courses.list',{
+    url:'/courses/list',
+    templateUrl:'views/admin/courses/partials/courses.list.html'
+  })
 
   .state('dashboard.papers',{
     url:'',
@@ -170,7 +180,12 @@
           console.log(angular.toJson($rootScope.identity.currentUser));
         var str = $location.$$path;
         var redirecturl = str.replace("/", "").split("/").join(".");
-        $state.go((redirecturl=="site.login") ? "dashboard.home" : redirecturl);
+        if($rootScope.identity.currentUser.role_id == 3) {
+          var urlRedirect = "dashboard.profile";
+        } else {
+          var urlRedirect = "dashboard.home";
+        }
+        $state.go((redirecturl=="site.login") ? urlRedirect : redirecturl);
       }
       else
       {

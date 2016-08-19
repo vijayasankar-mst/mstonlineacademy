@@ -49,5 +49,4 @@ angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices
 
    $scope.getMentorsList();
     $scope.getMentorsStudentList();
-    
 }]);
