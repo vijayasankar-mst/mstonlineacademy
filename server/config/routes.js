@@ -26,10 +26,11 @@ module.exports = function (app) {
 
     app.get('/api/getstudentinfo', students.getStudentInfo);
 
-    app.post('/api/getpaperlist', students.getPaperList);
+	app.post('/api/getpaperlist', students.getPaperList);
+
+    app.post('/api/editProfile', students.updateProfileInfo);
 
     app.post('/api/studentopportunity', students.studentOpportunity);
-
 
     app.post('/logout', function (req, res) {
         req.logout();

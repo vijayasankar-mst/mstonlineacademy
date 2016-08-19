@@ -26,9 +26,6 @@ User.create = function (studentinfo, callback) {
     var data = [authToken, username, email, role_id, is_active, password, street, city, postalcode, country, Program__c];
     var command = {"sql": sql, "params": data}
     ps.query(command, function (err, result) {
-        console.log(command);
-        console.log("resu : ", result);
-        // console.log("resuLen : ",result.length);
         if (err) {
             console.error('error in adding new user', err);
             return callback(err, this);
@@ -39,7 +36,6 @@ User.create = function (studentinfo, callback) {
             return callback(true, null);
         }
     });
-
 };
 
 
@@ -100,11 +96,11 @@ User.getAllUsersCount = function (userDetails, callback) {
 User.getStudentsList = function (userDetails, callback) {
     switch (userDetails.role_id) {
         case 1: //Admin
-            var sql = "SELECT l.email, l.name, l.phone, l.firstname, l.lastname, l.createddate, l.city, l.postalcode FROM salesforce.lead l, users u WHERE u.unique_id = l.sfid ORDER BY l.createddate DESC";
+            var sql = "SELECT u.email, c.name, c.phone, c.firstname, c.lastname, l.createddate, c.mailingcity as city, c.mailingpostalcode as postalcode FROM salesforce.lead l, salesforce.contact c, users u WHERE u.unique_id = l.sfid AND c.sfid = convertedcontactid";
             var command = {"sql": sql, "params": []}
             break;
         case 2: //mentor
-            var sql = "SELECT l.email, l.name, l.phone, l.firstname, l.lastname, l.createddate, l.city, l.postalcode FROM salesforce.lead l, users u WHERE u.unique_id = l.sfid AND u.user_id IN (SELECT student_id FROM users LEFT JOIN mentors USING (user_id) LEFT JOIN student_details USING (mentor_id) WHERE user_id = $1)";
+            var sql = "SELECT u.email, c.name, c.phone, c.firstname, c.lastname, l.createddate, c.mailingcity as city, c.mailingpostalcode as postalcode FROM salesforce.lead l, salesforce.contact c, users u WHERE u.unique_id = l.sfid AND c.sfid = convertedcontactid AND u.user_id IN (SELECT student_id FROM users LEFT JOIN mentors USING (user_id) LEFT JOIN student_details USING (mentor_id) WHERE user_id = $1)";
             data = [userDetails.user_id];
             var command = {"sql": sql, "params": data};
             break;
@@ -128,7 +124,6 @@ User.getStudentsList = function (userDetails, callback) {
         return callback(false, data);
     });
 };
-
 
 User.getStudentProfileInfo = function (userid, callback) {
     var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, street, city, country, postalcode, u.email, birthdate, sc.name, sc.phone FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
@@ -167,21 +162,48 @@ User.getPaperList = function (program_id, callback) {
     });
 };
 
-User.registerStudent = function (paper_details, user_id, callback) {
-    console.log("\n\n\n\n",paper_details);
-    // var sql = "SELECT program_id, paper_id, paper, paper_code,paper_cost,m.mentor_id,m.first_name,m.last_name FROM papers p LEFT JOIN mentors m ON (p.mentor_id = m.mentor_id) WHERE p.program_id = $1";
-    // var command = {"sql": sql, "params": [program_id]}
-    // ps.query(command, function (err, result) {
-    //     if (err) {
-    //         console.error(err);
-    //         return callback(err, this);
-    //     }
+//User.registerStudent = function (paper_details, user_id, callback) {
+//    console.log("\n\n\n\n", paper_details);
+//    // var sql = "SELECT program_id, paper_id, paper, paper_code,paper_cost,m.mentor_id,m.first_name,m.last_name FROM papers p LEFT JOIN mentors m ON (p.mentor_id = m.mentor_id) WHERE p.program_id = $1";
+//    // var command = {"sql": sql, "params": [program_id]}
+//    // ps.query(command, function (err, result) {
+//    //     if (err) {
+//    //         console.error(err);
+//    //         return callback(err, this);
+//    //     }
+//
+//    //     if (result.length > 0) {
+//    //     } else {
+//    //         return callback(false, null);
+//    //     }
+//    //     var data = result;
+//    //     return callback(false, data);
+//});
 
-    //     if (result.length > 0) {
-    //     } else {
-    //         return callback(false, null);
-    //     }
-    //     var data = result;
-    //     return callback(false, data);
-    // });
+User.updateProfile = function (profile_info, callback) {
+    var sql = "UPDATE salesforce.contact SET " +
+            "firstname = $1," +
+            "lastname = $2, " +
+            "mailingstreet = $3, " +
+            "mailingcity = $4, " +
+            "mailingcountry = $5, " +
+            "mailingpostalcode = $6, " +
+            "phone = $7" +
+            " WHERE sfid = (SELECT sfid FROM salesforce.lead WHERE convertedcontactid = $8)";
+    var command = {"sql": sql, "params": [profile_info.studentinfo.firstname, profile_info.studentinfo.lastname,
+            profile_info.studentinfo.street, profile_info.studentinfo.city, profile_info.studentinfo.country,
+            profile_info.studentinfo.postalcode, profile_info.studentinfo.phone, profile_info.unique_id]}
+    ps.query(command, function (err, result) {
+        // console.log('result roes' + result.rows);
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        } else {
+            return callback(false, null);
+        }
+        var data = result;
+        return callback(false, data);
+    });
 };

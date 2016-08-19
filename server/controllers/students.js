@@ -60,3 +60,8 @@ exports.studentOpportunity = function(req, res){
   });
 };
 
+exports.updateProfileInfo =  function(req, res){
+    User.updateProfile(req.body.profile,function(err,result){
+        res.send(result);
+    });
+};

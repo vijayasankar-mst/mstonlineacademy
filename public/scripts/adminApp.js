@@ -58,10 +58,10 @@
     url:'/profile',
     templateUrl:'views/admin/pages/profile.html'
   })
-      .state('dashboard.mentorstudent',{
-          url:'/mentorstudent',
-          templateUrl:'views/admin/pages/mentor-student.html'
-      })
+  .state('dashboard.mentorstudent',{
+      url:'/mentorstudent',
+      templateUrl:'views/admin/pages/mentor-student.html'
+  })
 
    .state('dashboard.mentors',{
     url:'',
@@ -177,7 +177,7 @@
         $rootScope.identity = {'currentUser':''};
         $rootScope.authenticated = true;
         $rootScope.identity.currentUser = data.user;
-          console.log(angular.toJson($rootScope.identity.currentUser));
+
         var str = $location.$$path;
         var redirecturl = str.replace("/", "").split("/").join(".");
         if($rootScope.identity.currentUser.role_id == 3) {
