@@ -36,7 +36,8 @@
           'scripts/directives/header/header.js',
           'scripts/directives/sidebar/sidebar.js',
           'scripts/directives/footer/footer.js',
-          'scripts/directives/common/programServices.js'
+          'scripts/directives/common/programServices.js',
+          'scripts/directives/mentor/mentorServices1.js'
           ]
         }),
         $ocLazyLoad.load(
@@ -76,7 +77,21 @@
   })
   .state('index.home',{
     url:'/home',
-    templateUrl:'views/home/home.html'
+    templateUrl:'views/home/home.html',
+    
+    resolve:{
+          loadMyCtrl:function($ocLazyLoad){
+                return $ocLazyLoad.load(
+                {
+                    name:'myApp',
+                    files:['scripts/controllers/coursesCtrl.js', 'scripts/controllers/mentorUserCtrl1.js']
+                })
+            },
+             loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/directives/mentor/mentorServices1.js');
+     }]
+            
+        },
   })
      .state('index.courses',{
         url:'/courses',
@@ -87,9 +102,13 @@
                 return $ocLazyLoad.load(
                 {
                     name:'myApp',
-                    files:['scripts/controllers/coursesCtrl.js']
+                    files:['scripts/controllers/coursesCtrl.js', 'scripts/controllers/mentorUserCtrl1.js']
                 })
-            }
+            },
+            loadMyService: ['$ocLazyLoad', function($ocLazyLoad) {
+       return $ocLazyLoad.load('scripts/directives/mentor/mentorServices1.js');
+     }]            
+     
         },
       })
   .state('index.register',{
@@ -112,6 +131,12 @@
     templateUrl:'views/home/thanks.html'
 
   })
+  
+    .state('index.contact',{
+    url:'/contact',
+    templateUrl:'views/home/contact.html'
+
+  })
 
   .state('site',{
     url:'/courses',
@@ -125,7 +150,7 @@
     $timeout(function() {
       var str = $location.$$path,
       page = str.replace("/", "").split("/").join(".");
-      $rootScope.showSideBar = (page == 'index.register' || page == 'index.thanks') ? false : true;
+      $rootScope.showSideBar = (page == 'index.register' || page == 'index.thanks'|| page == 'index.contact') ? false : true;
     },0);
   });
 

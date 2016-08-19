@@ -26,7 +26,7 @@ module.exports = function (app) {
 
     app.get('/api/getstudentinfo', students.getStudentInfo);
 
-	app.post('/api/getpaperlist', students.getPaperList);
+    app.post('/api/getpaperlist', students.getPaperList);
 
     app.post('/api/editProfile', students.updateProfileInfo);
 
@@ -57,7 +57,7 @@ module.exports = function (app) {
     app.get('/dashboard/*', function (req, res) {
         res.render('sitehome', {bootstrappedUser: req.user});
     });
-
+    
     app.get('*', function (req, res) {
         res.render('index', {bootstrappedUser: req.user});
     });

@@ -180,7 +180,7 @@ input[type="submit"] {
 	padding: 0;
 }
 .widget-popular-posts{background:#fff; padding:10px;box-shadow: 0 6px 6px -6px black;}
-.welcomewrap{background:#fff; padding:10px; box-shadow: 0 6px 6px -6px black;}
+.welcomewrap{background:#fff; padding:20px; box-shadow: 0 6px 6px -6px black;}
 .padright{padding-right:0px;}
 .padleft{padding-left:0px;}
 .requestform{ background:#08c; color:#fff; padding:15px;box-shadow: 0 6px 6px -6px black;}
@@ -453,7 +453,8 @@ header {
 
 label {
 	font-size: 13px;
-	font-weight: 300;
+	font-weight:300;
+	
 }
 
 label .required {
@@ -653,9 +654,9 @@ input[type="submit"] {
 }
 
 .sidebar .widget-popular-posts li:last-child {
-	margin: 0;
+	/*margin: 0;
 	padding: 0;
-	border: none;
+	border: none;*/
 }
 
 .sidebar .widget-popular-posts .widget-thumb {
@@ -1134,3 +1135,142 @@ outline: none;}
 .navbar-collapse {
 	max-height: 340px;
 }
+
+/*Added by kanchana starts*/
+.contact-page-content,
+.contact-form,
+.contact-map,
+ {
+  margin-top: 30px;
+}
+
+.contact-page-content,
+{
+  padding: 20px;
+}
+
+.contact-heading h3 {
+  font-size: 22px;
+  font-weight: 500;
+  margin: 5px 0 15px 0;
+}
+
+.contact-form .contact-label {
+  float: left;
+  display: block;
+  width: 30%;
+}
+.contact-form label {
+  margin: 0;
+}
+.contact-form .small-text {
+  display: block;
+  font-weight: 400;
+  font-size: 12px;
+  margin: 0;
+  line-height: 12px;
+}
+.contact-form input, .contact-form textarea {
+  border: 1px solid;
+  font-size: 12px;
+  padding: 0 10px;
+  outline: 0;
+}
+.contact-form input {
+  height: 36px;
+  width: 45%;
+}
+.contact-form textarea {
+  padding: 10px;
+  width: 70%;
+  max-width: 70%;
+}
+.contact-form .full-row {
+  margin-top: 20px;
+}
+.contact-form .full-row:first-of-type {
+  margin-top: 0;
+}
+.contact-form .mainBtn {
+  margin-left: 30%;
+  width: auto;
+  font-size: 13px;
+}
+
+.contact-map {
+  padding: 6px;
+}
+ .mainBtn
+ {
+	 background-color:#003a6a;
+ }
+ 
+.searchselect
+{
+	    border-color: #d5dbe0 !important;
+		display: block;
+}
+.search-form-item{
+    float: left;
+    width: 30%;
+    margin-right: 3%;
+    margin-top: 20px;
+	}
+	.search-form-item label{
+		font-size: 13px!important;
+	font-weight:400!important;
+	color: #666666!important;
+	}
+	.label{
+	    display: inline-block;
+    margin-bottom: 5px;
+	}
+	
+	option	{   
+	font-weight: normal;
+    display: block;
+    white-space: pre;
+    min-height: 1.2em;
+    padding: 0px 2px 1px;
+	}
+	.welcomewrap select{		
+	background-image: url("../images/select-arrow.png");
+    background-repeat: no-repeat;
+    background-position: right center;
+	-webkit-appearance:none;
+	}
+	.welcomewrap input, .welcomewrap select{
+		width: 100%;
+	}
+	.widget-inner{
+		padding:20px;
+	}
+	
+	.widget-inner li{    display: block;
+    /*-webkit-margin-before: 1em;
+    -webkit-margin-after: 1em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+	border-bottom: 0;*/
+	    border: 1px solid;
+    position: relative;
+    border-color: #e7eaed;
+    clear: both;
+    padding: 15px;
+}
+.widget-inner > li:nth-child(odd){
+    background-color: #f3f3f3;
+}
+
+.paper{	   
+    width: 30%;   
+    margin-top: 30px;
+	font-size: 13px!important;
+    font-weight: 400!important;
+    color: #666666!important;
+}
+.level
+{float: left;
+    width: 140px;
+    font-size: 12px;}
+	/*Added by kanchana Ends*/

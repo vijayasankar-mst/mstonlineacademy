@@ -53,6 +53,7 @@
   .state('dashboard.home',{
     url:'/home',
     templateUrl:'views/admin/dashboard/home.html'
+     
   })
   .state('dashboard.profile',{
     url:'/profile',
