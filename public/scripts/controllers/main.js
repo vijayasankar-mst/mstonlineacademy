@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('myAdminApp')
-  .controller('MainCtrl', function($scope,mstAuth,$location,mstIdentity,$ocLazyLoad,$timeout,$rootScope,$state,adminServices) {
+  .controller('MainCtrl', function($scope,mstAuth,$location,mstIdentity,$ocLazyLoad,$timeout,$rootScope,$state,adminServices,$http) {
   		$scope.loading = true;
       var studentinfo = {};
 
@@ -43,11 +43,19 @@ angular.module('myAdminApp')
         adminServices.getStudentInfo()
             .then(function (response) {
                 $rootScope.identity.currentUser.studentinfo = response.data[0];
+                console.log(angular.toJson($rootScope.identity.currentUser));
             }, function (error) {
                 $scope.status = 'Unable to load customer data: ' + error.message;
             });
     };
-
+  $scope.updateStudentRecord = function(){
+      console.log('updated - '+angular.toJson($rootScope.identity.currentUser));
+      return $http.post('/api/editProfile',{profile : $rootScope.identity.currentUser})
+          .then(  function (response) {
+             // $state.go('dashboard.mentors.list');
+              return "data saved "  },
+          function (httpError) { throw httpError.status + " : " +  httpError.data;    });
+  }
 
     if($rootScope.identity.currentUser.role_id == 3) {
            $scope.getStudentInfo();

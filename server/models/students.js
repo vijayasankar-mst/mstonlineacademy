@@ -27,7 +27,6 @@ User.create = function(studentinfo, callback) {
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function(err, result){
         console.log(command);
-        console.log("resu : ",result);
     // console.log("resuLen : ",result.length);
     if (err) {
      console.error('error in adding new user', err);
@@ -123,7 +122,7 @@ User.getStudentsList = function(callback){
 
 
 User.getStudentInfo = function(userid,callback){
-    var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, street, city, country, u.email, birthdate, sc.name, sc.phone FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
+    var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, street, city, country, postalcode,u.email, birthdate, sc.name, sc.phone FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
     var command = {"sql" : sql, "params" : [userid]}
     ps.query(command, function (err, result) {
         if (err) {
@@ -160,6 +159,31 @@ User.getPaperList = function(program_id,callback){
         return callback(false, data);
     });
 };
-User.addNewMentor = function(program_id,callback){
-
+User.updateProfile = function(profile_info,callback){
+    var sql = "UPDATE salesforce.contact SET " +
+        "firstname = $1," +
+        "lastname = $2, " +
+        "street = $3, " +
+        "city = $4, " +
+        "country = $5, " +
+        "postalcode = $6, " +
+        "phone = $7" +
+        " WHERE sfid = (SELECT sfid FROM salesforce.lead WHERE convertedcontactid = $8)";
+    var command = {"sql" : sql, "params" : [profile_info.studentinfo.firstname,profile_info.studentinfo.lastname,
+        profile_info.studentinfo.street,profile_info.studentinfo.city,profile_info.studentinfo.country,
+        profile_info.studentinfo.postalcode,profile_info.studentinfo.phone, profile_info.unique_id ]}
+     ps.query(command, function (err, result) {
+        // console.log('result roes' + result.rows);
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    });
 };

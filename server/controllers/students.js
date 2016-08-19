@@ -55,3 +55,9 @@ exports.getPaperList = function(req, res){
      res.send(result);
   });
 };
+
+exports.updateProfileInfo =  function(req, res){
+    User.updateProfile(req.body.profile,function(err,result){
+        res.send(result);
+    });
+};
