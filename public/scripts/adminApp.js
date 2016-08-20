@@ -53,15 +53,16 @@
   .state('dashboard.home',{
     url:'/home',
     templateUrl:'views/admin/dashboard/home.html'
+     
   })
   .state('dashboard.profile',{
     url:'/profile',
     templateUrl:'views/admin/pages/profile.html'
   })
-      .state('dashboard.mentorstudent',{
-          url:'/mentorstudent',
-          templateUrl:'views/admin/pages/mentor-student.html'
-      })
+  .state('dashboard.mentorstudent',{
+      url:'/mentorstudent',
+      templateUrl:'views/admin/pages/mentor-student.html'
+  })
 
    .state('dashboard.mentors',{
     url:'',
@@ -84,7 +85,17 @@
   .state('dashboard.mentors.addnew',{
     url:'/mentors/addnew',
     templateUrl:'views/admin/mentors/partials/mentors.new.html'
-  }) 
+  })
+
+  .state('dashboard.courses',{
+    url:'',
+    templateUrl:'views/admin/courses/courses.home.html',
+    
+ })
+ .state('dashboard.courses.list',{
+    url:'/courses/list',
+    templateUrl:'views/admin/courses/partials/courses.list.html'
+  })
 
   .state('dashboard.papers',{
     url:'',
@@ -167,10 +178,15 @@
         $rootScope.identity = {'currentUser':''};
         $rootScope.authenticated = true;
         $rootScope.identity.currentUser = data.user;
-          console.log(angular.toJson($rootScope.identity.currentUser));
+
         var str = $location.$$path;
         var redirecturl = str.replace("/", "").split("/").join(".");
-        $state.go((redirecturl=="site.login") ? "dashboard.home" : redirecturl);
+        if($rootScope.identity.currentUser.role_id == 3) {
+          var urlRedirect = "dashboard.profile";
+        } else {
+          var urlRedirect = "dashboard.home";
+        }
+        $state.go((redirecturl=="site.login") ? urlRedirect : redirecturl);
       }
       else
       {

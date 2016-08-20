@@ -1,46 +1,35 @@
 <div class="">
     <div class="row top_tiles"  ng-if="identity.currentUser.role_id == '1'">
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
                 <div ng-if="!loading">
-                    <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
+                    <div class="icon"><i class="fa fa-graduation-cap"></i></div>
                     <div class="count">{{totalUserCount.studenttotal}}</div>
                     <h3>New Students</h3>
                     <p>Total number of students</p>
                 </div>
             </div>
         </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
                 <div ng-if="!loading">
-                    <div class="icon"><i class="fa fa-comments-o"></i></div>
+                    <div class="icon"><i class="fa fa-cloud"></i></div>
                     <div class="count"><loading></loading>{{totalUserCount.salesforcetotal}}</div>
                     <h3>Salesforce Users</h3>
                     <p>Total number of salesforce users</p>
                 </div>
             </div>
         </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
             <div class="tile-stats">
                 <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
                 <div ng-if="!loading">
-                    <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
+                    <div class="icon"><i class="fa fa-user"></i></div>
                     <div class="count"><loading></loading>{{totalUserCount.mentortotal}}</div>
                     <h3>Mentors</h3>
                     <p>Total number of mentors</p>
-                </div>
-            </div>
-        </div>
-        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-            <div class="tile-stats">
-                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-                <div ng-if="!loading">
-                    <div class="icon"><i class="fa fa-check-square-o"></i></div>
-                    <div class="count"><loading></loading>{{totalUserCount.admintotal}}</div>
-                    <h3>Admin Users</h3>
-                    <p>Total number of admin users</p>
                 </div>
             </div>
         </div>
@@ -96,13 +85,18 @@
         <div class="col-md-4 col-sm-4 col-xs-12">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Top Students</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
+                    <h2>Upcoming Sessions </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    
+                </div>
+            </div>
+        </div>
+        <div class="{{identity.currentUser.role_id == 1 ?'col-md-4 col-sm-4':'col-md-8 col-sm-8'}} col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Revenue from Students</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
@@ -110,16 +104,10 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-8 col-sm-8 col-xs-12">
+        <div class="col-md-4 col-sm-4 col-xs-12" ng-if="identity.currentUser.role_id == 1">
             <div class="x_panel">
                 <div class="x_title">
-                    <h2>Revenue from Students</h2>
-                    <ul class="nav navbar-right panel_toolbox">
-                        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-                        </li>
-                        <li><a class="close-link"><i class="fa fa-close"></i></a>
-                        </li>
-                    </ul>
+                    <h2>Top Mentors</h2>
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">

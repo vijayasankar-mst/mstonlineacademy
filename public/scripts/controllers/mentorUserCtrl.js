@@ -1,5 +1,4 @@
 'use strict';
-
 /**
  * @ngdoc overview
  * @name mstApp
@@ -37,7 +36,9 @@ angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices
         console.log(angular.toJson($scope.mentorObject))
         console.log('adding new mentor');
         return $http.post('/api/addNewMentor',{mentor : $scope.mentorObject })
-            .then(  function (response) { return "data saved "  },
+            .then(  function (response) {
+                $state.go('dashboard.mentors.list');
+                return "data saved "  },
             function (httpError) { throw httpError.status + " : " +  httpError.data;    });
     }
     $scope.setGenderValue = function(val){
@@ -49,5 +50,4 @@ angular.module('myAdminApp').controller('MentorsCtrl', ['$scope','mentorServices
 
    $scope.getMentorsList();
     $scope.getMentorsStudentList();
-    
 }]);

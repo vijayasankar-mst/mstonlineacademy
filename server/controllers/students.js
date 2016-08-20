@@ -20,7 +20,7 @@ exports.createUser = function(req, res, next) {
       if(err) {return next(err);}
       res.send(user);
     })*/
-  })
+  });
 };
 
 exports.getStudentDetails = function(req, res) {
@@ -37,15 +37,13 @@ exports.getUsersCount = function(req, res){
 };
 
 exports.getStudentList = function(req, res){
-  User.getStudentsList(function(err,result){
+  User.getStudentsList(req.user, function(err,result){
      res.send(result);
   });
 };
 
-
-
 exports.getStudentInfo = function(req, res){
-   User.getStudentInfo(req.user.user_id,function(err,result){
+   User.getStudentProfileInfo (req.user.user_id,function(err,result){
      res.send(result);
   });
 };
@@ -54,4 +52,16 @@ exports.getPaperList = function(req, res){
   User.getPaperList(req.body.params.program_id,function(err,result){
      res.send(result);
   });
+};
+
+exports.studentOpportunity = function(req, res){
+  User.registerStudent(req.body.params.paper_info,req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.updateProfileInfo =  function(req, res){
+    User.updateProfile(req.body.profile,function(err,result){
+        res.send(result);
+    });
 };
