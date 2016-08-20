@@ -17,6 +17,15 @@
                         </div>
                         <!-- /.col -->
                     </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" ng-if="successStuPay==true">
+                                <strong>Success!</strong> {{status}}
+                            </div>
+                        </div>
+                    </div>
+
                     <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
@@ -24,7 +33,7 @@
                             <address>
                                 <strong>{{identity.currentUser.studentinfo.name}}</strong>
                                 <br>{{identity.currentUser.studentinfo.street}}
-                                <br>{{identity.currentUser.studentinfo.country | uppercase}} - {{identity.currentUser.studentinfo.postalcode}}
+                                <br>{{identity.currentUser.studentinfo.country| uppercase}} - {{identity.currentUser.studentinfo.postalcode}}
                                 <br>Phone: {{identity.currentUser.studentinfo.phone}}
                                 <br>Email: {{identity.currentUser.studentinfo.email}}
                             </address>
@@ -89,7 +98,7 @@
                                     <tbody>
                                         <tr>
                                             <th style="width:50%">Subtotal:</th>
-                                            <td>{{tAmount | currency}}</td>
+                                            <td>{{tAmount| currency}}</td>
                                         </tr>
                                         <tr>
                                             <th>Tax:</th>
@@ -101,7 +110,7 @@
                                         </tr>
                                         <tr>
                                             <th>Total:</th>
-                                            <td>{{tAmount | currency}}</td>
+                                            <td>{{tAmount| currency}}</td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -115,7 +124,7 @@
                     <div class="row no-print">
                         <div class="col-xs-12">
                             <button class="btn btn-success" ng-click="backToPapersView();">Back</button>
-                            <button class="btn btn-success pull-right" ng-click="submitPayment();"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                            <button class="btn btn-success pull-right" ng-click="submitPayment();successStuPay=true"><i class="fa fa-credit-card"></i> Submit Payment</button>
                         </div>
                     </div>
                 </section>
