@@ -31,6 +31,8 @@ module.exports = function (app) {
     app.post('/api/editProfile', students.updateProfileInfo);
 
     app.post('/api/studentopportunity', students.studentOpportunity);
+    
+    app.post('/api/mentorsession', mentors.addMentorSession);
 
     app.post('/logout', function (req, res) {
         req.logout();

@@ -87,6 +87,11 @@ angular
                             templateUrl: 'views/admin/mentors/partials/mentors.new.html'
                         })
 
+                        .state('dashboard.mentors.schedule', {
+                            url: '/mentors/schedule',
+                            templateUrl: 'views/admin/mentors/partials/schedule.html'
+                        })
+
                         .state('dashboard.courses', {
                             url: '',
                             templateUrl: 'views/admin/courses/courses.home.html',
