@@ -18,3 +18,9 @@ exports.addNewMentor = function(req, res){
         res.send(result);
     });
 };
+
+exports.addMentorSession = function(req, res){
+    User.addMentorSession(function(err,result){
+        res.send(result);
+    });
+};

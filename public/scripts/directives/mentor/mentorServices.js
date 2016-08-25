@@ -8,6 +8,9 @@ angular.module('myAdminApp').factory('mentorServices', function ($http, $q) {
     dataFactory.getMentorsStudents = function () {
         return $http.get('/api/mentorstudents');
     }
+    dataFactory.addMentorSession = function () {
+    	return $http.get('/api/mentorsession');
+    }
 
     return dataFactory;
 
