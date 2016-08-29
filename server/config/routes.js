@@ -34,6 +34,8 @@ module.exports = function (app) {
     
     app.post('/api/mentorsession', mentors.addMentorSession);
 
+    app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
+
     app.post('/logout', function (req, res) {
         req.logout();
         res.end();

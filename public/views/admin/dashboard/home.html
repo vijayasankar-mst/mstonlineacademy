@@ -89,7 +89,8 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
+                    No sessions available currently or not configured. <br/>
+                    <a href="/dashboard/mentors/schedule">Schedule</a> the session to list.
                 </div>
             </div>
         </div>
@@ -100,7 +101,9 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="x_content">
-
+                    <loading></loading>
+                    <span ng-if="totalUserCount.mentoringstudentstotal > 0">Error loading details. Check back later.</span>
+                    <span ng-if="!totalUserCount.mentoringstudentstotal">You are mentoring {{totalUserCount.mentoringstudentstotal}} students currently</span>
                 </div>
             </div>
         </div>
