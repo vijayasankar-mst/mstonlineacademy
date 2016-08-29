@@ -15,7 +15,6 @@ angular.module('myAdminApp').factory('mentorServices', function ($http, $q) {
     	return $http.get('/api/getpaperlistformentor');
     }
 
-
     return dataFactory;
 
 });

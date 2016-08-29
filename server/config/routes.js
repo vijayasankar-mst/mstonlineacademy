@@ -32,9 +32,18 @@ module.exports = function (app) {
 
     app.post('/api/studentopportunity', students.studentOpportunity);
     
+    //Add schedule for session handled by mentor
     app.post('/api/mentorsession', mentors.addMentorSession);
 
+    //Get the list of sessions for the mentor
+    app.get('/api/getmentorsession', mentors.getMentorSession);
+
+    //Mark session completed
+    app.post('/api/marksessioncompleted', mentors.markSessionCompleted);
+
+    //Get the list of all papers for mentor
     app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
+    
 
     app.post('/logout', function (req, res) {
         req.logout();

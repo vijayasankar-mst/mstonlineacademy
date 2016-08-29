@@ -6,12 +6,21 @@
         <div class="clearfix"></div>
       </div>
 
-      <div class="x_content">
-      <form id="addMentorSessionForm" ng-init="getPaperListMentor();" class="form-horizontal form-label-left" ng-submit="addMentorSession()" ng-controller="MentorsCtrl">
+      <div class="x_content" ng-controller="MentorsCtrl">
+
+        <div class="row">
+          <div class="col-md-12">
+          <div class="alert alert-success" ng-if="successMentorSession == true">
+              <strong>Success!</strong> {{status}}
+            </div>
+          </div>
+        </div>
+
+        <form id="addMentorSessionForm" ng-init="getPaperListMentor();" class="form-horizontal form-label-left" ng-submit="addMentorSession()">
 
           <div class="form-group">
             <label class="control-label col-md-3 col-sm-3 col-xs-12" for="paper-id">Paper Name</label>
-            <div class="col-md-6 col-sm-6 col-xs-12">
+            <div class="col-md-6 col-sm-6 col-xs-12"><loading></loading>
               <select class="form-control" ng-options="paperlist.paper_id as paperlist.paper for paperlist in paperlistmentor"  ng-model="sessionObj.paperId" id="paper-id" name="paper-id" required>
                 <option value="">---Please select---</option>
               </select>
@@ -34,7 +43,7 @@
 
           <div class="form-group">
             <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-              <button type="submit" class="btn btn-primary">Cancel</button>
+              <button type="reset" id="ClearForm" class="btn btn-primary">Cancel</button>
               <button type="submit" class="btn btn-success">Submit</button>
             </div>
           </div>

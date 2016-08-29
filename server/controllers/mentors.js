@@ -30,3 +30,15 @@ exports.getPaperListMentor = function(req, res){
      res.send(result);
   });
 };
+
+exports.getMentorSession = function(req, res){
+  User.getMentorSession(req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.markSessionCompleted = function(req, res){
+  User.markSessionCompleted(req.body.sessionID,function(err,result){
+     res.send(result);
+  });
+};
