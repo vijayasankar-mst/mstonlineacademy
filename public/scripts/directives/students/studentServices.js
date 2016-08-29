@@ -6,6 +6,10 @@ angular.module('myAdminApp').factory('studentServices', function($http, $q) {
     	return $http.get(urlBase);
     }
 
+    dataFactory.getSessionListStudent = function() {
+    	return $http.get('/api/getsessionlistforstudent');
+    }
+
     return dataFactory;
 
 });

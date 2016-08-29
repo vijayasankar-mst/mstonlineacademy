@@ -101,6 +101,7 @@
               <thead>
                 <th>Date</th>
                 <th>Session Name</th>
+                <th>Invite URL</th>
                 <th>Paper Name</th>
                 <th>Paper Code</th>
                 <th>Action</th>
@@ -109,6 +110,7 @@
                 <tr id="session{{sessions.session_id}}" ng-repeat="sessions in sessionlistmentor">
                   <td>{{sessions.session_date | date : mediumDate}}</td>
                   <td>{{sessions.session}}</td>
+                  <td><a href="{{sessions.join_url}}" target="_blank">{{sessions.join_url}} <i class="fa fa-external-link"></i></a></td>
                   <td>{{sessions.paper}}</td>
                   <td>{{sessions.paper_code}}</td>
                   <td><button class="btn btn-success btn-xs" ng-click="markSessionCompleted(sessions.session_id)">Completed</button></td>

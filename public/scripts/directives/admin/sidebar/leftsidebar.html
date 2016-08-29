@@ -41,7 +41,7 @@
                 </ul>
                 <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
                     <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>
-                    <li ng-class="{'current-page': active === 'sessions'}" ng-click="active = 'sessions'"><a href="dashboard/sessions"><i class="fa fa-calendar"></i> Sessions</a></li>
+                    <li ng-class="{'current-page': active === 'sessions'}" ng-click="active = 'sessions'"><a href="dashboard/students/sessions"><i class="fa fa-calendar"></i> Sessions</a></li>
                 </ul>
                 <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && !identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
                     <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>

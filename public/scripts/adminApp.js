@@ -101,11 +101,6 @@ angular
                             templateUrl: 'views/admin/courses/partials/courses.list.html'
                         })
 
-                        .state('dashboard.sessions', {
-                            url: '/sessions',
-                            templateUrl: 'views/admin/sessions/sessions.home.html',
-                        })
-
                         .state('dashboard.papers', {
                             url: '',
                             templateUrl: 'views/admin/papers/papers.home.html',
@@ -145,6 +140,10 @@ angular
                         .state('dashboard.students.list', {
                             url: '/students/list',
                             templateUrl: 'views/admin/students/partials/students.list.html'
+                        })
+                        .state('dashboard.students.sessions', {
+                            url: '/students/sessions',
+                            templateUrl: 'views/admin/sessions/sessions.home.html',
                         })
                         .state('site', {
                             url: '/site',

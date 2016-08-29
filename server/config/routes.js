@@ -43,6 +43,8 @@ module.exports = function (app) {
 
     //Get the list of all papers for mentor
     app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
+
+    app.get('/api/getsessionlistforstudent', students.getSessionListStudent)
     
 
     app.post('/logout', function (req, res) {

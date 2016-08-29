@@ -93,9 +93,9 @@ User.addNewMentor = function(mentorObj,callback) {
 
 User.addMentorSession = function(sessionDetails, userid, callback) {
 
-    var sql = "INSERT INTO sessions (session, mentor_id, paper_id,session_date) SELECT $1, mentor_id, $3, $4 FROM mentors WHERE user_id = $2 returning session_id";
+    var sql = "INSERT INTO sessions (session, mentor_id, paper_id,session_date,join_url) SELECT $1, mentor_id, $3, $4, $5 FROM mentors WHERE user_id = $2 returning session_id";
 
-    data = [sessionDetails.SessionName, userid,sessionDetails.paperId, sessionDetails.Date];
+    data = [sessionDetails.SessionName, userid,sessionDetails.paperId, sessionDetails.Date, sessionDetails.joinUrl];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function (err, result) {
         if (err) {
@@ -115,7 +115,7 @@ User.addMentorSession = function(sessionDetails, userid, callback) {
 
 User.getMentorSession = function(userid, callback) {
 
-    var sql = "SELECT session, session_date, paper, paper_code, session_id FROM sessions s LEFT JOIN mentors m USING (mentor_id) LEFT JOIN papers p USING (paper_id) WHERE user_id = $1 AND s.has_completed = false AND s.is_active = true ORDER BY session_date";
+    var sql = "SELECT session, session_date, paper, paper_code, session_id, join_url FROM sessions s LEFT JOIN mentors m USING (mentor_id) LEFT JOIN papers p USING (paper_id) WHERE user_id = $1 AND s.has_completed = false AND s.is_active = true ORDER BY session_date";
     data = [userid];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function (err, result) {
