@@ -5,7 +5,7 @@ salt,
 ps = new postgres(global.dbvars);
 
 User.getUserList = function(roleid,callback) {
-    var sql = 'SELECT * FROM users WHERE (role_id = $1) ';
+    var sql = "SELECT CONCAT(first_name, ' ', last_name) mentor_name, email, gender, birthdate FROM users LEFT JOIN mentors USING (user_id) WHERE role_id = $1";
     data = [roleid];
     var command = {"sql" : sql, "params" : data}
     ps.query(command, function (err, result) {

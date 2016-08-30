@@ -1,6 +1,6 @@
 var auth = require('./auth'),
-        mentors = require('../controllers/mentors'),
-        students = require('../controllers/students');
+mentors = require('../controllers/mentors'),
+students = require('../controllers/students');
 degprogram = require('../controllers/programs');
 
 
@@ -44,8 +44,15 @@ module.exports = function (app) {
     //Get the list of all papers for mentor
     app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
 
-    app.get('/api/getsessionlistforstudent', students.getSessionListStudent)
+    //Get the list of all sessions for students
+    app.get('/api/getsessionlistforstudent', students.getSessionListStudent);
     
+    //Get the list of all papers with mentors
+    app.post('/api/getpaperswithmentors', degprogram.getPapersWithMentors);
+    
+    //Get the list of all programs with paper count
+    app.post('/api/getprogramswithpapercount', degprogram.getProgramWithPaperCount);
+
 
     app.post('/logout', function (req, res) {
         req.logout();

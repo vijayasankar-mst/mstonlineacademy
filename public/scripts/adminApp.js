@@ -95,10 +95,35 @@ angular
                         .state('dashboard.courses', {
                             url: '',
                             templateUrl: 'views/admin/courses/courses.home.html',
+                            controller: "CoursesCtrl",
+                            resolve: {
+                                loadMyCtrl: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load('scripts/controllers/coursesUserCtrl.js');
+                                    }],
+                                loadMyService: ['$ocLazyLoad', function ($ocLazyLoad) {
+                                        return $ocLazyLoad.load('scripts/directives/common/adminServices.js');
+                                    }]
+                            }
                         })
                         .state('dashboard.courses.list', {
                             url: '/courses/list',
                             templateUrl: 'views/admin/courses/partials/courses.list.html'
+                        })
+                        .state('dashboard.courses.degrees', {
+                            url: '/courses/degrees',
+                            templateUrl: 'views/admin/courses/partials/degrees.list.html'
+                        })
+                        .state('dashboard.courses.programareas', {
+                            url: '/courses/programareas',
+                            templateUrl: 'views/admin/courses/partials/programareas.list.html'
+                        })
+                        .state('dashboard.courses.programs', {
+                            url: '/courses/programs',
+                            templateUrl: 'views/admin/courses/partials/programs.list.html'
+                        })
+                        .state('dashboard.courses.papers', {
+                            url: '/courses/papers',
+                            templateUrl: 'views/admin/courses/partials/papers.list.html'
                         })
 
                         .state('dashboard.papers', {

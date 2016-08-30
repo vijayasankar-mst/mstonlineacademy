@@ -1,0 +1,57 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Programs List<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content form-horizontal form-label-left" ng-controller="CoursesCtrl" ng-init="getDegreeList();"> 
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Desired Degree</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div ng-if="loadingD" style="text-align:center"><loading></loading></div>
+                        <select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree">
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Desired Program Area</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div ng-if="loadingPA || loadingD" style="text-align:center"><loading></loading></div>
+                        <select class="form-control" ng-change="getProgramWithPaperCount();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea">
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div ng-if="loadingP && loading" style="text-align:center;"><loading></loading></div>
+                <div ng-if="loadingP === false && !loading">
+                    <div ng-if="degreeporgramAreas.length > 0">
+                        <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
+                          <thead>
+                            <tr class="headings">
+                                <th class="column-title">S.No</th>
+                                <th class="column-title">Program Name</th>
+                                <th class="column-title">Program Code</th>
+                                <th class="column-title">Number of Papers</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="$index % 2 == 0 ? 'even pointer' : 'odd pointer'" ng-repeat="dpa in degreeporgramAreas" ng-class="isLast($last)" repeat-complete="datatable-responsive">
+                                <td>{{$index + 1}}</td>
+                                <td>{{dpa.program}}</td>
+                                <td>{{dpa.program_code}}</td>
+                                <td>{{dpa.paper_count}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+        </div>
+    </div>
+</div>

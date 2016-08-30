@@ -18,11 +18,11 @@
       var program_id = $rootScope.identity.currentUser.studentinfo.program_id;
       paperServices.getPaperLists(program_id)
       .then(function (response) {
-         $scope.papers = response.data;
-         $scope.loading = false;
-     }, function (error) {
+       $scope.papers = response.data;
+       $scope.loading = false;
+   }, function (error) {
 
-     });
+   });
   };
 
   $scope.getStudentInfo = function(){
@@ -70,10 +70,18 @@ $scope.backToPapersView = function(){
 $scope.submitPayment = function(){
     paperServices.saveStudentOpportunity($scope.ListOfSelected)
     .then(function (response) {
+      $scope.successStuPay = true;
+      $scope.successStuPayType = true;
+      $scope.status = "Success! Payement done successfully!";
         // $rootScope.identity.currentUser.studentinfo = response.data[0];
         // $scope.getPaperList();
     }, function (error) {
-        // $scope.status = 'Unable to load customer data: ' + error.message;
+        $scope.successStuPayType = false;
+        $scope.successStuPay = true;
+        $scope.status = "Sorry! Payment failed for some reason, please try again!";
+        setTimeout(function() {
+            $state.go("dashboard.papers.list");
+        }, 3000);
     });
 };
 

@@ -6,7 +6,7 @@
         <div ng-if="!loading">
           <div class="icon"><i class="fa fa-graduation-cap"></i></div>
           <div class="count">{{totalUserCount.studenttotal}}</div>
-          <h3>New Students</h3>
+          <h3>Registered Students</h3>
           <p>Total number of students</p>
         </div>
       </div>
@@ -81,7 +81,7 @@
     </div>
   </div>
 
-  <div class="row">
+  <div class="row" ng-if="identity.currentUser.role_id == '2'">
     <div class="col-md-12 col-sm-12 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
@@ -91,7 +91,7 @@
         <div class="x_content" ng-init="getMentorSession()"><loading></loading>
           <div class="row">
             <div class="col-md-12">
-            <div class="alert alert-success" ng-if="markedSession == true">
+              <div class="alert alert-success" ng-if="markedSession == true">
                 <strong>Success!</strong> Session <strong>{{sessionName}}</strong> has been marked completed.
               </div>
             </div>
@@ -125,10 +125,23 @@
         </div>
       </div>
     </div>
-    <div class="col-md-4 col-sm-4 col-xs-12" ng-if="identity.currentUser.role_id == 1">
+  </div>
+  <div class="row" ng-if="identity.currentUser.role_id == '1'">
+    <div class="col-md-6 col-sm-6 col-xs-12">
       <div class="x_panel">
         <div class="x_title">
           <h2>Top Mentors</h2>
+          <div class="clearfix"></div>
+        </div>
+        <div class="x_content">
+
+        </div>
+      </div>
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+      <div class="x_panel">
+        <div class="x_title">
+          <h2>Latest Students</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">

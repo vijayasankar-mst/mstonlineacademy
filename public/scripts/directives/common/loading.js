@@ -54,7 +54,6 @@ angular.module('myAdminApp')
 
             var unbindWatcher = parentScope.$watch(
                 function() {
-                    console.info( "Digest running." );
                     $('#'+tAttributes.repeatComplete).DataTable();
                     // Now that we're in a digest, check to see
                     // if there are any ngRepeat items being

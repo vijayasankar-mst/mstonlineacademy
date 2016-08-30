@@ -13,7 +13,7 @@
    $scope.getMentorsList = function(){
     mentorServices.getMentors()
     .then(function (response) {
-      $scope.mentors = response.data;
+      $scope.mentorsList = response.data;
                 //console.log(angular.toJson($scope.mentors));
                 $scope.loading = false;
               }, function (error) {
@@ -38,7 +38,9 @@
   console.log('adding new mentor');
   return $http.post('/api/addNewMentor',{mentor : $scope.mentorObject })
   .then(  function (response) {
-    $state.go('dashboard.mentors.list');
+    $scope.mentorAddStatus = true;
+    $scope.statusMentor = "Mentor added successfully!";
+    $("#ClearFormMentor").click();
     return "data saved "  },
     function (httpError) { throw httpError.status + " : " +  httpError.data;    });
 }
@@ -72,7 +74,9 @@ $scope.cancel = function(){
  $state.go('dashboard.mentors.list');
 }
 
-$scope.getMentorsList();
-$scope.getMentorsStudentList();
-
+if($scope.identity.currentUser.role_id == 1) {
+  $scope.getMentorsList();
+} else {
+  $scope.getMentorsStudentList();
+}
 }]);
