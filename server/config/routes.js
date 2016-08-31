@@ -53,6 +53,18 @@ module.exports = function (app) {
     //Get the list of all programs with paper count
     app.post('/api/getprogramswithpapercount', degprogram.getProgramWithPaperCount);
 
+    //Get the list of all program areas
+    app.get('/api/getprogramarealist', degprogram.getProgramAreaList);
+
+    //Save the editted details for papers
+    app.post('/api/savepaperedit', degprogram.savePaperEdit);
+
+    //Get the list of all top mentors
+    app.get('/api/gettopmentors', mentors.getTopMentors);
+
+    //Get the list of latest students
+    app.get('/api/getlateststudents', mentors.getLatestStudents);
+
 
     app.post('/logout', function (req, res) {
         req.logout();

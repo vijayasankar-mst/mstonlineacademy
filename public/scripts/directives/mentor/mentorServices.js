@@ -12,7 +12,7 @@ angular.module('myAdminApp').factory('mentorServices', function ($http, $q) {
     	return $http.post('/api/mentorsession');
     }
     dataFactory.getPaperListMentor = function () {
-    	return $http.get('/api/getpaperlistformentor');
+        return $http.get('/api/getpaperlistformentor');
     }
 
     return dataFactory;

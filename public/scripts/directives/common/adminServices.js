@@ -24,6 +24,10 @@ dataFactory.getDegreeList = function() {
     return $http.get('/api/getdegreelist');
 }
 
+dataFactory.getProgramAreaList = function() {
+    return $http.get('/api/getprogramarealist');
+}
+
 dataFactory.getDegreePrograms = function(degreeid) {
     return $http.post(urlDegreeProgram,{ params: { degreeid: degreeid} });
 }
@@ -38,6 +42,18 @@ dataFactory.getProgramWithPaperCount = function(programid, degreeid) {
 
 dataFactory.getPapersWithMentors = function(program_code) {
     return $http.post(urlGetPaperMentor,{ params: { program_code: program_code } });
+}
+
+dataFactory.savePaperEdit = function(paperID, paperName, paperCode, paperCost, mentorID) {
+    return $http.post('/api/savepaperedit',{ params: { paperID : paperID, paperName : paperName, paperCode : paperCode, paperCost : paperCost, mentorID : mentorID} });
+}
+
+dataFactory.getTopMentors = function () {
+    return $http.get('/api/gettopmentors');
+}
+
+dataFactory.getLatestStudents = function () {
+    return $http.get('/api/getlateststudents');
 }
 
 return dataFactory;

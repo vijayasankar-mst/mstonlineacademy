@@ -68,6 +68,28 @@ $scope.getMentorSession = function() {
   });
 }
 
+$scope.getTopMentors = function() {
+  $scope.loadingMentorsList = $scope.loading = true;
+  adminServices.getTopMentors()
+  .then(function (response) {
+    $scope.topMentorsList = response.data;
+    $scope.loadingMentorsList = $scope.loading = false;
+  }, function (error) {
+    $scope.status = 'Unable to load session data : ' + error.message;
+  });
+}
+
+$scope.getLatestStudents = function() {
+  $scope.loadingStudentList = $scope.loading = true;
+  adminServices.getLatestStudents()
+  .then(function (response) {
+    $scope.latestStudentsList = response.data;
+    $scope.loadingStudentList = $scope.loading = false;
+  }, function (error) {
+    $scope.status = 'Unable to load session data : ' + error.message;
+  });
+}
+
 $scope.markSessionCompleted = function($sessionID) {
   if(confirm("Do you really want to mark that session completed?")) {
     return $http.post('/api/marksessioncompleted',{sessionID : $sessionID})
@@ -80,7 +102,6 @@ $scope.markSessionCompleted = function($sessionID) {
     }); 
   }
 }
-
 
 if($rootScope.identity.currentUser.role_id == 3) {
  $scope.getStudentInfo();

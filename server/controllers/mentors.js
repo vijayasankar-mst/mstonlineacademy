@@ -42,3 +42,15 @@ exports.markSessionCompleted = function(req, res){
      res.send(result);
   });
 };
+
+exports.getTopMentors = function(req, res){
+  User.getTopMentors(function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getLatestStudents = function(req, res){
+  User.getLatestStudents(function(err,result){
+     res.send(result);
+  });
+};

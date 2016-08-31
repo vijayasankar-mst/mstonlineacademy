@@ -10,12 +10,24 @@ angular.module('myAdminApp').controller("CoursesCtrl", function($ocLazyLoad,$sco
  $scope.loadingP;
  $scope.loadingPA;
  $scope.loadingC;
+ $scope.editPaper;
 
  $scope.getDegreeList = function(){
   $scope.loadingD = $scope.loading = true;
   adminServices.getDegreeList()
   .then(function (response) {
     $scope.degreelist = response.data;
+    $scope.loadingD = $scope.loading = false;
+  }, function (error) {
+    $scope.status = 'Unable to load customer data: ' + error.message;
+  });
+}
+
+$scope.getProgramAreaList = function(){
+  $scope.loadingD = $scope.loading = true;
+  adminServices.getProgramAreaList()
+  .then(function (response) {
+    $scope.programAreaList = response.data;
     $scope.loadingD = $scope.loading = false;
   }, function (error) {
     $scope.status = 'Unable to load customer data: ' + error.message;
@@ -66,5 +78,30 @@ $scope.getPapersWithMentors = function(){
   });
 }
 
+$scope.editPaper = function(paperID, paperName, paperCode, paperCost, mentorID, mentorName) {
+  $scope.editPaperStatusCheck = false;
+  $scope.papernameEdit = paperName;
+  $scope.papercodeEdit = paperCode;
+  $scope.papercostEdit = paperCost;
+  $scope.paperidEdit = paperID;
+  $scope.mentoridEdit = mentorID;
+  $scope.mentornameEdit = mentorName;
+}
+
+$scope.savePaperEdit = function() {
+  $scope.editPaperStatusCheck = true;
+  $scope.editPaperStatusClass = "alert-info";
+  $scope.editPaperStatus = "Saving changes... Please wait!";
+  adminServices.savePaperEdit($scope.paperidEdit,$scope.papernameEdit,$scope.papercodeEdit,$scope.papercostEdit,$scope.mentoridEdit)
+  .then(function (response) {
+    $scope.editPaperStatusClass = "alert-success";
+    $scope.editPaperStatus = "Changes saved successfully!";
+    $scope.papers = response.data;
+  }, function (error) {
+    $scope.editPaperStatusClass = "alert-warning";
+    $scope.editPaperStatus = "Error occurred! Please try again later.";
+    console.log(error.message);
+  });
+}
 
 });

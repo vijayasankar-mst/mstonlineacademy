@@ -26,7 +26,8 @@
                 <h3 ng-switch="identity.currentUser.role_id">
                     <span ng-switch-when="1">Administrator</span>
                     <span ng-switch-when="2">Mentor</span>
-                    <span ng-switch-default>Student</span>
+                    <span ng-switch-when="3">Student</span>
+                    <span ng-switch-default></span>
                 </h3>
                 <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '1'" ng-init="active = 'home'">
                     <li ng-class="{'current-page': active === 'home'}" ng-click="active = 'home'"><a href="dashboard/home"><i class="fa fa-home"></i> Dashboard</a></li>

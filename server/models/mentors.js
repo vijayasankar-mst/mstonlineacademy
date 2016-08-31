@@ -42,6 +42,43 @@ User.getPaperListMentor = function(userid,callback) {
     }); 
 };
 
+User.getTopMentors = function(callback) {
+    var sql = "SELECT count(mentor_id) students_count, CONCAT(first_name, ' ', last_name) as mentor_name FROM student_details LEFT JOIN mentors USING (mentor_id) GROUP BY mentor_id, mentor_name ORDER BY students_count DESC LIMIT 10";
+    var command = {"sql" : sql}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    }); 
+};
+
+
+User.getLatestStudents = function(callback) {
+    var sql = "SELECT DISTINCT student_id, c.name, program FROM (SELECT student_id FROM student_details ORDER BY student_detail_id DESC) s LEFT JOIN users u ON s.student_id = u.user_id LEFT JOIN salesforce.lead l ON u.unique_id = l.sfid LEFT JOIN salesforce.contact c ON l.convertedcontactid = c.sfid LEFT JOIN programs p ON c.program_code__c = p.program_code LIMIT 10"; 
+    var command = {"sql" : sql}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    }); 
+};
+
 User.getStudentList = function(roleid,callback) {
     var sql = 'SELECT * FROM users WHERE (role_id = $1)';
     data = [roleid];
@@ -134,10 +171,10 @@ User.getMentorSession = function(userid, callback) {
 };
 
 User.markSessionCompleted = function(sessionID, callback) {
-   var sql = "UPDATE sessions SET has_completed = true WHERE session_id = $1 returning session";
-   data = [sessionID];
-   var command = {"sql" : sql, "params" : data}
-   ps.query(command, function (err, result) {
+ var sql = "UPDATE sessions SET has_completed = true WHERE session_id = $1 returning session";
+ data = [sessionID];
+ var command = {"sql" : sql, "params" : data}
+ ps.query(command, function (err, result) {
     if (err) {
         console.error(err);
         return callback(err, this);

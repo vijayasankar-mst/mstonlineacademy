@@ -127,25 +127,61 @@
     </div>
   </div>
   <div class="row" ng-if="identity.currentUser.role_id == '1'">
-    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-md-6 col-sm-6 col-xs-12" ng-init="getTopMentors()">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Top Mentors</h2>
+          <h2>Top {{topMentorsList.length}} Mentors</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-
+          <div ng-if="loadingMentorsList" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+          <div ng-if="!loadingMentorsList">
+            <span ng-if="topMentorsList.length">
+              <table class="table table-striped">
+                <thead>
+                  <th>Position</th>
+                  <th>Mentor Name</th>
+                  <th>Students Count</th>
+                </thead>
+                <tbody>
+                  <tr ng-repeat="tml in topMentorsList">
+                    <td>{{$index+1}}</td>
+                    <td>{{tml.mentor_name}}</td>
+                    <td>{{tml.students_count}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </span>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-6 col-sm-6 col-xs-12">
+    <div class="col-md-6 col-sm-6 col-xs-12" ng-init="getLatestStudents()">
       <div class="x_panel">
         <div class="x_title">
-          <h2>Latest Students</h2>
+          <h2>Latest {{latestStudentsList.length}} Students</h2>
           <div class="clearfix"></div>
         </div>
         <div class="x_content">
-
+          <div ng-if="loadingStudentList" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+          <div ng-if="!loadingStudentList">
+            <span ng-if="latestStudentsList.length">
+              <table class="table table-striped">
+                <thead>
+                  <th>Position</th>
+                  <th>Student Name</th>
+                  <th>Program</th>
+                </thead>
+                <tbody>
+                <tr ng-repeat="lsl in latestStudentsList">
+                    <td>{{$index+1}}</td>
+                    <td>{{lsl.name}}</td>
+                    <td>{{lsl.program}}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </span>
+          </div>
         </div>
       </div>
     </div>

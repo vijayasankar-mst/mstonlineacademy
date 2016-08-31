@@ -7,6 +7,12 @@ exports.getDegree = function(req,res){
 	});
 }
 
+exports.getProgramAreaList = function(req,res){
+	programCtrl.getProgramAreaList(function(err,result){
+		 res.send(result);
+	});
+}
+
 exports.getDegreeProgram = function(req, res){
 	programCtrl.getDegreeProgramList(req.body.params.degreeid,function(err,result){
 		 res.send(result);
@@ -33,6 +39,12 @@ exports.getCourses = function(req, res){
 
 exports.getPapersWithMentors = function(req, res) {
 	programCtrl.getPapersWithMentors(req.body.params.program_code,function(err,result){
+		 res.send(result);
+	});
+}
+
+exports.savePaperEdit = function(req, res) {
+	programCtrl.savePaperEdit(req.body.params.paperID,req.body.params.paperName,req.body.params.paperCode,req.body.params.paperCost,req.body.params.mentorID,function(err,result){
 		 res.send(result);
 	});
 }

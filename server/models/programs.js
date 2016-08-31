@@ -5,6 +5,24 @@ var postgres = require('../config/postgres'),
 programModel.getDegreeList = function(callback) {
     var sql = 'SELECT * FROM degrees';
     var command = {"sql" : sql, "params" : {}}
+    ps.query(command, function (err, result) {
+        if (err) {
+            console.error(err);
+            return callback(err, this);
+        }
+        if (result.length > 0) {
+        }
+        else {
+            return callback(false, null);
+        }
+        var data =  result;
+        return callback(false, data);
+    }); 
+};
+
+programModel.getProgramAreaList = function(callback) {
+    var sql = 'SELECT * FROM program_areas';
+    var command = {"sql" : sql, "params" : {}}
   	ps.query(command, function (err, result) {
         if (err) {
             console.error(err);
@@ -98,7 +116,7 @@ programModel.getCourses = function(programCode, callback) {
 };
 
 programModel.getPapersWithMentors = function(programCode, callback) {
-    var sql = "SELECT paper_id, paper,paper_code, CONCAT(first_name, ' ', last_name) as mentor_name, p.mentor_id, count(DISTINCT student_id) as students_count FROM papers p LEFT JOIN programs pa USING (program_id) LEFT JOIN mentors m USING (mentor_id) LEFT JOIN student_details sd USING (paper_id) WHERE program_code = $1 GROUP BY p.paper_id, mentor_name ORDER BY p.paper_id";
+    var sql = "SELECT paper_id, paper, paper_code, paper_cost, CONCAT(first_name, ' ', last_name) as mentor_name, p.mentor_id, count(DISTINCT student_id) as students_count FROM papers p LEFT JOIN programs pa USING (program_id) LEFT JOIN mentors m USING (mentor_id) LEFT JOIN student_details sd USING (paper_id) WHERE program_code = $1 GROUP BY p.paper_id, mentor_name ORDER BY p.paper_id";
     
     data = [programCode];
 
@@ -116,5 +134,28 @@ programModel.getPapersWithMentors = function(programCode, callback) {
         var data =  result;
         return callback(false, data);
     }); 
+};
+
+programModel.savePaperEdit = function(paperID, paperName, paperCode, paperCost, mentorID, callback) {
+    var sql = "SELECT paper_id, paper,paper_code, CONCAT(first_name, ' ', last_name) as mentor_name, p.mentor_id, count(DISTINCT student_id) as students_count FROM papers p LEFT JOIN programs pa USING (program_id) LEFT JOIN mentors m USING (mentor_id) LEFT JOIN student_details sd USING (paper_id) WHERE program_code = $1 GROUP BY p.paper_id, mentor_name ORDER BY p.paper_id";
+    
+    data = [paperID, paperName, paperCode, paperCost, mentorID];
+
+    console.log('\n\n\This is :',data);
+
+    // var command = {"sql" : sql, "params" : data}
+    // ps.query(command, function (err, result) {
+    //     if (err) {
+    //         console.error(err);
+    //         return callback(err, this);
+    //     }
+    //     if (result.length > 0) {
+    //     }
+    //     else {
+    //         return callback(false, null);
+    //     }
+    //     var data =  result;
+    //     return callback(false, data);
+    // }); 
 };
 
