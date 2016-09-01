@@ -48,3 +48,15 @@ exports.savePaperEdit = function(req, res) {
 		 res.send(result);
 	});
 }
+
+exports.savePaperNew = function(req, res) {
+	programCtrl.savePaperNew(req.body.params.programCode, req.body.params.paperName,req.body.params.paperCode,req.body.params.paperCost,req.body.params.mentorID,function(err,result){
+		 res.send(result);
+	});
+}
+
+exports.deletePaper = function(req, res) {
+	programCtrl.deletePaper(req.body.params.paperID,function(err,result){
+		 res.send(result);
+	});
+}

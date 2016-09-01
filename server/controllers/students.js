@@ -43,7 +43,10 @@ exports.getStudentList = function(req, res){
 };
 
 exports.getStudentInfo = function(req, res){
+  
+    console.log("n\n\naaaa",req);
    User.getStudentProfileInfo (req.user.user_id,function(err,result){
+    console.log("n\n\naaaa",result);
      res.send(result);
   });
 };

@@ -48,6 +48,14 @@ dataFactory.savePaperEdit = function(paperID, paperName, paperCode, paperCost, m
     return $http.post('/api/savepaperedit',{ params: { paperID : paperID, paperName : paperName, paperCode : paperCode, paperCost : paperCost, mentorID : mentorID} });
 }
 
+dataFactory.savePaperNew = function(programCode, paperName, paperCode, paperCost, mentorID) {
+    return $http.post('/api/savepapernew',{ params: { programCode : programCode, paperName : paperName, paperCode : paperCode, paperCost : paperCost, mentorID : mentorID } });
+}
+
+dataFactory.deletePaper = function(paperID) {
+    return $http.post('/api/deletepaper',{ params: { paperID : paperID} });
+}
+
 dataFactory.getTopMentors = function () {
     return $http.get('/api/gettopmentors');
 }

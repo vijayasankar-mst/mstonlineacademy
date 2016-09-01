@@ -101,7 +101,7 @@ angular
                                         return $ocLazyLoad.load('scripts/controllers/coursesUserCtrl.js');
                                     }],
                                 loadMyService: ['$ocLazyLoad', function ($ocLazyLoad) {
-                                        return $ocLazyLoad.load('scripts/directives/common/adminServices.js');
+                                        return $ocLazyLoad.load('scripts/directives/mentor/mentorServices.js');
                                     }]
                             }
                         })

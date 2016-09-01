@@ -42,6 +42,7 @@ $scope.getDashoard = function(){
 $scope.getStudentInfo = function(){
   adminServices.getStudentInfo()
   .then(function (response) {
+    console.log(response);
     $rootScope.identity.currentUser.studentinfo = response.data[0];
     console.log(angular.toJson($rootScope.identity.currentUser));
   }, function (error) {
