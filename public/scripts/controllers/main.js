@@ -49,6 +49,7 @@ $scope.getStudentInfo = function(){
     $scope.status = 'Unable to load customer data: ' + error.message;
   });
 };
+
 $scope.updateStudentRecord = function(){
   console.log('updated - '+angular.toJson($rootScope.identity.currentUser));
   return $http.post('/api/editProfile',{profile : $rootScope.identity.currentUser})

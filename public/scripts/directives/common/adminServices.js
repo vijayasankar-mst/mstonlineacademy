@@ -3,7 +3,6 @@ angular.module('myAdminApp').factory('adminServices', function($http, $q, $rootS
   urlGetStudent = '/api/getstudentinfo',
   urlDegreePrgArea = '/api/getdegreeprogramarea',
   urlDegreeProgram = '/api/getdegreeprogram',
-  urlGetStudent = '/api/getstudentdetails',
   urlGetPaperMentor = '/api/getpaperswithmentors',
   urlGetProgramWithPaperCount = '/api/getprogramswithpapercount',
   dataFactory = {};

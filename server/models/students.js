@@ -204,8 +204,6 @@ User.getAllUsersCount = function (userDetails, callback) {
       profile_info.studentinfo.street, profile_info.studentinfo.city, profile_info.studentinfo.country,
       profile_info.studentinfo.postalcode, profile_info.studentinfo.phone, profile_info.unique_id]}
       ps.query(command, function (err, result) {
-        console.log('result roes', result);
-
         if (err) {
           console.error(err);
           return callback(err, this);
