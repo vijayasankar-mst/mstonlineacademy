@@ -8,6 +8,8 @@
  */
  angular.module('myAdminApp')
  .controller('MainCtrl', function($scope,mstAuth,$location,mstIdentity,$ocLazyLoad,$timeout,$rootScope,$state,adminServices,$http) {
+  $scope.studentProfile;
+
   $scope.loading = true;
   var studentinfo = {};
 
@@ -42,17 +44,17 @@ $scope.getDashoard = function(){
 $scope.getStudentInfo = function(){
   adminServices.getStudentInfo()
   .then(function (response) {
-    console.log(response);
     $rootScope.identity.currentUser.studentinfo = response.data[0];
-    console.log(angular.toJson($rootScope.identity.currentUser));
+    $scope.studentProfile = response.data[0];
+    $scope.studentProfile.user_id = $rootScope.identity.currentUser.user_id;
+    
   }, function (error) {
     $scope.status = 'Unable to load customer data: ' + error.message;
   });
 };
 
 $scope.updateStudentRecord = function(){
-  console.log('updated - '+angular.toJson($rootScope.identity.currentUser));
-  return $http.post('/api/editProfile',{profile : $rootScope.identity.currentUser})
+  return $http.post('/api/editProfile',{profile : $scope.studentProfile})
   .then(  function (response) {
    $scope.successMsg = true;
    $scope.status = "Your profile has been updated!";

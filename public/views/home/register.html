@@ -7,22 +7,22 @@
 		<div class="col-md-6">
 			<div class="form-group">
 				<label for="firstname">First Name</label>
-				<input type="text" class="form-control" ng-model="registerFormData.firstname" id="firstname" name="firstname" placeholder="Enter First Name" ng-class="errorClass('firstname','class')" required>
+				<input type="text" class="form-control" ng-model="registerFormData.firstname" id="firstname" name="firstname" placeholder="Enter First Name" ng-class="errorClass('firstname','class')" required readonly>
 				<p ng-show="errorClass('firstname')" class="help-block">First name is required.</p>
 			</div>
 			<div class="form-group">
 				<label for="lastname">Last Name</label>
-				<input type="text" class="form-control" id="lname" name="lname" ng-model="registerFormData.lastname" placeholder="Enter Last Name" ng-class="errorClass('lname','class')" required>
+				<input type="text" class="form-control" id="lname" name="lname" ng-model="registerFormData.lastname" placeholder="Enter Last Name" ng-class="errorClass('lname','class')" required readonly>
 				<p ng-show="errorClass('lname')" class="help-block">Last name is required.</p>
 			</div>
 			<div class="form-group">
 				<label for="email">Email</label>
-				<input type="email" class="form-control" id="email" name="email" ng-model="registerFormData.email" placeholder="Enter Email" ng-class="errorClass('email','class')" required>
+				<input type="email" class="form-control" id="email" name="email" ng-model="registerFormData.email" placeholder="Enter Email" ng-class="errorClass('email','class')" required readonly>
 				<p ng-show="errorClass('email')" class="help-block">Email is invalid.</p>
 			</div>
 			<div class="form-group">
 				<label for="phone">Phone Number</label>
-				<input type="text" class="form-control" id="phone" name="phone" ng-model="registerFormData.phone" placeholder="Enter Phone" ng-class="errorClass('phone','class')" required>
+				<input type="text" class="form-control" id="phone" name="phone" ng-model="registerFormData.phone" placeholder="Enter Phone" ng-class="errorClass('phone','class')" required readonly>
 				<p ng-show="errorClass('phone')" class="help-block">Phone number is invalid.</p>
 			</div>
 			<div class="form-group">

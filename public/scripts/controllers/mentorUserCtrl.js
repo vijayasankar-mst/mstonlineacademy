@@ -14,11 +14,10 @@
     mentorServices.getMentors()
     .then(function (response) {
       $scope.mentorsList = response.data;
-                //console.log(angular.toJson($scope.mentors));
-                $scope.loading = false;
-              }, function (error) {
-                $scope.status = 'Unable to load customer data: ' + error.message;
-              });
+      $scope.loading = false;
+    }, function (error) {
+      $scope.status = 'Unable to load customer data: ' + error.message;
+    });
   }
   $scope.getMentorsStudentList = function(){
     mentorServices.getMentorsStudents()

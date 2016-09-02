@@ -191,6 +191,7 @@ User.getAllUsersCount = function (userDetails, callback) {
     };
 
     User.updateProfile = function (profile_info, callback) {
+      console.log("iasdifdsaf ds n\n \n \n",profile_info);
       var sql = "UPDATE salesforce.contact SET " +
       "firstname = $1," +
       "lastname = $2, " +
@@ -199,10 +200,10 @@ User.getAllUsersCount = function (userDetails, callback) {
       "mailingcountry = $5, " +
       "mailingpostalcode = $6, " +
       "phone = $7" +
-      " WHERE sfid = (SELECT convertedcontactid FROM salesforce.lead WHERE sfid = $8) RETURNING lastname";
-      var command = {"sql": sql, "params": [profile_info.studentinfo.firstname, profile_info.studentinfo.lastname,
-      profile_info.studentinfo.street, profile_info.studentinfo.city, profile_info.studentinfo.country,
-      profile_info.studentinfo.postalcode, profile_info.studentinfo.phone, profile_info.unique_id]}
+      " WHERE sfid = (SELECT convertedcontactid FROM salesforce.lead WHERE sfid = (SELECT unique_id FROM users WHERE user_id = $8)) RETURNING lastname";
+      var command = {"sql": sql, "params": [profile_info.firstname, profile_info.lastname,
+      profile_info.street, profile_info.city, profile_info.country,
+      profile_info.postalcode, profile_info.phone, profile_info.user_id]}
       ps.query(command, function (err, result) {
         if (err) {
           console.error(err);

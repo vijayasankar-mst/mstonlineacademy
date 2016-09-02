@@ -12,32 +12,32 @@
    $scope.getStudentsList = function(){
     studentServices.getStudentsList()
     .then(function (response) {
-        $scope.students = response.data;
-        $scope.loading = false;
+      $scope.students = response.data;
+      $scope.loading = false;
     }, function (error) {
-        $scope.status = 'Unable to load student data: ' + error.message;
+      $scope.status = 'Unable to load student data: ' + error.message;
     });
     
-}
+  }
 
-$scope.getSessionListStudent = function(){
+  $scope.getSessionListStudent = function(){
     studentServices.getSessionListStudent()
     .then(function (response) {
-        $scope.sessions = response.data;
-        $scope.loading = false;
+      $scope.sessions = response.data;
+      $scope.loading = false;
     }, function (error) {
-        $scope.status = 'Unable to load session details: ' + error.message;
+      $scope.status = 'Unable to load session details: ' + error.message;
     });
-}
+  }
 
-$scope.addMentor = function(){
+  $scope.addMentor = function(){
    $state.go('dashboard.mentors.addnew')
-}
+ }
 
-$scope.cancel = function(){
+ $scope.cancel = function(){
    $state.go('dashboard.mentors.list');
-}
+ }
 
-$scope.getStudentsList();
+ $scope.getStudentsList();
 
 }]);

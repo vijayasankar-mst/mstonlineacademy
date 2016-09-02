@@ -121,54 +121,54 @@
                                 </div>
                             </div>
 
-                            <form id="demo-form2" data-parsley-validate="" ng-submit="updateStudentRecord()" class="form-horizontal form-label-left" novalidate="">
+                            <form id="studentProfileEditForm"  data-parsley-validate="" ng-submit="updateStudentRecord()" class="form-horizontal form-label-left" novalidate="">
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="first-name" ng-model="identity.currentUser.studentinfo.firstname" value="{{identity.currentUser.studentinfo.firstname}}" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="first-name" ng-model="studentProfile.firstname" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.lastname" value="{{identity.currentUser.studentinfo.lastname}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="last-name" ng-model="studentProfile.lastname" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Phone <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="phone">Phone <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.phone" value="{{identity.currentUser.studentinfo.phone}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="phone" ng-model="studentProfile.phone" name="phone" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Street <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="street">Street <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.street" value="{{identity.currentUser.studentinfo.street}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="street" ng-model="studentProfile.street" name="street" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">City<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="city">City<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.city" value="{{identity.currentUser.studentinfo.city}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="city" ng-model="studentProfile.city" name="city" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Postal Code <span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="postalCode">Postal Code <span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.postalcode" value="{{identity.currentUser.studentinfo.postalcode}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="postalCode" ng-model="studentProfile.postalcode" name="postalCode" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Country<span class="required">*</span>
+                                    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="country">Country<span class="required">*</span>
                                     </label>
                                     <div class="col-md-6 col-sm-6 col-xs-12">
-                                        <input type="text" id="last-name" ng-model="identity.currentUser.studentinfo.country" value="{{identity.currentUser.studentinfo.country}}" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                                        <input type="text" id="country" ng-model="studentProfile.country" name="country" required="required" class="form-control col-md-7 col-xs-12">
                                     </div>
                                 </div>
 
