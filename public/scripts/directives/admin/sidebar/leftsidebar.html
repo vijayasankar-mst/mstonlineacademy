@@ -26,36 +26,44 @@
                 <h3 ng-switch="identity.currentUser.role_id">
                     <span ng-switch-when="1">Administrator</span>
                     <span ng-switch-when="2">Mentor</span>
-                    <span ng-switch-default>Student</span>
+                    <span ng-switch-when="3">Student</span>
+                    <span ng-switch-default></span>
                 </h3>
                 <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '1'" ng-init="active = 'home'">
                     <li ng-class="{'current-page': active === 'home'}" ng-click="active = 'home'"><a href="dashboard/home"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li ng-class="{'current-page': active === 'courses'}" ng-click="active = 'courses'"><a href="dashboard/courses/list"><i class="fa fa-newspaper-o"></i> Course configuration</a></li>
-                    <li ng-class="{'current-page': active === 'mentors'}" ng-click="active = 'mentors'"><a href="dashboard/mentors/list"><i class="fa fa-user"></i> Mentor configuration</a></li>
-                    <li ng-class="{'current-page': active === 'students'}" ng-click="active = 'students'"><a href="dashboard/students/list"><i class="fa fa-graduation-cap"></i> Student configuration</a></li>
-                </ul>
-                <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '2'" ng-init="active = 'home'">
-                    <li ng-class="{'current-page': active === 'home'}" ng-click="active = 'home'"><a href="dashboard/home"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li ng-class="{'current-page': active === 'schedule'}" ng-click="active = 'schedule'"><a href="dashboard/mentors/schedule"><i class="fa fa-graduation-cap"></i> Schedule</a></li>
-                    <li ng-class="{'current-page': active === 'students'}" ng-click="active = 'students'"><a href="dashboard/students/list"><i class="fa fa-graduation-cap"></i> Students list</a></li>
-                </ul>
-                <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
-                    <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>
-                    <li ng-class="{'current-page': active === 'sessions'}" ng-click="active = 'sessions'"><a href="dashboard/sessions"><i class="fa fa-calendar"></i> Sessions</a></li>
-                </ul>
-                <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && !identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
-                    <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>
-                    <li ng-class="{'current-page': active === 'papers'}" ng-click="active = 'papers'"><a href="dashboard/papers/list"><i class="fa fa-file-text-o"></i> Paper Selection</a></li>
-                </ul>
-            </div>
-
-            <!-- /menu footer buttons -->
-            <div class="sidebar-footer hidden-small">
-                <a href="" data-toggle="tooltip"  ng-click="signout()" data-placement="top" title="" data-original-title="Logout" class="pull-right">
-                    <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
-                </a>
-            </div>
-            <!-- /menu footer buttons -->
+                    <li ng-class="{'current-page': active === 'courses'}" ng-click="active = 'courses'"><a href="dashboard/courses/list"><i class="fa fa-newspaper-o"></i> Course configuration</a>
+                        <ul class="nav child_menu" style="display: block;">
+                          <li ng-class="{'current-page': active === 'courses' && courseActive === 'Degrees'}" ng-click="courseActive = 'Degrees'"><a href="dashboard/courses/degrees">Degrees</a></li>
+                          <li ng-class="{'current-page': active === 'courses' && courseActive === 'ProgramArea'}" ng-click="courseActive = 'ProgramArea'"><a href="dashboard/courses/programareas">Program Areas</a></li>
+                          <li ng-class="{'current-page': active === 'courses' && courseActive === 'Programs'}" ng-click="courseActive = 'Programs'"><a href="dashboard/courses/programs">Programs</a></li>
+                          <li ng-class="{'current-page': active === 'courses' && courseActive === 'Papers'}" ng-click="courseActive = 'Papers'"><a href="dashboard/courses/papers">Papers</a></li>
+                      </ul>
+                  </li>
+                  <li ng-class="{'current-page': active === 'mentors'}" ng-click="active = 'mentors'"><a href="dashboard/mentors/list"><i class="fa fa-user"></i> Mentor configuration</a></li>
+                  <li ng-class="{'current-page': active === 'students'}" ng-click="active = 'students'"><a href="dashboard/students/list"><i class="fa fa-graduation-cap"></i> Student configuration</a></li>
+              </ul>
+              <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '2'" ng-init="active = 'home'">
+                <li ng-class="{'current-page': active === 'home'}" ng-click="active = 'home'"><a href="dashboard/home"><i class="fa fa-home"></i> Dashboard</a></li>
+                <li ng-class="{'current-page': active === 'schedule'}" ng-click="active = 'schedule'"><a href="dashboard/mentors/schedule"><i class="fa fa-clock-o"></i> Schedule</a></li>
+                <li ng-class="{'current-page': active === 'students'}" ng-click="active = 'students'"><a href="dashboard/students/list"><i class="fa fa-graduation-cap"></i> Students list</a></li>
+            </ul>
+            <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
+                <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>
+                <li ng-class="{'current-page': active === 'sessions'}" ng-click="active = 'sessions'"><a href="dashboard/students/sessions"><i class="fa fa-calendar"></i> Sessions</a></li>
+            </ul>
+            <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '3' && !identity.currentUser.studentinfo.payment__c" ng-init="active = 'profile'">
+                <li ng-class="{'current-page': active === 'profile'}" ng-click="active = 'profile'"><a href="dashboard/profile"><i class="fa fa-user"></i> Profile</a></li>
+                <li ng-class="{'current-page': active === 'papers'}" ng-click="active = 'papers'"><a href="dashboard/papers/list"><i class="fa fa-file-text-o"></i> Paper Selection</a></li>
+            </ul>
         </div>
+
+        <!-- /menu footer buttons -->
+        <div class="sidebar-footer hidden-small">
+            <a href="" data-toggle="tooltip"  ng-click="signout()" data-placement="top" title="" data-original-title="Logout" class="pull-right">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+            </a>
+        </div>
+        <!-- /menu footer buttons -->
     </div>
+</div>
 

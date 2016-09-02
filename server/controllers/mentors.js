@@ -20,7 +20,37 @@ exports.addNewMentor = function(req, res){
 };
 
 exports.addMentorSession = function(req, res){
-    User.addMentorSession(function(err,result){
+    User.addMentorSession(req.body.sessionDetails,req.user.user_id,function(err,result){
         res.send(result);
     });
+};
+
+exports.getPaperListMentor = function(req, res){
+  User.getPaperListMentor(req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getMentorSession = function(req, res){
+  User.getMentorSession(req.user.user_id,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.markSessionCompleted = function(req, res){
+  User.markSessionCompleted(req.body.sessionID,function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getTopMentors = function(req, res){
+  User.getTopMentors(function(err,result){
+     res.send(result);
+  });
+};
+
+exports.getLatestStudents = function(req, res){
+  User.getLatestStudents(function(err,result){
+     res.send(result);
+  });
 };

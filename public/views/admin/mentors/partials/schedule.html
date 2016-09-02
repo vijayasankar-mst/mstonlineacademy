@@ -1,66 +1,66 @@
-<div class="row" ng-if="identity.currentUser.role_id == '1'">
-<div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="x_panel">
-        <div class="x_title">
-          <h2>Mentor Lists<small></small></h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <li><a class="close-link"><i class="fa fa-close"></i></a>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
+<div class="row">
+  <div class="col-md-12 col-sm-12 col-xs-12">
+    <div class="x_panel">
+      <div class="x_title">
+        <h2>Schedule<small></small></h2>
+        <div class="clearfix"></div>
+      </div>
 
-        <div class="x_content">
-          <div class="row text-center"><div class="class="col-md-12"><loading></loading></div><br /></div>
-          <div class="row">
-              <div class="col-xs-12">
-                <div class="text-right">
-                  <button type="button" class="btn btn-primary" ng-click="addMentor();">Add Mentor</button>
-                </div>
-              </div>
+      <div class="x_content" ng-controller="MentorsCtrl">
+
+        <div class="row">
+          <div class="col-md-12">
+          <div class="alert alert-success" ng-if="successMentorSession == true">
+              <strong>Success!</strong> {{status}}
             </div>
-
-          <div class="" ng-if="mentors.length > 0">
-            <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
-              <thead>
-                <tr class="headings">
-                  <th>
-                    <input type="checkbox" id="check-all" class="flat">
-                  </th>
-                  <th class="column-title">S.No</th>
-                  <th class="column-title">Name</th>
-                  <th class="column-title">Email </th>
-                  <th class="column-title">Status</th>
-                  <th class="column-title no-link last"><span class="nobr">Action</span>
-                  </th>
-                  <th class="bulk-actions" colspan="7">
-                    <a class="antoo" style="color:#fff; font-weight:500;">Bulk Actions ( <span class="action-cnt"> </span> ) <i class="fa fa-chevron-down"></i></a>
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr class="$index % 2 == 0 ? 'even pointer' : 'oadd pointer'" ng-repeat="mentor in mentors" ng-class="isLast($last)" repeat-complete="datatable-responsive">
-                  <td class="a-center">
-                    <input type="checkbox" class="flat" name="table_records">
-                  </td>
-                  <td>{{$index + 1}}</td>
-                  <td>{{mentor.username}}</td>
-                  <td>{{mentor.email}} </td>
-                  <td>{{mentor.is_active}}</td>
-                  <td>Paid</td>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
           </div>
         </div>
+
+        <form id="addMentorSessionForm" ng-init="getPaperListMentor();" class="form-horizontal form-label-left" ng-submit="addMentorSession()">
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="paper-id">Paper Name</label>
+            <div class="col-md-6 col-sm-6 col-xs-12"><loading></loading>
+              <select class="form-control" ng-options="paperlist.paper_id as paperlist.paper for paperlist in paperlistmentor"  ng-model="sessionObj.paperId" id="paper-id" name="paper-id" required>
+                <option value="">---Please select---</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="session-name">Session Name</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input type="text" ng-model="sessionObj.SessionName" id="session-name" required="required" class="form-control col-md-7 col-xs-12">
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Session Date</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="session-date" ng-model="sessionObj.Date" class="date-picker form-control col-md-7 col-xs-12" required="required" type="date">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="control-label col-md-3 col-sm-3 col-xs-12">Invite URL</label>
+            <div class="col-md-6 col-sm-6 col-xs-12">
+              <input id="session-url" ng-model="sessionObj.joinUrl" class="date-picker form-control col-md-7 col-xs-12" required="required" type="text">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+              <button type="reset" id="ClearForm" class="btn btn-primary">Cancel</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </div>
+
+        </form>
       </div>
     </div>
+  </div>
 </div>
-<script>
-   // $(document).ready(function() {
-   //     $('#datatable-responsive').DataTable();
-   // } );
-</script>
+<!-- <script>
+  $('#session-date').datepicker({
+  });
+</script> -->

@@ -1,6 +1,6 @@
 var auth = require('./auth'),
-        mentors = require('../controllers/mentors'),
-        students = require('../controllers/students');
+mentors = require('../controllers/mentors'),
+students = require('../controllers/students');
 degprogram = require('../controllers/programs');
 
 
@@ -32,7 +32,44 @@ module.exports = function (app) {
 
     app.post('/api/studentopportunity', students.studentOpportunity);
     
+    //Add schedule for session handled by mentor
     app.post('/api/mentorsession', mentors.addMentorSession);
+
+    //Get the list of sessions for the mentor
+    app.get('/api/getmentorsession', mentors.getMentorSession);
+
+    //Mark session completed
+    app.post('/api/marksessioncompleted', mentors.markSessionCompleted);
+
+    //Get the list of all papers for mentor
+    app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
+
+    //Get the list of all sessions for students
+    app.get('/api/getsessionlistforstudent', students.getSessionListStudent);
+    
+    //Get the list of all papers with mentors
+    app.post('/api/getpaperswithmentors', degprogram.getPapersWithMentors);
+    
+    //Get the list of all programs with paper count
+    app.post('/api/getprogramswithpapercount', degprogram.getProgramWithPaperCount);
+
+    //Get the list of all program areas
+    app.get('/api/getprogramarealist', degprogram.getProgramAreaList);
+
+    //Save the edited details for papers
+    app.post('/api/savepaperedit', degprogram.savePaperEdit);
+
+    //Delete a paper
+    app.post('/api/deletepaper', degprogram.deletePaper);
+
+    //Get the list of all top mentors
+    app.get('/api/gettopmentors', mentors.getTopMentors);
+
+    //Get the list of latest students
+    app.get('/api/getlateststudents', mentors.getLatestStudents);
+
+    //Add new paper
+    app.post('/api/savepapernew', degprogram.savePaperNew);
 
     app.post('/logout', function (req, res) {
         req.logout();

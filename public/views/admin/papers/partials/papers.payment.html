@@ -20,8 +20,8 @@
 
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="alert alert-success" ng-if="successStuPay==true">
-                                <strong>Success!</strong> {{status}}
+                            <div class="alert" ng-class="successStuPayType==true?'alert-success':'alert-danger'" ng-if="successStuPay">
+                                {{status}}
                             </div>
                         </div>
                     </div>
@@ -92,7 +92,7 @@
                         </div>
                         <!-- /.col -->
                         <div class="col-xs-6">
-                            <p class="lead">Amount Due {{today}}</p>
+                            <p class="lead">Amount Due as on {{today}}</p>
                             <div class="table-responsive">
                                 <table class="table">
                                     <tbody>
@@ -124,7 +124,7 @@
                     <div class="row no-print">
                         <div class="col-xs-12">
                             <button class="btn btn-success" ng-click="backToPapersView();">Back</button>
-                            <button class="btn btn-success pull-right" ng-click="submitPayment();successStuPay=true"><i class="fa fa-credit-card"></i> Submit Payment</button>
+                            <button class="btn btn-success pull-right" ng-click="submitPayment();"><i class="fa fa-credit-card"></i> Submit Payment</button>
                         </div>
                     </div>
                 </section>

@@ -65,3 +65,9 @@ exports.updateProfileInfo =  function(req, res){
         res.send(result);
     });
 };
+
+exports.getSessionListStudent =  function(req, res){
+    User.getSessionListStudent(req.user.user_id,function(err,result){
+        res.send(result);
+    });
+};
