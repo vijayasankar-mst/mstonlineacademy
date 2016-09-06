@@ -31,7 +31,7 @@
                 </h3>
                 <ul class="nav side-menu" ng-if="identity.currentUser.role_id == '1'" ng-init="active = 'home'">
                     <li ng-class="{'current-page': active === 'home'}" ng-click="active = 'home'"><a href="dashboard/home"><i class="fa fa-home"></i> Dashboard</a></li>
-                    <li ng-class="{'current-page': active === 'courses'}" ng-click="active = 'courses'"><a href="dashboard/courses/list"><i class="fa fa-newspaper-o"></i> Course configuration</a>
+                    <li ng-class="{'current-page': active === 'courses'}" ng-click="active = 'courses'"><a href="dashboard/courses/degrees"><i class="fa fa-newspaper-o"></i> Course configuration</a>
                         <ul class="nav child_menu" style="display: block;">
                           <li ng-class="{'current-page': active === 'courses' && courseActive === 'Degrees'}" ng-click="courseActive = 'Degrees'"><a href="dashboard/courses/degrees">Degrees</a></li>
                           <li ng-class="{'current-page': active === 'courses' && courseActive === 'ProgramArea'}" ng-click="courseActive = 'ProgramArea'"><a href="dashboard/courses/programareas">Program Areas</a></li>
