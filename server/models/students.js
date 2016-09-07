@@ -18,12 +18,12 @@ User.create = function (studentinfo, callback) {
     var city = studentinfo.city;
     var postalcode = studentinfo.postalcode;
     var country = studentinfo.country;
-    var Program__c = studentinfo.desiredprogram;
+    var program__c = studentinfo.desiredprogram;
     var is_active = "t";
     var local = 'local';
 
     var sql = "with new_user as (INSERT INTO users(unique_id, username,email,role_id,is_active) VALUES ($1, $2, $3,$4,$5) returning user_id), user_pass as (INSERT INTO user_passwords(user_id, hashed_password, is_active) VALUES ((select user_id from new_user),$6,$5) returning user_password_id), lead_upd as (UPDATE salesforce.lead SET status='Closed - Converted', street=$7, city=$8,postalcode=$9,country=$10,Program__c=$11 WHERE sfid=$1) select * from new_user";
-    var data = [authToken, username, email, role_id, is_active, password, street, city, postalcode, country, Program__c];
+    var data = [authToken, username, email, role_id, is_active, password, street, city, postalcode, country, program__c];
     var command = {"sql": sql, "params": data}
     ps.query(command, function (err, result) {
         if (err) {
@@ -38,9 +38,7 @@ User.create = function (studentinfo, callback) {
     });
 };
 
-
-User.getStudentInfo = function (tokenid, callback) {
-    console.log('\n\n\n aaa: \n\n\n', tokenid);
+User.getStudentDetails = function (tokenid, callback) {
     var sql = 'SELECT firstname,lastname,email,company,phone FROM salesforce.lead WHERE sfid = $1';
     data = [tokenid];
     var command = {"sql": sql, "params": data}
@@ -49,7 +47,6 @@ User.getStudentInfo = function (tokenid, callback) {
             console.error(err);
             return callback(err, this);
         }
-
         if (result.length > 0) {
         } else {
             return callback(false, null);
@@ -115,7 +112,6 @@ User.getStudentsList = function (userDetails, callback) {
             console.error(err);
             return callback(err, this);
         }
-
         if (result.length > 0) {
         } else {
             return callback(false, null);
@@ -125,7 +121,7 @@ User.getStudentsList = function (userDetails, callback) {
     });
 };
 
-User.getStudentProfileInfo = function (userid, callback) {
+User.getStudentInfo = function (userid, callback) {
     var sql = "SELECT sc.firstname, sc.lastname, program_id, program, degree_id, degree, program_area_id, program_area, mailingstreet as street, mailingcity as city, mailingcountry as country, mailingpostalcode as postalcode, u.email, birthdate, sc.name, sc.phone, payment__c FROM users u LEFT JOIN salesforce.lead sl ON (unique_id = sfid) LEFT JOIN salesforce.contact sc ON (sc.sfid = ConvertedContactId) LEFT JOIN programs ON (program_code__c = program_code) LEFT JOIN degree_program_area using (degree_program_area_id) LEFT JOIN degrees USING (degree_id) LEFT JOIN program_areas USING (program_area_id) WHERE u.user_id = $1";
     var command = {"sql": sql, "params": [userid]}
     ps.query(command, function (err, result) {
@@ -133,7 +129,6 @@ User.getStudentProfileInfo = function (userid, callback) {
             console.error(err);
             return callback(err, this);
         }
-
         if (result.length > 0) {
         } else {
             return callback(false, null);
@@ -152,7 +147,6 @@ User.getPaperList = function (program_id, callback) {
             console.error(err);
             return callback(err, this);
         }
-
         if (result.length > 0) {
         } else {
             return callback(false, null);
@@ -163,7 +157,6 @@ User.getPaperList = function (program_id, callback) {
 };
 
 User.registerStudent = function (paper_details, user_id, callback) {
-    console.log("\n\n\n\n", paper_details);
     var queryBuildInsert = "with paper_selection as (INSERT INTO student_details (student_id, paper_id, mentor_id) VALUES";
     var queryBuildValues = [];
     paper_details.forEach(function (papers, index) {
@@ -178,9 +171,6 @@ User.registerStudent = function (paper_details, user_id, callback) {
             console.error(err);
             return callback(err, this);
         }
-
-        console.log(result);
-
         if (result.length > 0) {
         } else {
             return callback(false, null);
@@ -191,7 +181,6 @@ User.registerStudent = function (paper_details, user_id, callback) {
 };
 
 User.updateProfile = function (profile_info, callback) {
-    console.log("iasdifdsaf ds n\n \n \n", profile_info);
     var sql = "UPDATE salesforce.contact SET " +
             "firstname = $1," +
             "lastname = $2, " +
@@ -227,7 +216,6 @@ User.getSessionListStudent = function (studentID, callback) {
             console.error(err);
             return callback(err, this);
         }
-
         if (result.length > 0) {
         } else {
             return callback(false, null);

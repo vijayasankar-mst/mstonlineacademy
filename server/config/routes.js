@@ -7,6 +7,10 @@ module.exports = function (app) {
 
     app.post('/api/v1/authenticate', auth.authenticate);
 
+    ////////////////////////
+    // PROGRAMS           //
+    ////////////////////////
+
     // Get the list of degrees
     app.get('/api/getdegreelist', degprogram.getDegree);
 
@@ -37,23 +41,37 @@ module.exports = function (app) {
     // Add new paper
     app.post('/api/savepapernew', degprogram.savePaperNew);
 
-    // 
+    ////////////////////////
+    // STUDENTS           //
+    ////////////////////////
+
+    // Get student detail during registration using auth token
     app.post('/api/getstudentdetails', students.getStudentDetails);
 
+    // Registering a student
     app.post('/api/v1/savestudentinformation', students.createUser);
 
+    // Get the count of users by roleid
     app.get('/api/getalluserscount', students.getUsersCount);
 
+    // Get the information about a student
     app.get('/api/getstudentinfo', students.getStudentInfo);
 
+    // Get the list of papers for the appropriate program
     app.post('/api/getpaperlist', students.getPaperList);
 
+    // Update the profile for a student
     app.post('/api/editProfile', students.updateProfileInfo);
 
+    // Assign papers and mentors for a student
     app.post('/api/studentopportunity', students.studentOpportunity);
 
     //Get the list of all sessions for students
     app.get('/api/getsessionlistforstudent', students.getSessionListStudent);
+
+    ////////////////////////
+    // MENTORS            //
+    ////////////////////////
 
     //Add schedule for session handled by mentor
     app.post('/api/mentorsession', mentors.addMentorSession);

@@ -1,5 +1,5 @@
-var User = require('../models/students'),
-        encrypt = require('../utilities/encryption');
+var User = require('../models/students');
+var encrypt = require('../utilities/encryption');
 
 exports.createUser = function (req, res, next) {
     var userData = req.body;
@@ -24,7 +24,7 @@ exports.createUser = function (req, res, next) {
 };
 
 exports.getStudentDetails = function (req, res) {
-    User.getStudentInfo(req.body.params.authtoken, function (err, result) {
+    User.getStudentDetails(req.body.params.authtoken, function (err, result) {
         res.send(result);
     });
 };
@@ -43,7 +43,7 @@ exports.getStudentList = function (req, res) {
 };
 
 exports.getStudentInfo = function (req, res) {
-    User.getStudentProfileInfo(req.user.user_id, function (err, result) {
+    User.getStudentInfo(req.user.user_id, function (err, result) {
         res.send(result);
     });
 };
