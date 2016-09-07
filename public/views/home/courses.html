@@ -12,7 +12,7 @@
                     <br/>
                 </div>
                 <div class="col-md-12">
-                    <label for="desiredprogramarea">Desired Program area :</label>
+                    <label for="desiredprogramarea">Desired Program Area :</label>
                     <select class="searchselect" ng-change="getDegreeProgramArea();" ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" ng-class="errorClass('desiredprogramarea', 'class')" required>
                         <option value="">---Please select---</option>
                     </select>
