@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstAp
- */
-
 angular.module('myAdminApp').controller("loginController", function ($ocLazyLoad, $scope, $state, mstUser, mstIdentity, mstAuth, $rootScope) {
     $scope.formData;
     $scope.identity = mstIdentity;
@@ -25,5 +18,4 @@ angular.module('myAdminApp').controller("loginController", function ($ocLazyLoad
             }
         });
     }
-
 });

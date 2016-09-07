@@ -1,12 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstAp
- */
-
 angular.module('myApp').controller("CoursesCtrl", function ($ocLazyLoad, $scope, $state, $rootScope, programServices, $stateParams) {
     $scope.degreelist;
     $scope.degreeporgramlist;
@@ -34,7 +26,6 @@ angular.module('myApp').controller("CoursesCtrl", function ($ocLazyLoad, $scope,
 
     $scope.getDegreeProgramArea = function () {
         programServices.getDegreeProgramAreas($scope.registerFormData.desiredprogramarea, $scope.registerFormData.desireddegree)
-
                 .then(function (response) {
                     $scope.degreeporgramarealist = response.data;
                 }, function (error) {
@@ -50,8 +41,6 @@ angular.module('myApp').controller("CoursesCtrl", function ($ocLazyLoad, $scope,
                     $scope.status = 'Unable to load customer data: ' + error.message;
                 });
     }
-
-
 
     $scope.getUserInfoDetails = function () {
         if ($stateParams.token !== undefined) {

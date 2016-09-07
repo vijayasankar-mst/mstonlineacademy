@@ -1,12 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstAp
- */
-
 angular.module('myApp').controller("RegisterCtrl", function ($ocLazyLoad, $scope, $state, $rootScope, programServices, $stateParams, $timeout) {
     $scope.degreelist;
     $scope.degreeporgramlist;
@@ -45,7 +38,6 @@ angular.module('myApp').controller("RegisterCtrl", function ($ocLazyLoad, $scope
         if ($stateParams.token !== undefined) {
             programServices.getStudentDetails($stateParams.token)
                     .then(function (response) {
-                        console.log("test =", response.data);
                         if (response.data.length > 0) {
                             $scope.registerFormData = response.data[0];
                         } else {
@@ -83,9 +75,4 @@ angular.module('myApp').controller("RegisterCtrl", function ($ocLazyLoad, $scope
             return (method == "class" ? 'has-error' : true);
         }
     }
-
-
-    //Phone Number Regex
-    // $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[-\s\.]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
-
 });
