@@ -1,12 +1,4 @@
 'use strict';
-
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstApp
- */
-
 var myApp = angular.module('myApp');
 
 myApp.directive('sidebar', function () {

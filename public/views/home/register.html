@@ -1,5 +1,5 @@
 <div class="alert alert-danger" ng-if="errMsg">
-    <strong>Danger!</strong> {{status}}
+    <strong>Error!</strong> {{status}}
 </div>
 <form ng-init="getUserInfoDetails();getDegreeList();" name="studentRegisterForm" role="form" ng-submit="submitForm(studentRegisterForm.$valid)" novalidate>
     <div class="col-md-12 widget-popular-posts">
@@ -46,7 +46,6 @@
                 <p ng-show="errorClass('country')" class="help-block">Country is required.</p>
             </div>
         </div>
-
         <div class="col-md-6 page-content">
             <div class="form-group">
                 <label for="desireddegree">Desired Degree</label>
@@ -96,6 +95,5 @@
                 <button class="btn btn-primary" ng-disabled="studentRegisterForm.$invalid">Start Your Application</button>
             </div>
         </div>
-
     </div>
 </form>
