@@ -1,6 +1,5 @@
 var programCtrl = require('../models/programs');
 
-
 exports.getDegree = function (req, res) {
     programCtrl.getDegreeList(function (err, result) {
         res.send(result);
