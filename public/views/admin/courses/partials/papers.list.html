@@ -1,0 +1,151 @@
+<div class="row">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Papers List<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="x_content form-horizontal form-label-left" ng-controller="CoursesCtrl" ng-init="getDegreeList();"> 
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert {{PaperStatusClass}}" ng-if="PaperStatusCheck">
+                            {{PaperStatus}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Desired Degree</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div ng-if="loadingD" style="text-align:center"><loading></loading></div>
+                        <select class="form-control" ng-change="getDegreeProgram();" ng-options="deglist.degree_id as deglist.degree for deglist in degreelist"  ng-model="registerFormData.desireddegree" id="desireddegree" name="desireddegree">
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Desired Program Area</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div ng-if="loadingPA || loadingD" style="text-align:center"><loading></loading></div>
+                        <select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea">
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="control-label col-md-3 col-sm-3 col-xs-12">Desired Program</label>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div ng-if="loadingP || loadingD || loadingPA" style="text-align:center"><loading></loading></div>
+                        <select class="form-control"  ng-change="getPapersWithMentors();" ng-options="degprgarea.program_code as degprgarea.program for degprgarea in degreeporgramarealist"  ng-model="registerFormData.desiredprogram" id="desiredprogram" name="desiredprogram">
+                            <option value="">---Please select---</option>
+                        </select>
+                    </div>
+                </div>
+
+
+                <div ng-if="loadingPAP && loading" style="text-align:center;"><loading></loading></div>
+                <div ng-if="loadingPAP === false && !loading">
+                    <div ng-if="degreelist.length > 0">
+                        <div class="row">
+                            <div class="col-xs-12">
+                                <div class="text-right">
+                                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".editModal" ng-click="addPaper();">Add Paper</button>
+                                </div>
+                            </div>
+                        </div>
+                        <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
+                            <thead>
+                                <tr class="headings">
+                                    <th class="column-title">S.No</th>
+                                    <th class="column-title">Paper Name</th>
+                                    <th class="column-title">Paper Code</th>
+                                    <th class="column-title">Paper Cost</th>
+                                    <th class="column-title">Mentor Name</th>
+                                    <th class="column-title">Number of Students</th>
+                                    <th class="column-title">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="$index % 2 == 0 ? 'even pointer' : 'odd pointer'" ng-repeat="p in papers" ng-class="isLast($last)" repeat-complete="datatable-responsive" id="paper{{p.paper_id}}">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{p.paper}}</td>
+                                    <td>{{p.paper_code}} </td>
+                                    <td>{{p.paper_cost}} </td>
+                                    <td>{{p.mentor_name}}</td>
+                                    <td>{{p.students_count}}</td>
+                                    <td>
+                                        <button class="btn btn-success btn-xs" data-toggle="modal" data-target=".editModal" ng-click="editPaper(p.paper_id, p.paper, p.paper_code, p.paper_cost, p.mentor_id, p.mentor_name)">Edit</button>
+                                        <button class="btn btn-danger btn-xs" ng-if="p.students_count == 0" ng-click="deletePaper(p.paper_id, p.paper)">Delete</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal fade editModal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;">
+                        <div class="modal-dialog modal-lg">
+                            <div class="modal-content">
+
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span>
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel">{{editForm.ModalText}}</h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="alert {{editPaperStatusClass}}" ng-if="editPaperStatusCheck">
+                                                {{editPaperStatus}}
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="form-horizontal form-label-left">
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="papername">Paper Name</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" ng-model="editForm.papernameEdit" id="papername" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="papercode">Paper Code</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" ng-model="editForm.papercodeEdit" id="papercode" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="papercost">Paper Cost</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" ng-model="editForm.papercostEdit" id="papercost" class="form-control col-md-7 col-xs-12">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label class="control-label col-md-3 col-sm-3 col-xs-12" for="mentorname">Mentor Name</label>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <input type="text" ng-model="editForm.mentornameEdit" uib-typeahead="mentorSingle as mentorSingle.mentor_name for mentorSingle in mentorsList | filter:{mentor_name:$viewValue} | limitTo:5" class="form-control col-md-7 col-xs-12" typeahead-focus-on-select="fetchMentorID()">
+                                            </div>
+                                        </div>
+
+                                        <input type="hidden" ng-model="editForm.paperidEdit" id="paperid">
+                                        <input type="hidden" ng-model="editForm.mentoridEdit" id="mentorid">
+
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-primary" ng-click="savePaperEdit()">Save changes</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

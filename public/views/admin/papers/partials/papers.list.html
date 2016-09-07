@@ -1,80 +1,66 @@
 <div class="row">
-<div class="col-md-12 col-sm-12 col-xs-12">
-      <div class="x_panel">
-        <div class="x_title">
-          <h2>Student Papers Lists<small></small></h2>
-          <ul class="nav navbar-right panel_toolbox">
-            <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-            </li>
-            <li class="dropdown">
-              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
-              <ul class="dropdown-menu" role="menu">
-                <li><a href="#">Settings 1</a>
-                </li>
-                <li><a href="#">Settings 2</a>
-                </li>
-              </ul>
-            </li>
-            <li><a class="close-link"><i class="fa fa-close"></i></a>
-            </li>
-          </ul>
-          <div class="clearfix"></div>
-        </div>
-        
-        <div class="col-md-12 col-sm-12 col-xs-12">
-                      <section class="panel">
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Student Program Information<small></small></h2>
+                <div class="clearfix"></div>
+            </div>
 
-                        <div class="panel-body">
-                          <h3 class="green"><i class="fa fa-paint-brush"></i> Student Program Information</h3>
-                          <br>
-                          <div class="project_detail">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <section class="panel">
+
+                    <div class="panel-body">
+                        <br>
+                        <div class="project_detail">
                             <h4 class="heading">Degree</h4>
                             <p>{{identity.currentUser.studentinfo.degree}}</p> <br />
                             <h4 class="heading">Program Area</h4>
                             <p>{{identity.currentUser.studentinfo.program_area}}</p> <br />
                             <h4 class="heading">Program </h4>
                             <p>{{identity.currentUser.studentinfo.program}}</p>
-                          </div>
-                          <br>
-                          <h4 class="heading">Please Choose Papers</h4>
-                          <div class="row"><div class="col-md-12"><loading></loading></div><br /></div>
-                          <div class="table-responsive" ng-if="papers.length > 0">
-                              <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
+                        </div>
+                        <br>
+                        <h4 class="heading">Please Choose Papers</h4>
+                        <div class="row"><div class="col-md-12"><loading></loading></div><br /></div>
+                        <div class="alert alert-danger" ng-if="errMsg">
+                            <strong>Danger!</strong> {{errMsgInfo}}
+                        </div>
+                        <div class="table-responsive" ng-if="papers.length > 0">
+                            <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
                                 <thead>
-                                  <tr class="headings">
-                                    <th>
-                                      <input type="checkbox" id="check-all" class="flat">
-                                    </th>
-                                    <th class="column-title">S.No</th>
-                                    <th class="column-title">Paper Name</th>
-                                    <th class="column-title">Paper Cost</th>
-                                    <th class="column-title">Mentor Name</th>
-                                  </tr>
+                                    <tr class="headings">
+                                        <th>
+                                            <input type="checkbox" id="check-all" class="flat">
+                                        </th>
+                                        <th class="column-title">S.No</th>
+                                        <th class="column-title">Paper Name</th>
+                                        <th class="column-title">Paper Cost</th>
+                                        <th class="column-title">Mentor Name</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
-                                  <tr class="$index % 2 == 0 ? 'even pointer' : 'oadd pointer'" ng-repeat="paperlist in papers">
-                                    <td class="a-center">
-                                      <input type="checkbox" class="flat" name="table_records">
-                                    </td>
-                                    <td>{{$index + 1}}</td>
-                                    <td>{{paperlist.paper}}</td>
-                                    <td>{{paperlist.paper_cost}} </td>
-                                    <td>{{paperlist.first_name}} {{paperlist.first_name}}</td>
-                                  </tr>
-                                 
+                                    <tr class="$index % 2 == 0 ? 'even pointer' : 'oadd pointer'" ng-repeat="paperlist in papers">
+                                        <td class="a-center">
+                                            <input type="checkbox" ng-click="checkPapers()" ng-model="paperlist.selected" class="flat">
+                                        </td>
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{paperlist.paper}}</td>
+                                        <td>${{paperlist.paper_cost}} </td>
+                                        <td>{{paperlist.first_name}} {{paperlist.last_name}}</td>
+                                    </tr>
                                 </tbody>
-                              </table>
-                          </div>
+                            </table>
                         </div>
-                      </section>
                     </div>
-                <div class="row">
+                </section>
+            </div>
+            <div class="row">
                 <div class="col-xs-12">
-                  <div class="text-right">
-                    <button type="button" class="btn btn-primary" ng-click="addMentor();">Next</button>
-                  </div>
+                    <div class="text-right">
+                        <button type="button" class="btn btn-primary" ng-click="proceedToNext();">Next</button>
+                    </div>
                 </div>
             </div> 
-      </div>
+        </div>
     </div>
 </div>

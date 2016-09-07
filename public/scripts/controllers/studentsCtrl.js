@@ -6,29 +6,38 @@
  * @description
  * # mstAp
  */
-angular.module('myAdminApp').controller('studentsCtrl', ['$scope','studentServices','$state', function($scope,studentServices,$state) {
-	$scope.students;
+angular.module('myAdminApp').controller('studentsCtrl', ['$scope', 'studentServices', '$state', function ($scope, studentServices, $state) {
+        $scope.students;
+        $scope.loading = true;
+        $scope.getStudentsList = function () {
+            studentServices.getStudentsList()
+                    .then(function (response) {
+                        $scope.students = response.data;
+                        $scope.loading = false;
+                    }, function (error) {
+                        $scope.status = 'Unable to load student data: ' + error.message;
+                    });
 
-	$scope.loading = true;
-	$scope.getStudentsList = function(){
-        studentServices.getStudentsList()
-            .then(function (response) {
-                $scope.students = response.data;
-                $scope.loading = false;
-            }, function (error) {
-                $scope.status = 'Unable to load customer data: ' + error.message;
-            });
-	
-    }
+        }
 
-    $scope.addMentor = function(){
-    	$state.go('dashboard.mentors.addnew')
-    }
+        $scope.getSessionListStudent = function () {
+            studentServices.getSessionListStudent()
+                    .then(function (response) {
+                        $scope.sessions = response.data;
+                        $scope.loading = false;
+                    }, function (error) {
+                        $scope.status = 'Unable to load session details: ' + error.message;
+                    });
+        }
 
-    $scope.cancel = function(){
-    	$state.go('dashboard.mentors.list');
-    }
+        $scope.addMentor = function () {
+            $state.go('dashboard.mentors.addnew')
+        }
 
-   $scope.getStudentsList();
-    
-}]);
+        $scope.cancel = function () {
+            $state.go('dashboard.mentors.list');
+        }
+
+        $scope.getStudentsList();
+
+    }]);

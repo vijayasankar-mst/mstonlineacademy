@@ -6,7 +6,8 @@ var app = express();
 
 var config = require('./server/config/config')[env];
 
-if(config.postgres)  var config = config.postgres;
+if (config.postgres)
+    var config = config.postgres;
 
 require('./server/config/express')(app, config);
 
@@ -15,7 +16,6 @@ require('./server/config/postgres')(config);
 require('./server/config/passport')();
 
 require('./server/config/routes')(app);
-
 
 app.listen(config.port);
 

@@ -1,131 +1,189 @@
 <div class="">
-  <div class="row top_tiles"  ng-if="identity.currentUser.role_id == '1'">
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="tile-stats">
-        <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-        <div ng-if="!loading">
-          <div class="icon"><i class="fa fa-caret-square-o-right"></i></div>
-          <div class="count">{{totalUserCount.studenttotal}}</div>
-          <h3>New Students</h3>
-          <p>Total number of students</p>
+    <div class="row top_tiles"  ng-if="identity.currentUser.role_id == '1'">
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-graduation-cap"></i></div>
+                    <div class="count">{{totalUserCount.studenttotal}}</div>
+                    <h3>Registered Students</h3>
+                    <p>Total number of students</p>
+                </div>
+            </div>
         </div>
-      </div>
-    </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="tile-stats">
-        <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-        <div ng-if="!loading">
-          <div class="icon"><i class="fa fa-comments-o"></i></div>
-          <div class="count"><loading></loading>{{totalUserCount.salesforcetotal}}</div>
-          <h3>Salesforce Users</h3>
-          <p>Total number of salesforce users</p>
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-cloud"></i></div>
+                    <div class="count"><loading></loading>{{totalUserCount.salesforcetotal}}</div>
+                    <h3>Salesforce Users</h3>
+                    <p>Total number of salesforce users</p>
+                </div>
+            </div>
         </div>
-      </div>
+        <div class="animated flipInY col-lg-4 col-md-4 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-user"></i></div>
+                    <div class="count"><loading></loading>{{totalUserCount.mentortotal}}</div>
+                    <h3>Mentors</h3>
+                    <p>Total number of mentors</p>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="tile-stats">
-       <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-       <div ng-if="!loading">
-         <div class="icon"><i class="fa fa-sort-amount-desc"></i></div>
-         <div class="count"><loading></loading>{{totalUserCount.mentortotal}}</div>
-         <h3>Mentors</h3>
-         <p>Total number of mentors</p>
-       </div>
-     </div>
-   </div>
-   <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="tile-stats">
-      <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-      <div ng-if="!loading">
-       <div class="icon"><i class="fa fa-check-square-o"></i></div>
-       <div class="count"><loading></loading>{{totalUserCount.admintotal}}</div>
-       <h3>Admin Users</h3>
-       <p>Total number of admin users</p>
-     </div>
-   </div>
- </div>
-</div>
-<div class="row top_tiles"  ng-if="identity.currentUser.role_id == '2'">
-  <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="tile-stats">
-      <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-      <div ng-if="!loading">
-        <div class="icon"><i class="fa fa-file-text-o"></i></div>
-        <div class="count">{{totalUserCount.papertotal}}</div>
-        <h3><ng-pluralize count="totalUserCount.papertotal" when="{'1': 'Paper', 'other': 'Papers'}"></ng-pluralize></h3>
-        <p>Number of papers you are mentoring</p>
-      </div>
+    <div class="row top_tiles"  ng-if="identity.currentUser.role_id == '2'">
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-file-text-o"></i></div>
+                    <div class="count">{{totalUserCount.papertotal}}</div>
+                    <h3><ng-pluralize count="totalUserCount.papertotal" when="{'1': 'Paper', 'other': 'Papers'}"></ng-pluralize></h3>
+                    <p>Number of papers you are mentoring</p>
+                </div>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-users"></i></div>
+                    <div class="count"><loading></loading>{{totalUserCount.mentoringstudentstotal}}</div>
+                    <h3><ng-pluralize count="totalUserCount.studentstotal" when="{'1': 'Student', 'other': 'Students'}"></ng-pluralize></h3>
+                    <p>Number of students you are mentoring</p>
+                </div>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-trophy"></i></div>
+                    <div class="count"><loading></loading>{{(100 * totalUserCount.mentoringstudentstotal / totalUserCount.studentstotal) | number:0}}%</div>
+                    <h3>Percentage</h3>
+                    <p>Your mentoring contribution</p>
+                </div>
+            </div>
+        </div>
+        <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <div class="tile-stats">
+                <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                <div ng-if="!loading">
+                    <div class="icon"><i class="fa fa-dollar"></i></div>
+                    <div class="count"><loading></loading>{{(totalUserCount.papercosttotal * totalUserCount.mentoringstudentstotal) | currency}}</div>
+                    <h3>Earnings</h3>
+                    <p>Your income from mentoring</p>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-  <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="tile-stats">
-      <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-      <div ng-if="!loading">
-        <div class="icon"><i class="fa fa-users"></i></div>
-        <div class="count"><loading></loading>{{totalUserCount.mentoringstudentstotal}}</div>
-        <h3><ng-pluralize count="totalUserCount.studentstotal" when="{'1': 'Student', 'other': 'Students'}"></ng-pluralize></h3>
-        <p>Number of students you are mentoring</p>
-      </div>
-    </div>
-  </div>
-  <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="tile-stats">
-     <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-     <div ng-if="!loading">
-       <div class="icon"><i class="fa fa-trophy"></i></div>
-       <div class="count"><loading></loading>{{(100*totalUserCount.mentoringstudentstotal / totalUserCount.studentstotal) | number:0}}%</div>
-       <h3>Percentage</h3>
-       <p>Your mentoring contribution</p>
-     </div>
-   </div>
- </div>
- <div class="animated flipInY col-lg-3 col-md-3 col-sm-6 col-xs-12">
-  <div class="tile-stats">
-    <div ng-if="loading" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
-    <div ng-if="!loading">
-     <div class="icon"><i class="fa fa-dollar"></i></div>
-     <div class="count"><loading></loading>{{(totalUserCount.papercosttotal * totalUserCount.mentoringstudentstotal) | currency}}</div>
-     <h3>Earnings</h3>
-     <p>Your income from mentoring</p>
-   </div>
- </div>
-</div>
-</div>
 
-<div class="row">
- <div class="col-md-4 col-sm-4 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>Top Students</h2>
-      <ul class="nav navbar-right panel_toolbox">
-        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-        </li>
-        <li><a class="close-link"><i class="fa fa-close"></i></a>
-        </li>
-      </ul>
-      <div class="clearfix"></div>
+    <div class="row" ng-if="identity.currentUser.role_id == '2'">
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Upcoming Sessions </h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content" ng-init="getMentorSession()"><loading></loading>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="alert alert-success" ng-if="markedSession == true">
+                                <strong>Success!</strong> Session <strong>{{sessionName}}</strong> has been marked completed.
+                            </div>
+                        </div>
+                    </div>
+                    <span ng-if="sessionlistmentor.length">
+                        <table class="table table-striped">
+                            <thead>
+                            <th>Date</th>
+                            <th>Session Name</th>
+                            <th>Invite URL</th>
+                            <th>Paper Name</th>
+                            <th>Paper Code</th>
+                            <th>Action</th>
+                            </thead>
+                            <tbody>
+                                <tr id="session{{sessions.session_id}}" ng-repeat="sessions in sessionlistmentor">
+                                    <td>{{sessions.session_date| date : mediumDate}}</td>
+                                    <td>{{sessions.session}}</td>
+                                    <td><a href="{{sessions.join_url}}" target="_blank">{{sessions.join_url}} <i class="fa fa-external-link"></i></a></td>
+                                    <td>{{sessions.paper}}</td>
+                                    <td>{{sessions.paper_code}}</td>
+                                    <td><button class="btn btn-success btn-xs" ng-click="markSessionCompleted(sessions.session_id)">Mark as Completed</button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </span>
+                    <span ng-if="!sessionlistmentor.length">
+                        No sessions available currently or not configured. <br/>
+                        <a href="/dashboard/mentors/schedule">Schedule</a> the session to list.
+                    </span>
+                </div>
+            </div>
+        </div>
     </div>
-    <div class="x_content">
-      
+    <div class="row" ng-if="identity.currentUser.role_id == '1'">
+        <div class="col-md-6 col-sm-6 col-xs-12" ng-init="getTopMentors()">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Top {{topMentorsList.length}} Mentors</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div ng-if="loadingMentorsList" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                    <div ng-if="!loadingMentorsList">
+                        <span ng-if="topMentorsList.length">
+                            <table class="table table-striped">
+                                <thead>
+                                <th>Position</th>
+                                <th>Mentor Name</th>
+                                <th>Students Count</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="tml in topMentorsList">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{tml.mentor_name}}</td>
+                                        <td>{{tml.students_count}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6 col-xs-12" ng-init="getLatestStudents()">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Latest {{latestStudentsList.length}} Students</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <div ng-if="loadingStudentList" style="min-height:40px;margin:20px;text-align:center;"><loading></loading></div>
+                    <div ng-if="!loadingStudentList">
+                        <span ng-if="latestStudentsList.length">
+                            <table class="table table-striped">
+                                <thead>
+                                <th>Position</th>
+                                <th>Student Name</th>
+                                <th>Program</th>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="lsl in latestStudentsList">
+                                        <td>{{$index + 1}}</td>
+                                        <td>{{lsl.name}}</td>
+                                        <td>{{lsl.program}}</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
-</div>
-<div class="col-md-8 col-sm-8 col-xs-12">
-  <div class="x_panel">
-    <div class="x_title">
-      <h2>Revenue from Students</h2>
-      <ul class="nav navbar-right panel_toolbox">
-        <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
-        </li>
-        <li><a class="close-link"><i class="fa fa-close"></i></a>
-        </li>
-      </ul>
-      <div class="clearfix"></div>
-    </div>
-    <div class="x_content">
-      
-    </div>
-  </div>
-</div>
-</div>
 </div>

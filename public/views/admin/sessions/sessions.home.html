@@ -1,0 +1,39 @@
+<div class="x_panel">
+    <div class="text-center">
+        <h1>Sessions</h1>
+        <div class="clearfix"></div>
+    </div>
+    <div class="x_content" ng-init="getSessionListStudent()"><loading></loading>
+        <hr>
+        <span ng-if="sessions.length">
+            <table class="table table-striped">
+                <thead>
+                <th>Date</th>
+                <th>Session Name</th>
+                <th>Paper Name</th>
+                <th>Paper Code</th>
+                <th>Mentor Name</th>
+                <th>Join URL</th>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="session in sessions">
+                        <td>{{session.session_date| date : mediumDate}}</td>
+                        <td>{{session.session}}</td>
+                        <td>{{session.paper}}</td>
+                        <td>{{session.paper_code}}</td>
+                        <td>{{session.first_name}} {{session.last_name}}</td>
+                        <td><a href="{{session.join_url}}" target="_blank">{{session.join_url}} <i class="fa fa-external-link"></i></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </span>
+        <span ng-if="sessions.length == 0">
+            <h3>Hurray! There are no sessions left.</h3>
+            <h2>Check back tomorrow for any available session for your program: <strong>{{identity.currentUser.studentinfo.program}}</strong></h2>
+        </span>
+        <hr>
+    </div>
+</div>
+
+<div class="clearfix"></div>
+<div ui-view></div>

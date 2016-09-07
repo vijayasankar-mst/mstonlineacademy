@@ -1,73 +1,47 @@
 <div class="col-md-4 sidebar right-sidebar">
-    <!-- Request form -->
     <div class="requestform" ng-controller="requestformController">
         <h3>Interested? Just tell us...</h3>
         <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-
             <input type="hidden" name="oid" value="00D28000001do4l"/>
             <input type="hidden" id="company" maxlength="40" value="MST Online Academy" name="company" size="20"/>
-            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com/index/home?thanks"/>
-
+            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com/index/home"/>
             <div class="form-group">
                 <label for="first_name">First Name:</label>
-                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name','class')" required>
+                <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name', 'class')" required>
                 <p ng-show="errorClass('first_name')" class="help-block">First name is required.</p>
             </div>
             <div class="form-group">
                 <label for="last_name">Last Name:</label>
-                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name','class')" required>
+                <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Enter last name" ng-model="last_name" ng-class="errorClass('last_name', 'class')" required>
                 <p ng-show="errorClass('last_name')" class="help-block">Last name is required.</p>
             </div>
             <div class="form-group">
-                <label for="email">Email address:</label>
-                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email','class')" required>
+                <label for="email">Email Address:</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Enter email address" ng-model="email" ng-class="errorClass('email', 'class')" required>
                 <p ng-show="errorClass('email')" class="help-block">Email is invalid.</p>
             </div>
             <div class="form-group">
-                <label for="phone">phone number:</label>
-                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone','class')" required  ng-pattern="phoneNumberPattern">
-                
+                <label for="phone">Phone Number:</label>
+                <input type="text" class="form-control" id="phone" name="phone" placeholder="Enter phone number" ng-model="phone" ng-class="errorClass('phone', 'class')" required  ng-pattern="phoneNumberPattern">
+
                 <p ng-show="errorClass('phone')" class="help-block">Phone number is invalid.</p>
             </div>
-        <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
-    </form>
-</div>
-
-<div class="hr5" style="margin:30px 0;"></div>
-
-<div class="widget widget-popular-posts marbottom">
-    <h4>Top Professors<span class="head-line"></span></h4>
-    <ul>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">Robert Peace</a></h5>
-                <span>Database Management system</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">Steve Alen</a></h5>
-                <span>Operating System</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-        <li>
-            <div class="widget-thumb">
-                <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
-            </div>
-            <div class="widget-content">
-                <h5><a href="#">James Mathew</a></h5>
-                <span>Software Engineering</span>
-            </div>
-            <div class="clearfix"></div>
-        </li>
-    </ul>
-</div>
+            <button type="submit" class="btn btn-info" ng-disabled="interestForm.$invalid">Am interested</button>
+        </form>
+    </div>
+    <div class="widget widget-popular-posts marbottom" ng-controller="MentorsCtrl1">
+        <h4>Top Mentors<span class="head-line"></span></h4>
+        <ul>
+            <li class="list-group-item" ng-repeat="mentor in mentors1| limitTo:3" >
+                <div class="widget-thumb">
+                    <a href="#"><img src="images/blog-mini-01.jpg" alt="" /></a>
+                </div>
+                <div class="widget-content">
+                    <h5><a href="#">{{mentor.username}} </a></h5>
+                    <span ng-bind="mentor.email"></span>
+                </div>
+                <div class="clearfix"></div>
+            </li>
+        </ul>
+    </div>
 </div>
