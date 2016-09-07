@@ -1,92 +1,92 @@
 <div class="row" ng-controller="MentorsCtrl">
-  <div class="col-md-12 col-sm-12 col-xs-12">
-    <div class="x_panel">
-      <div class="x_title">
-        <h2>Add Mentor<small></small></h2>
-        <div class="clearfix"></div>
-      </div>
-      <div class="x_content">
-        <div class="row">
-          <div class="col-md-12">
-          <div class="alert alert-success" ng-if="mentorAddStatus">
-              {{statusMentor}}
+    <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Add Mentor<small></small></h2>
+                <div class="clearfix"></div>
             </div>
-          </div>
-        </div>
-        <br>
-        <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="addNewMentor()">
-         <div class="form-group">
-           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Username <span class="required">*</span>
-           </label>
-           <div class="col-md-6 col-sm-6 col-xs-12">
-             <input ng-model="mentorObject.username" type="text" id="username" name="username" required="required" class="form-control col-md-7 col-xs-12">
-           </div>
-         </div>
-         <div class="form-group">
-           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email<span class="required">*</span>
-           </label>
-           <div class="col-md-6 col-sm-6 col-xs-12">
-             <input ng-model="mentorObject.email" type="email" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
-           </div>
-         </div>
-         <div class="form-group">
-           <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Password<span class="required">*</span>
-           </label>
-           <div class="col-md-6 col-sm-6 col-xs-12">
-             <input ng-model="mentorObject.password" type="password" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
-           </div>
-         </div>
-         <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
-          </label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input ng-model="mentorObject.firstname" type="text" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
-          </label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input ng-model="mentorObject.lastname" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
-          </div>
-        </div>
-        <div class="form-group">
-          <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input ng-model="mentorObject.midname" id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <div id="gender" class="btn-group" data-toggle="buttons">
-              <label class="btn btn-default" ng-click='setGenderValue("male")' data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                <input type="radio" ng-model="mentorObject.gender" name="gender" value="male" data-parsley-multiple="gender"> &nbsp; Male &nbsp;
-              </label>
-              <label class="btn btn-default" ng-click='setGenderValue("female")' data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
-                <input type="radio" ng-model="mentorObject.gender" name="gender" value="female" data-parsley-multiple="gender"> Female
-              </label>
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
-          <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
-          </label>
-          <div class="col-md-6 col-sm-6 col-xs-12">
-            <input id="birthday" ng-model="mentorObject.dob" class="date-picker form-control col-md-7 col-xs-12" required="required" type="date">
-          </div>
-        </div>
-        <div class="ln_solid"></div>
-        <div class="form-group">
-          <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
-            <button type="reset" id="ClearFormMentor" class="btn btn-primary">Reset</button>
-            <button type="submit" class="btn btn-success">Submit</button>
-          </div>
-        </div>
+            <div class="x_content">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="alert alert-success" ng-if="mentorAddStatus">
+                            {{statusMentor}}
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <form id="demo-form2" data-parsley-validate="" class="form-horizontal form-label-left" ng-submit="addNewMentor()">
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Username <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.username" type="text" id="username" name="username" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Email<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.email" type="email" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">Password<span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.password" type="password" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="first-name">First Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.firstname" type="text" id="first-name" name="first-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12" for="last-name">Last Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.lastname" type="text" id="last-name" name="last-name" required="required" class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="middle-name" class="control-label col-md-3 col-sm-3 col-xs-12">Middle Name / Initial</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input ng-model="mentorObject.midname" id="middle-name" class="form-control col-md-7 col-xs-12" type="text" name="middle-name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Gender</label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <div id="gender" class="btn-group" data-toggle="buttons">
+                                <label class="btn btn-default" ng-click='setGenderValue("male")' data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" ng-model="mentorObject.gender" name="gender" value="male" data-parsley-multiple="gender"> &nbsp; Male &nbsp;
+                                </label>
+                                <label class="btn btn-default" ng-click='setGenderValue("female")' data-toggle-class="btn-primary" data-toggle-passive-class="btn-default">
+                                    <input type="radio" ng-model="mentorObject.gender" name="gender" value="female" data-parsley-multiple="gender"> Female
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">Date Of Birth <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input id="birthday" ng-model="mentorObject.dob" class="date-picker form-control col-md-7 col-xs-12" required="required" type="date">
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <button type="reset" id="ClearFormMentor" class="btn btn-primary">Reset</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
 
-      </form>
+                </form>
+            </div>
+
+        </div>
     </div>
-    
-  </div>
-</div>
 </div>

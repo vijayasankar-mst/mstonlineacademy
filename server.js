@@ -6,7 +6,8 @@ var app = express();
 
 var config = require('./server/config/config')[env];
 
-if(config.postgres)  var config = config.postgres;
+if (config.postgres)
+    var config = config.postgres;
 
 require('./server/config/express')(app, config);
 

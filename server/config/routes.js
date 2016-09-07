@@ -1,6 +1,6 @@
 var auth = require('./auth'),
-mentors = require('../controllers/mentors'),
-students = require('../controllers/students');
+        mentors = require('../controllers/mentors'),
+        students = require('../controllers/students');
 degprogram = require('../controllers/programs');
 
 
@@ -31,7 +31,7 @@ module.exports = function (app) {
     app.post('/api/editProfile', students.updateProfileInfo);
 
     app.post('/api/studentopportunity', students.studentOpportunity);
-    
+
     //Add schedule for session handled by mentor
     app.post('/api/mentorsession', mentors.addMentorSession);
 
@@ -46,10 +46,10 @@ module.exports = function (app) {
 
     //Get the list of all sessions for students
     app.get('/api/getsessionlistforstudent', students.getSessionListStudent);
-    
+
     //Get the list of all papers with mentors
     app.post('/api/getpaperswithmentors', degprogram.getPapersWithMentors);
-    
+
     //Get the list of all programs with paper count
     app.post('/api/getprogramswithpapercount', degprogram.getProgramWithPaperCount);
 

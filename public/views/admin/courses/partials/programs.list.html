@@ -31,27 +31,27 @@
                 <div ng-if="loadingP === false && !loading">
                     <div ng-if="degreeporgramAreas.length > 0">
                         <table id="datatable-responsive" class="table table-striped jambo_table bulk_action" cellspacing="0" width="100%">
-                          <thead>
-                            <tr class="headings">
-                                <th class="column-title">S.No</th>
-                                <th class="column-title">Program Name</th>
-                                <th class="column-title">Program Code</th>
-                                <th class="column-title">Number of Papers</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr class="$index % 2 == 0 ? 'even pointer' : 'odd pointer'" ng-repeat="dpa in degreeporgramAreas" ng-class="isLast($last)" repeat-complete="datatable-responsive">
-                                <td>{{$index + 1}}</td>
-                                <td>{{dpa.program}}</td>
-                                <td>{{dpa.program_code}}</td>
-                                <td>{{dpa.paper_count}}</td>
-                            </tr>
-                        </tbody>
-                    </table>
+                            <thead>
+                                <tr class="headings">
+                                    <th class="column-title">S.No</th>
+                                    <th class="column-title">Program Name</th>
+                                    <th class="column-title">Program Code</th>
+                                    <th class="column-title">Number of Papers</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr class="$index % 2 == 0 ? 'even pointer' : 'odd pointer'" ng-repeat="dpa in degreeporgramAreas" ng-class="isLast($last)" repeat-complete="datatable-responsive">
+                                    <td>{{$index + 1}}</td>
+                                    <td>{{dpa.program}}</td>
+                                    <td>{{dpa.program_code}}</td>
+                                    <td>{{dpa.paper_count}}</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-        </div>
-    </div>
+</div>
 </div>
