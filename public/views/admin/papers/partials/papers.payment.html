@@ -8,14 +8,12 @@
             <div class="x_content">
 
                 <section class="content invoice">
-                    <!-- title row -->
                     <div class="row">
                         <div class="col-xs-12 invoice-header">
                             <h1>
                                 <i class="fa fa-globe"></i> Payment gateway
                             </h1>
                         </div>
-                        <!-- /.col -->
                     </div>
 
                     <div class="row">
@@ -26,7 +24,6 @@
                         </div>
                     </div>
 
-                    <!-- info row -->
                     <div class="row invoice-info">
                         <div class="col-sm-4 invoice-col">
                             From
@@ -38,7 +35,6 @@
                                 <br>Email: {{identity.currentUser.studentinfo.email}}
                             </address>
                         </div>
-                        <!-- /.col -->
                         <div class="col-sm-4 invoice-col">
                             To
                             <address>
@@ -50,9 +46,7 @@
                             </address>
                         </div>
                     </div>
-                    <!-- /.row -->
 
-                    <!-- Table row -->
                     <div class="row">
                         <div class="col-xs-12 table">
                             <table class="table table-striped">
@@ -74,12 +68,9 @@
                                 </tbody>
                             </table>
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
 
                     <div class="row">
-                        <!-- accepted payments column -->
                         <div class="col-xs-6">
                             <p class="lead">Payment Methods:</p>
                             <img src="images/visa.png" alt="Visa">
@@ -90,7 +81,6 @@
                                 All payments are electronic and does not require authenticated signature. We do not store your informations in our database.
                             </p>
                         </div>
-                        <!-- /.col -->
                         <div class="col-xs-6">
                             <p class="lead">Amount Due as on {{today}}</p>
                             <div class="table-responsive">
@@ -116,11 +106,7 @@
                                 </table>
                             </div>
                         </div>
-                        <!-- /.col -->
                     </div>
-                    <!-- /.row -->
-
-                    <!-- this row will not appear when printing -->
                     <div class="row no-print">
                         <div class="col-xs-12">
                             <button class="btn btn-success" ng-click="backToPapersView();">Back</button>

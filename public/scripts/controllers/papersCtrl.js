@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstAp
- */
 angular.module('myAdminApp').controller('papersCtrl', ['$scope', 'paperServices', '$state', '$rootScope', 'adminServices', '$filter', function ($scope, paperServices, $state, $rootScope, adminServices, $filter) {
         $scope.papers;
         $scope.loading = true;
@@ -34,7 +28,6 @@ angular.module('myAdminApp').controller('papersCtrl', ['$scope', 'paperServices'
                         $scope.status = 'Unable to load customer data: ' + error.message;
                     });
         };
-
 
         $scope.checkedCount = function () {
             return $scope.papers.filter(function (item) {
@@ -90,5 +83,5 @@ angular.module('myAdminApp').controller('papersCtrl', ['$scope', 'paperServices'
         };
 
         $scope.getStudentInfo();
-
-    }]);
+    }
+]);

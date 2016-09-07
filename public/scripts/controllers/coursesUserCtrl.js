@@ -130,7 +130,6 @@ angular.module('myAdminApp').controller("CoursesCtrl", function ($ocLazyLoad, $s
             }
 
         } else {
-            //Edit Paper
             adminServices.savePaperEdit($scope.editForm.paperidEdit, $scope.editForm.papernameEdit, $scope.editForm.papercodeEdit, $scope.editForm.papercostEdit, $scope.editForm.mentoridEdit)
                     .then(function (response) {
                         $scope.editPaperStatusClass = "alert-success";

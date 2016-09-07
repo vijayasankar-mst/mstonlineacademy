@@ -1,11 +1,5 @@
 'use strict';
 
-/**
- * @ngdoc overview
- * @name mstApp
- * @description
- * # mstAp
- */
 angular.module('myAdminApp').controller('studentsCtrl', ['$scope', 'studentServices', '$state', function ($scope, studentServices, $state) {
         $scope.students;
         $scope.loading = true;
@@ -17,7 +11,6 @@ angular.module('myAdminApp').controller('studentsCtrl', ['$scope', 'studentServi
                     }, function (error) {
                         $scope.status = 'Unable to load student data: ' + error.message;
                     });
-
         }
 
         $scope.getSessionListStudent = function () {
@@ -39,5 +32,5 @@ angular.module('myAdminApp').controller('studentsCtrl', ['$scope', 'studentServi
         }
 
         $scope.getStudentsList();
-
-    }]);
+    }
+]);

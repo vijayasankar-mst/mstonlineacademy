@@ -55,7 +55,7 @@
                 <p ng-show="errorClass('desireddegree')" class="help-block">Desire degree is required.</p>
             </div>
             <div class="form-group">
-                <label for="desiredprogramarea">Desired Program area</label>
+                <label for="desiredprogramarea">Desired Program Area</label>
                 <select class="form-control" ng-change="getDegreeProgramArea();"  ng-options="degprogram.program_area_id as degprogram.program_area for degprogram in degreeporgramlist"  ng-model="registerFormData.desiredprogramarea" id="desiredprogramarea" name="desiredprogramarea" ng-class="errorClass('desiredprogramarea', 'class')" required>
                     <option value="">---Please select---</option>
                 </select>

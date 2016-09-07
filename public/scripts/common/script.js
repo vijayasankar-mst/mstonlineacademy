@@ -1,7 +1,5 @@
 /* ----------------- Start JS Document ----------------- */
 
-
-
 // Page Loader
 $(window).load(function () {
     "use strict";
@@ -132,9 +130,6 @@ $(document).ready(function ($) {
         }
 
         init();
-
-
-
     })();
 });
 
