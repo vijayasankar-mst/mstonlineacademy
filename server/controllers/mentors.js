@@ -1,5 +1,5 @@
-var User = require('../models/mentors'),
-        encrypt = require('../utilities/encryption');
+var User = require('../models/mentors');
+var encrypt = require('../utilities/encryption');
 
 exports.getUsers = function (req, res) {
     User.getUserList(2, function (err, result) {
@@ -9,7 +9,7 @@ exports.getUsers = function (req, res) {
 
 exports.getMentorStudent = function (req, res) {
     User.getStudentList(2, function (err, result) {
-        res.send('test world');
+        res.send(result);
     });
 }
 

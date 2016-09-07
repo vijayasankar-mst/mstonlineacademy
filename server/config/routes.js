@@ -73,27 +73,34 @@ module.exports = function (app) {
     // MENTORS            //
     ////////////////////////
 
-    //Add schedule for session handled by mentor
+    // Add schedule for session handled by mentor
     app.post('/api/mentorsession', mentors.addMentorSession);
 
-    //Get the list of sessions for the mentor
+    // Get the list of sessions for the mentor
     app.get('/api/getmentorsession', mentors.getMentorSession);
 
-    //Mark session completed
+    // Mark session completed
     app.post('/api/marksessioncompleted', mentors.markSessionCompleted);
 
-    //Get the list of all papers for mentor
+    // Get the list of all papers for mentor
     app.get('/api/getpaperlistformentor', mentors.getPaperListMentor);
 
-    //Get the list of all top mentors
+    // Get the list of all top mentors
     app.get('/api/gettopmentors', mentors.getTopMentors);
 
-    //Get the list of latest students
+    // Get the list of latest students
     app.get('/api/getlateststudents', mentors.getLatestStudents);
 
+    // Get the list of mentors from mentors table
     app.get('/api/mentorusers', mentors.getUsers);
+
+    // Get the list of mentors from user table
     app.get('/api/mentorstudents', mentors.getMentorStudent);
+
+    // Add a new mentor
     app.post('/api/addNewMentor', mentors.addNewMentor)
+
+    // Get the details of all users
     app.get('/api/studentusers', students.getStudentList);
 
     app.post('/logout', function (req, res) {

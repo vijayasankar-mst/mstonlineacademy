@@ -94,9 +94,6 @@ User.getStudentList = function (roleid, callback) {
 };
 
 User.addNewMentor = function (mentorObj, callback) {
-    console.log('from mentor file' + JSON.stringify(mentorObj))
-    //var sql = 'insert into mentors (first_name,last_name,middle_name,gender,birthdate,user_id) values ($1,$2,$3,$4,$5,(select user_id from new_mentor))';
-
     var sql = "with new_mentor as (INSERT INTO users(unique_id, username,email,role_id,is_active) VALUES ($1, $2, $3,$4,$5)" +
             " returning user_id), user_pass as (INSERT INTO user_passwords(user_id, hashed_password, is_active) " +
             "VALUES ((select user_id from new_mentor),$6,$7) returning user_password_id), " +
@@ -104,7 +101,6 @@ User.addNewMentor = function (mentorObj, callback) {
     var d = new Date();
     var data = [d.getTime(), mentorObj.username, mentorObj.email, 2, 't', mentorObj.password, 't', mentorObj.firstname, mentorObj.lastname,
         mentorObj.midname, mentorObj.gender, mentorObj.dob];
-
     var command = {"sql": sql, "params": data}
     ps.query(command, function (err, result) {
         if (err) {
@@ -119,13 +115,10 @@ User.addNewMentor = function (mentorObj, callback) {
         var data = result;
         return callback(false, data);
     });
-
 };
 
 User.addMentorSession = function (sessionDetails, userid, callback) {
-
     var sql = "INSERT INTO sessions (session, mentor_id, paper_id,session_date,join_url) SELECT $1, mentor_id, $3, $4, $5 FROM mentors WHERE user_id = $2 returning session_id";
-
     data = [sessionDetails.SessionName, userid, sessionDetails.paperId, sessionDetails.Date, sessionDetails.joinUrl];
     var command = {"sql": sql, "params": data}
     ps.query(command, function (err, result) {
@@ -144,7 +137,6 @@ User.addMentorSession = function (sessionDetails, userid, callback) {
 };
 
 User.getMentorSession = function (userid, callback) {
-
     var sql = "SELECT session, session_date, paper, paper_code, session_id, join_url FROM sessions s LEFT JOIN mentors m USING (mentor_id) LEFT JOIN papers p USING (paper_id) WHERE user_id = $1 AND s.has_completed = false AND s.is_active = true ORDER BY session_date";
     data = [userid];
     var command = {"sql": sql, "params": data}
