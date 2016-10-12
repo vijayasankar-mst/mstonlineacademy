@@ -7,4 +7,6 @@ Virtual online academy
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-[![Heroku Connect Config](https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/hcc.png)](https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/mstonlineacademy_heroku_connect_config.json)
+<a href="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/mstonlineacademy_heroku_connect_config.json">
+<img src="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/hcc.png" alt="Heroku Connect Config" height="50px"/>
+</a>
