@@ -20,6 +20,7 @@
     "angular-resource": "latest",
     "angular-sanitize": "latest",
     "angular-touch": "latest",
-    "angular-form-validation": "^1.0.7"
+    "angular-form-validation": "^1.0.7",
+    "font-awesome": "latest"
   }
 }
