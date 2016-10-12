@@ -1,0 +1,16 @@
+{
+	"name": "MST Online Academy",
+	"description": "Online academy for students that utilizes Heroku Connect",
+	"website": "http://apppoccloudteam.github.io/mstonlineacademy/",
+	"repository": "https://github.com/apppoccloudteam/mstonlineacademy/",
+	"logo": "http://www.mstsolutions.com/img/mst-logo-trans.png",
+	"keywords": ["Online Academy"],
+	"addons": [ {
+		"plan": "heroku-postgresql:hobby-dev"
+	}, {
+		"plan": "herokuconnect:demo"
+	} ],
+	"buildpacks": [ {
+		"url": "heroku/nodejs"
+	} ]
+}

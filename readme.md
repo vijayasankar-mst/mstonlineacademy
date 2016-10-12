@@ -1,3 +1,8 @@
 # MST Online Academy
+## by MST Solutions, LLC
 
-This is a virtual online academy. Development in progress!
+Virtual online academy
+
+### Deploy
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
