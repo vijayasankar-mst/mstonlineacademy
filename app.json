@@ -3,7 +3,7 @@
 	"description": "Online academy for students that utilizes Heroku Connect",
 	"website": "http://apppoccloudteam.github.io/mstonlineacademy/",
 	"repository": "https://github.com/apppoccloudteam/mstonlineacademy/",
-	"logo": "http://www.mstsolutions.com/img/mst-logo-trans.png",
+	"logo": "https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/MST%20Logo.png",
 	"keywords": ["Online Academy"],
 	"addons": [ {
 		"plan": "heroku-postgresql:hobby-dev"
