@@ -10,7 +10,7 @@ myApp.directive('sidebar', function () {
 });
 
 //requestform validataion
-myApp.controller('requestformController', function ($scope) {
+myApp.controller('requestformController', function ($scope, $http) {
     $scope.submitForm = function (isValid) {
         if (isValid) {
             alert('Thanks for submission!');
@@ -23,7 +23,7 @@ myApp.controller('requestformController', function ($scope) {
     $http.get("/api/getsalesforceorginfo").then(function (response) {
         $scope.sforgid = response.data.salesforceOrgID;
     });
-    
+
     //Phone Number Regex
     $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
 

@@ -21,6 +21,7 @@
     "angular-sanitize": "latest",
     "angular-touch": "latest",
     "angular-form-validation": "^1.0.7",
+    "angular-toggle-switch": "latest",
     "font-awesome": "latest"
   }
 }
