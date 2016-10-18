@@ -103,6 +103,11 @@ module.exports = function (app) {
     // Get the details of all users
     app.get('/api/studentusers', students.getStudentList);
 
+    // Get the org information of salesforce from config variable
+    app.get('/api/getsalesforceorginfo', function(req, res) {
+        res.send({salesforceOrgID: global.dbvars.sfoid});
+    });
+
     app.post('/logout', function (req, res) {
         req.logout();
         res.end();

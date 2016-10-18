@@ -17,6 +17,13 @@ myApp.controller('requestformController', function ($scope) {
         }
     };
 
+    $scope.registerURLVal = window.location.origin;
+    $scope.retURLVal = window.location.href;
+
+    $http.get("/api/getsalesforceorginfo").then(function (response) {
+        $scope.sforgid = response.data.salesforceOrgID;
+    });
+    
     //Phone Number Regex
     $scope.phoneNumberPattern = /^(\(?\+?(\d{1,3})\)?[- ]?)?\d{3}[-\s\.]?\d{3}[-\s\.]?\d{4}$/;
 

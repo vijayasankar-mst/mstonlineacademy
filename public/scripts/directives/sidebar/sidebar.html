@@ -2,9 +2,10 @@
     <div class="requestform" ng-controller="requestformController">
         <h3>Interested? Just tell us...</h3>
         <form name="interestForm" ng-submit="submitForm(interestForm.$valid)" novalidate action="https://www.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
-            <input type="hidden" name="oid" value="00D28000001do4l"/>
+            <input type="hidden" name="oid" value="{{sforgid}}"/>
             <input type="hidden" id="company" maxlength="40" value="MST Online Academy" name="company" size="20"/>
-            <input type="hidden" name="retURL" value="http://mstonlineacademy.herokuapp.com/index/home"/>
+            <input type="hidden" name="retURL" value="{{retURLVal}}"/>
+            <input type="hidden" id="URL" name="URL" value="{{registerURLVal}}"/>
             <div class="form-group">
                 <label for="first_name">First Name:</label>
                 <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Enter first name" ng-model="first_name" ng-class="errorClass('first_name', 'class')" required>

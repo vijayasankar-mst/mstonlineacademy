@@ -12,5 +12,10 @@
 	} ],
 	"buildpacks": [ {
 		"url": "heroku/nodejs"
-	} ]
+	} ],
+	"env": {
+		"SF_OID": {
+			"description": "Salesforce.com Organization ID (Found in Company Information of your Salesforce account)"
+		}
+	}
 }
