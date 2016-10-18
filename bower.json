@@ -22,7 +22,7 @@
     "angular-touch": "latest",
     "angular-form-validation": "^1.0.7",
     "font-awesome": "latest",
-    "iCheck": "icheck#^1.0.2",
+    "iCheck": "latest",
     "datatables.net": "^1.10.12",
     "datatables.net-bs": "^1.10.12",
     "datatables.net-responsive": "^2.1.0",
