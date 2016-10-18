@@ -116,7 +116,6 @@ angular.module('myAdminApp').controller("CoursesCtrl", function ($ocLazyLoad, $s
                     $scope.editPaperStatusClass = "alert-warning";
                     $scope.editPaperStatus = "Paper cost can't contain alphabets!";
                 } else {
-                    console.log($scope.registerFormData.desiredprogram, $scope.editForm.papernameEdit, $scope.editForm.papercodeEdit, $scope.editForm.papercostEdit, $scope.editForm.mentoridEdit)
                     adminServices.savePaperNew($scope.registerFormData.desiredprogram, $scope.editForm.papernameEdit, $scope.editForm.papercodeEdit, $scope.editForm.papercostEdit, $scope.editForm.mentoridEdit)
                             .then(function (response) {
                                 $scope.editPaperStatusClass = "alert-success";

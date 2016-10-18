@@ -6,7 +6,6 @@ angular.module('myApp').controller('MentorsCtrl1', ['$scope', 'mentorServices1',
             mentorServices1.getMentors()
                     .then(function (response) {
                         $scope.mentors1 = response.data;
-                        console.log(JSON.stringify($scope.mentors1));
                     }, function (error) {
                         $scope.status = 'Unable to load customer data: ' + error.message;
                     });
