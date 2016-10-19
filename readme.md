@@ -12,7 +12,7 @@ Virtual online academy for students to register for a course and attend session 
 <a href="https://heroku.com/deploy">
 <img src="https://www.herokucdn.com/deploy/button.svg" alt="Heroku Deploy"/>
 </a>
-<a href="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/mstonlineacademyPublicSchema.sql"><img src="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/postresql.svg" alt="PostgreSQL Config"/>
+<a href="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/mstonlineacademyPublicSchema.sql"><img src="https://rawgit.com/apppoccloudteam/mstonlineacademy/master/public/postresql.svg" alt="PostgreSQL Config"/>
 </a>
 <a href="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/mstonlineacademy_heroku_connect_config.json"><img src="https://cdn.rawgit.com/apppoccloudteam/mstonlineacademy/master/public/herokuconnect.svg" alt="Heroku Connect Config"/>
 </a>
